@@ -55,7 +55,7 @@ export class SbHeader extends LitElement {
     };
   }
 
-  user?: {};
+  user?: Record<string, any>;
 
   private dispatchCustomEvent(eventName: string) {
     const options = {

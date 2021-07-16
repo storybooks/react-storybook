@@ -129,7 +129,7 @@ export const AccountForm: FC<AccountFormProps> = ({
         transactionFailure: success === false,
       });
     },
-    [setState, onTransactionEnd, onTransactionStart]
+    [onSubmit, onTransactionStart, state, onTransactionEnd]
   );
 
   return (

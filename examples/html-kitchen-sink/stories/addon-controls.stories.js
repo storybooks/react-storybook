@@ -5,9 +5,7 @@ export default {
   },
 };
 
-const Template = ({ label }) => {
-  return `<div>${label}</div>`;
-};
+const Template = ({ label }) => `<div>${label}</div>`;
 
 export const Hello = Template.bind({});
 Hello.args = { label: 'Hello!' };

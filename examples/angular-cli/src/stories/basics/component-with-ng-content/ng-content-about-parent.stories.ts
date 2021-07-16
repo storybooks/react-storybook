@@ -86,11 +86,9 @@ WithComponent.decorators = [
   }),
 ];
 
-export const WithComponentAndArgs: Story = (args) => {
-  return {
-    props: args,
-  };
-};
+export const WithComponentAndArgs: Story = (args) => ({
+  props: args,
+});
 WithComponentAndArgs.parameters = {
   component: SbEmojiComponent,
 };

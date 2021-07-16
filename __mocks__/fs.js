@@ -5,7 +5,7 @@ const fs = jest.createMockFromModule('fs');
 // `fs` APIs are used.
 let mockFiles = Object.create(null);
 
-// eslint-disable-next-line no-underscore-dangle
+// eslint-disable-next-line no-underscore-dangle, @typescript-eslint/naming-convention
 function __setMockFiles(newMockFiles) {
   mockFiles = newMockFiles;
 }

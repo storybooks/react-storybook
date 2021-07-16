@@ -26,6 +26,7 @@ function isReactElement(element: any): boolean {
   return element.$$typeof != null;
 }
 
+// eslint-disable-next-line @typescript-eslint/ban-types
 export function extractFunctionName(func: Function, propName: string): string {
   const { name } = func;
 
@@ -37,9 +38,8 @@ export function extractFunctionName(func: Function, propName: string): string {
   return null;
 }
 
-const stringResolver: TypeResolver = (rawDefaultProp) => {
-  return createSummaryValue(JSON.stringify(rawDefaultProp));
-};
+const stringResolver: TypeResolver = (rawDefaultProp) =>
+  createSummaryValue(JSON.stringify(rawDefaultProp));
 
 function generateReactObject(rawDefaultProp: any) {
   const { type } = rawDefaultProp;
@@ -141,9 +141,8 @@ const functionResolver: TypeResolver = (rawDefaultProp, propDef) => {
   return createSummaryValue(isElement ? ELEMENT_CAPTION : FUNCTION_CAPTION);
 };
 
-const defaultResolver: TypeResolver = (rawDefaultProp) => {
-  return createSummaryValue(rawDefaultProp.toString());
-};
+const defaultResolver: TypeResolver = (rawDefaultProp) =>
+  createSummaryValue(rawDefaultProp.toString());
 
 const DEFAULT_TYPE_RESOLVERS: TypeResolvers = {
   string: stringResolver,

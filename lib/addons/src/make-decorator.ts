@@ -15,7 +15,10 @@ export const makeDecorator = ({
   wrapper,
   skipIfNoParametersOrOptions = false,
 }: MakeDecoratorOptions): MakeDecoratorResult => {
-  const decorator: any = (options: object) => (getStory: StoryGetter, context: StoryContext) => {
+  const decorator: any = (options: Record<string, unknown>) => (
+    getStory: StoryGetter,
+    context: StoryContext
+  ) => {
     const parameters = context.parameters && context.parameters[parameterName];
 
     if (parameters && parameters.disable) {

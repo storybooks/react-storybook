@@ -4,7 +4,7 @@ import { styled } from '@storybook/theming';
 import { NodeResult, Result } from 'axe-core';
 import { SizeMe } from 'react-sizeme';
 import HighlightToggle from './Report/HighlightToggle';
-import { RuleType } from './A11YPanel';
+import { RuleType } from '../types';
 import { useA11yContext } from './A11yContext';
 
 // TODO: reuse the Tabs component from @storybook/theming instead of re-building identical functionality
@@ -15,7 +15,7 @@ const Container = styled.div({
   minHeight: '100%',
 });
 
-const HighlightToggleLabel = styled.label<{}>(({ theme }) => ({
+const HighlightToggleLabel = styled.label(({ theme }) => ({
   cursor: 'pointer',
   userSelect: 'none',
   color: theme.color.dark,
@@ -76,7 +76,7 @@ const Item = styled.button<{ active?: boolean }>(
 
 const TabsWrapper = styled.div({});
 
-const List = styled.div<{}>(({ theme }) => ({
+const List = styled.div(({ theme }) => ({
   boxShadow: `${theme.appBorderColor} 0 -1px 0 0 inset`,
   background: 'rgba(0, 0, 0, .05)',
   display: 'flex',

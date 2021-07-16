@@ -217,7 +217,10 @@ export const HeadersMdx = SUPPORTED_MDX_HEADERS.reduce(
   (acc, headerType) => ({
     ...acc,
     // @ts-ignore
-    [headerType]: (props: object) => <HeaderMdx as={headerType} {...props} />,
+    // eslint-disable-next-line react/display-name
+    [headerType]: (props: ComponentProps<typeof HeaderMdx>) => (
+      <HeaderMdx as={headerType} {...props} />
+    ),
   }),
   {}
 );

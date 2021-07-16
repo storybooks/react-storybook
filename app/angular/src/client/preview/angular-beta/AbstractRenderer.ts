@@ -1,4 +1,3 @@
-/* eslint-disable no-undef */
 import { enableProdMode, NgModule, PlatformRef } from '@angular/core';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 

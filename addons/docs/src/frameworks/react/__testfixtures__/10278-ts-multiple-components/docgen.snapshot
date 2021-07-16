@@ -1,23 +1,18 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`react component properties 10278-ts-multiple-components 1`] = `
-"/* eslint-disable react/destructuring-assignment */
-import React from 'react';
+"import React from 'react';
 
 /**
  * A component
  */
-const A = props => {
-  return /*#__PURE__*/React.createElement(React.Fragment, null, \\"Hi \\", props.aProperty);
-};
+const A = props => /*#__PURE__*/React.createElement(React.Fragment, null, \\"Hi \\", props.aProperty);
 /**
  * B component
  */
 
 
-const B = props => {
-  return /*#__PURE__*/React.createElement(React.Fragment, null, \\"Hi \\", props.bProperty);
-};
+const B = props => /*#__PURE__*/React.createElement(React.Fragment, null, \\"Hi \\", props.bProperty);
 
 A.__docgenInfo = {
   \\"description\\": \\"A component\\",

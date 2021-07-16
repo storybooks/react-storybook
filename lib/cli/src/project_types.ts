@@ -124,9 +124,7 @@ export const supportedTemplates: TemplateConfiguration[] = [
   {
     preset: ProjectType.METEOR,
     files: ['.meteor'],
-    matcherFunction: ({ files }) => {
-      return files.every(Boolean);
-    },
+    matcherFunction: ({ files }) => files.every(Boolean),
   },
   {
     preset: ProjectType.SFC_VUE,
@@ -134,9 +132,7 @@ export const supportedTemplates: TemplateConfiguration[] = [
       'vue-loader': (versionRange) => ltMajor(versionRange, 16),
       vuetify: (versionRange) => ltMajor(versionRange, 3),
     },
-    matcherFunction: ({ dependencies }) => {
-      return dependencies.some(Boolean);
-    },
+    matcherFunction: ({ dependencies }) => dependencies.some(Boolean),
   },
   {
     preset: ProjectType.VUE,
@@ -145,9 +141,7 @@ export const supportedTemplates: TemplateConfiguration[] = [
       vue: (versionRange) => ltMajor(versionRange, 3),
       nuxt: (versionRange) => ltMajor(versionRange, 3),
     },
-    matcherFunction: ({ dependencies }) => {
-      return dependencies.some(Boolean);
-    },
+    matcherFunction: ({ dependencies }) => dependencies.some(Boolean),
   },
   {
     preset: ProjectType.VUE3,
@@ -155,30 +149,22 @@ export const supportedTemplates: TemplateConfiguration[] = [
       // This Vue template works with Vue 3
       vue: (versionRange) => versionRange === 'next' || eqMajor(versionRange, 3),
     },
-    matcherFunction: ({ dependencies }) => {
-      return dependencies.some(Boolean);
-    },
+    matcherFunction: ({ dependencies }) => dependencies.some(Boolean),
   },
   {
     preset: ProjectType.EMBER,
     dependencies: ['ember-cli'],
-    matcherFunction: ({ dependencies }) => {
-      return dependencies.every(Boolean);
-    },
+    matcherFunction: ({ dependencies }) => dependencies.every(Boolean),
   },
   {
     preset: ProjectType.REACT_PROJECT,
     peerDependencies: ['react'],
-    matcherFunction: ({ peerDependencies }) => {
-      return peerDependencies.every(Boolean);
-    },
+    matcherFunction: ({ peerDependencies }) => peerDependencies.every(Boolean),
   },
   {
     preset: ProjectType.REACT_NATIVE,
     dependencies: ['react-native', 'react-native-scripts'],
-    matcherFunction: ({ dependencies }) => {
-      return dependencies.some(Boolean);
-    },
+    matcherFunction: ({ dependencies }) => dependencies.some(Boolean),
   },
   {
     preset: ProjectType.REACT_SCRIPTS,
@@ -186,93 +172,68 @@ export const supportedTemplates: TemplateConfiguration[] = [
     files: ['/node_modules/.bin/react-scripts'],
     // For standard CRA projects
     dependencies: ['react-scripts'],
-    matcherFunction: ({ dependencies, files }) => {
-      return dependencies.every(Boolean) || files.every(Boolean);
-    },
+    matcherFunction: ({ dependencies, files }) =>
+      dependencies.every(Boolean) || files.every(Boolean),
   },
   {
     preset: ProjectType.WEBPACK_REACT,
     dependencies: ['react', 'webpack'],
-    matcherFunction: ({ dependencies }) => {
-      return dependencies.every(Boolean);
-    },
+    matcherFunction: ({ dependencies }) => dependencies.every(Boolean),
   },
   {
     preset: ProjectType.REACT,
     dependencies: ['react'],
-    matcherFunction: ({ dependencies }) => {
-      return dependencies.every(Boolean);
-    },
+    matcherFunction: ({ dependencies }) => dependencies.every(Boolean),
   },
   {
     preset: ProjectType.ANGULAR,
     dependencies: ['@angular/core'],
-    matcherFunction: ({ dependencies }) => {
-      return dependencies.every(Boolean);
-    },
+    matcherFunction: ({ dependencies }) => dependencies.every(Boolean),
   },
   {
     preset: ProjectType.WEB_COMPONENTS,
     dependencies: ['lit-element', 'lit-html', 'lit'],
-    matcherFunction: ({ dependencies }) => {
-      return dependencies.some(Boolean);
-    },
+    matcherFunction: ({ dependencies }) => dependencies.some(Boolean),
   },
   {
     preset: ProjectType.MITHRIL,
     dependencies: ['mithril'],
-    matcherFunction: ({ dependencies }) => {
-      return dependencies.every(Boolean);
-    },
+    matcherFunction: ({ dependencies }) => dependencies.every(Boolean),
   },
   {
     preset: ProjectType.MARIONETTE,
     dependencies: ['backbone.marionette'],
-    matcherFunction: ({ dependencies }) => {
-      return dependencies.every(Boolean);
-    },
+    matcherFunction: ({ dependencies }) => dependencies.every(Boolean),
   },
   {
     preset: ProjectType.MARKO,
     dependencies: ['marko'],
-    matcherFunction: ({ dependencies }) => {
-      return dependencies.every(Boolean);
-    },
+    matcherFunction: ({ dependencies }) => dependencies.every(Boolean),
   },
   {
     preset: ProjectType.RIOT,
     dependencies: ['riot'],
-    matcherFunction: ({ dependencies }) => {
-      return dependencies.every(Boolean);
-    },
+    matcherFunction: ({ dependencies }) => dependencies.every(Boolean),
   },
   {
     preset: ProjectType.PREACT,
     dependencies: ['preact'],
-    matcherFunction: ({ dependencies }) => {
-      return dependencies.every(Boolean);
-    },
+    matcherFunction: ({ dependencies }) => dependencies.every(Boolean),
   },
   {
     preset: ProjectType.SVELTE,
     dependencies: ['svelte'],
-    matcherFunction: ({ dependencies }) => {
-      return dependencies.every(Boolean);
-    },
+    matcherFunction: ({ dependencies }) => dependencies.every(Boolean),
   },
   {
     preset: ProjectType.RAX,
     dependencies: ['rax'],
-    matcherFunction: ({ dependencies }) => {
-      return dependencies.every(Boolean);
-    },
+    matcherFunction: ({ dependencies }) => dependencies.every(Boolean),
   },
   {
     preset: ProjectType.AURELIA,
     dependencies: ['aurelia-bootstrapper'],
-    matcherFunction: ({ dependencies }) => {
-      return dependencies.every(Boolean);
-    },
+    matcherFunction: ({ dependencies }) => dependencies.every(Boolean),
   },
 ];
 
@@ -285,9 +246,7 @@ export const unsupportedTemplate: TemplateConfiguration = {
     // TODO(blaine): Remove when we support Nuxt 3
     nuxt: (versionRange) => eqMajor(versionRange, 3),
   },
-  matcherFunction: ({ dependencies }) => {
-    return dependencies.some(Boolean);
-  },
+  matcherFunction: ({ dependencies }) => dependencies.some(Boolean),
 };
 
 const notInstallableProjectTypes: ProjectType[] = [

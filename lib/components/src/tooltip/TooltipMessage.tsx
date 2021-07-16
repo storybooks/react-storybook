@@ -40,25 +40,23 @@ export interface TooltipMessageProps {
   }[];
 }
 
-export const TooltipMessage: FunctionComponent<TooltipMessageProps> = ({ title, desc, links }) => {
-  return (
-    <MessageWrapper>
-      <Message>
-        {title && <Title>{title}</Title>}
-        {desc && <Desc>{desc}</Desc>}
-      </Message>
-      {links && (
-        <Links>
-          {links.map(({ title: linkTitle, ...other }) => (
-            <Link {...other} key={linkTitle}>
-              {linkTitle}
-            </Link>
-          ))}
-        </Links>
-      )}
-    </MessageWrapper>
-  );
-};
+export const TooltipMessage: FunctionComponent<TooltipMessageProps> = ({ title, desc, links }) => (
+  <MessageWrapper>
+    <Message>
+      {title && <Title>{title}</Title>}
+      {desc && <Desc>{desc}</Desc>}
+    </Message>
+    {links && (
+      <Links>
+        {links.map(({ title: linkTitle, ...other }) => (
+          <Link {...other} key={linkTitle}>
+            {linkTitle}
+          </Link>
+        ))}
+      </Links>
+    )}
+  </MessageWrapper>
+);
 
 TooltipMessage.defaultProps = {
   title: null,

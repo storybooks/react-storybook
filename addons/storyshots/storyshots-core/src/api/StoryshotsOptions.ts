@@ -1,7 +1,8 @@
 import { IOptions } from 'glob';
 import { Stories2SnapsConverter } from '../Stories2SnapsConverter';
 import { SupportedFramework } from '../frameworks';
-import { RenderTree } from '../frameworks/Loader';
+
+export type RenderTree = (story: any, context?: any, options?: any) => any;
 
 export interface TestMethodOptions {
   story: any;
@@ -32,6 +33,7 @@ export interface StoryshotsOptions {
   storyNameRegex?: RegExp | string;
   framework?: SupportedFramework;
   test?: StoryshotsTestMethod;
+  // eslint-disable-next-line @typescript-eslint/ban-types
   renderer?: Function;
   snapshotSerializers?: jest.SnapshotSerializerPlugin[];
   /**

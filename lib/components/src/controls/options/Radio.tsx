@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import { styled } from '@storybook/theming';
 import { logger } from '@storybook/client-logger';
-import { ControlProps, OptionsSingleSelection, NormalizedOptionsConfig } from '../types';
+import { ControlProps, OptionsSingleSelection, NormalizedOptionsConfig } from '../../types';
 import { selectedKey } from './helpers';
 import { getControlId } from '../helpers';
 

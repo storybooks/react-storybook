@@ -36,6 +36,7 @@ export const withGrid = (StoryFn: StoryFunction, context: StoryContext) => {
   const offsetX = gridParameters.offsetX ?? (isInDocs ? 20 : defaultOffset);
   const offsetY = gridParameters.offsetY ?? (isInDocs ? 20 : defaultOffset);
 
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   const gridStyles = useMemo(() => {
     const selector =
       context.viewMode === 'docs' ? `#anchor--${context.id} .docs-story` : '.sb-show-main';
@@ -60,8 +61,9 @@ export const withGrid = (StoryFn: StoryFunction, context: StoryContext) => {
          }) 1px, transparent 1px) !important;
       }
     `;
-  }, [gridSize]);
+  }, [cellAmount, context.id, context.viewMode, gridSize, offsetX, offsetY, opacity]);
 
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   useEffect(() => {
     const selectorId =
       context.viewMode === 'docs'

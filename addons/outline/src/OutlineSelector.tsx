@@ -1,3 +1,4 @@
+/* eslint-disable react/display-name */
 import React, { memo, useCallback } from 'react';
 import { useGlobals } from '@storybook/api';
 import { Icons, IconButton } from '@storybook/components';
@@ -13,7 +14,7 @@ export const OutlineSelector = memo(() => {
       updateGlobals({
         [PARAM_KEY]: !isActive,
       }),
-    [isActive]
+    [isActive, updateGlobals]
   );
 
   return (

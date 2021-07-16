@@ -35,14 +35,12 @@ export default {
   decorators: [withLocaleProvider, moduleMetadata({ declarations: [TranslatePipe] })],
 } as Meta;
 
-export const WithAngularService: Story = (_args, { globals: { locale } }) => {
-  return {
-    template: `
+export const WithAngularService: Story = (_args, { globals: { locale } }) => ({
+  template: `
       Your locale is {{ locale }}<br>
       I say: {{ 'hello' | translate }}
     `,
-    props: {
-      locale,
-    },
-  };
-};
+  props: {
+    locale,
+  },
+});

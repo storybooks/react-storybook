@@ -11,7 +11,7 @@ export interface DocsPageProps {
   subtitle?: string;
 }
 
-export const Title = styled.h1<{}>(withReset, ({ theme }: { theme: Theme }) => ({
+export const Title = styled.h1(withReset, ({ theme }: { theme: Theme }) => ({
   color: theme.color.defaultText,
   fontSize: theme.typography.size.m3,
   fontWeight: theme.typography.weight.black,
@@ -24,7 +24,7 @@ export const Title = styled.h1<{}>(withReset, ({ theme }: { theme: Theme }) => (
   },
 }));
 
-export const Subtitle = styled.h2<{}>(withReset, ({ theme }: { theme: Theme }) => ({
+export const Subtitle = styled.h2(withReset, ({ theme }: { theme: Theme }) => ({
   fontWeight: theme.typography.weight.regular,
   fontSize: theme.typography.size.s3,
   lineHeight: '20px',
@@ -45,7 +45,7 @@ export const DocsContent = styled.div({
   width: '100%',
 });
 
-export const DocsWrapper = styled.div<{}>(({ theme }) => ({
+export const DocsWrapper = styled.div(({ theme }) => ({
   background: theme.background.content,
   display: 'flex',
   justifyContent: 'center',

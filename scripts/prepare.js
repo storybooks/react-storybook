@@ -51,9 +51,7 @@ function cleanup() {
         return true;
       }
 
-      return ignore.reduce((acc, pattern) => {
-        return acc || !!filePath.match(pattern);
-      }, false);
+      return ignore.reduce((acc, pattern) => acc || !!filePath.match(pattern), false);
     });
     if (filesToRemove.length) {
       shell.rm('-f', ...filesToRemove);

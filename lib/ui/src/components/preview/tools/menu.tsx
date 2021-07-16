@@ -1,3 +1,4 @@
+/* eslint-disable react/display-name */
 import React from 'react';
 import { IconButton, Icons, Separator } from '@storybook/components';
 import { Consumer, Combo } from '@storybook/api';

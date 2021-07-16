@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 import { ConfigApi, ClientApi, StoryStore } from '@storybook/client-api';
 import { isExportStory } from '@storybook/csf';
 import { logger } from '@storybook/client-logger';

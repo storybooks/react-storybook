@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 import express, { Router } from 'express';
 import compression from 'compression';
 

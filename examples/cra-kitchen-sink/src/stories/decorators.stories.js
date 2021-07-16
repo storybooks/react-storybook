@@ -3,9 +3,7 @@ import { action } from '@storybook/addon-actions';
 import { Button } from '@storybook/react/demo';
 import PropTypes from 'prop-types';
 
-const Bold = ({ children }) => {
-  return <b>{children}</b>;
-};
+const Bold = ({ children }) => <b>{children}</b>;
 
 Bold.propTypes = {
   children: PropTypes.string.isRequired,

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-types */
 import React, { Component } from 'react';
 import { styled, keyframes } from '@storybook/theming';
 

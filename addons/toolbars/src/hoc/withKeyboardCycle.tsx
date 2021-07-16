@@ -22,7 +22,7 @@ export const withKeyboardCycle = (Component: React.ComponentType<ToolbarMenuProp
 
     const reset = useCallback(() => {
       updateGlobals({ [id]: '' });
-    }, [updateGlobals]);
+    }, [id, updateGlobals]);
 
     const setNext = useCallback(() => {
       const values = cycleValues.current;
@@ -33,7 +33,7 @@ export const withKeyboardCycle = (Component: React.ComponentType<ToolbarMenuProp
       const newCurrent = cycleValues.current[newCurrentIndex];
 
       updateGlobals({ [id]: newCurrent });
-    }, [cycleValues, currentValue, updateGlobals]);
+    }, [currentValue, updateGlobals, id]);
 
     const setPrevious = useCallback(() => {
       const values = cycleValues.current;
@@ -45,7 +45,7 @@ export const withKeyboardCycle = (Component: React.ComponentType<ToolbarMenuProp
       const newCurrent = cycleValues.current[newCurrentIndex];
 
       updateGlobals({ [id]: newCurrent });
-    }, [cycleValues, currentValue, updateGlobals]);
+    }, [currentValue, updateGlobals, id]);
 
     useEffect(() => {
       if (shortcuts) {
@@ -59,7 +59,7 @@ export const withKeyboardCycle = (Component: React.ComponentType<ToolbarMenuProp
 
     useEffect(() => {
       cycleValues.current = createCycleValueArray(items);
-    }, []);
+    }, [items]);
 
     return <Component cycleValues={cycleValues.current} {...props} />;
   };

@@ -51,9 +51,11 @@ export function getPath(item: Item, ref: RefType): string[] {
   return ref.id === DEFAULT_REF_ID ? [] : [ref.title || ref.id];
 }
 
-export const searchItem = (item: Item, ref: RefType): SearchItem => {
-  return { ...item, refId: ref.id, path: getPath(item, ref) };
-};
+export const searchItem = (item: Item, ref: RefType): SearchItem => ({
+  ...item,
+  refId: ref.id,
+  path: getPath(item, ref),
+});
 
 export function cycle<T>(array: T[], index: number, delta: number): number {
   let next = index + (delta % array.length);

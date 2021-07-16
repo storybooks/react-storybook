@@ -5,8 +5,8 @@ import { Observable } from 'rxjs';
 export const runCompodoc = (
   { compodocArgs, tsconfig }: { compodocArgs: string[]; tsconfig: string },
   context: BuilderContext
-): Observable<void> => {
-  return new Observable<void>((observer) => {
+): Observable<void> =>
+  new Observable<void>((observer) => {
     const finalCompodocArgs = [
       // Default options
       '-p',
@@ -38,4 +38,3 @@ export const runCompodoc = (
       observer.error(error);
     }
   });
-};

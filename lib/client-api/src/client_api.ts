@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 /* eslint no-underscore-dangle: 0 */
 import deprecate from 'util-deprecate';
 import dedent from 'ts-dedent';
@@ -14,7 +15,7 @@ import {
   ArgTypesEnhancer,
 } from './types';
 import { applyHooks } from './hooks';
-import StoryStore from './story_store';
+import { StoryStore } from './story_store';
 import { defaultDecorateStory } from './decorators';
 
 // ClientApi (and StoreStore) are really singletons. However they are not created until the

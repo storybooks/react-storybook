@@ -10,8 +10,6 @@ import { DocsContext, DocsContextProps } from './DocsContext';
 import { SourceContext, SourceContextProps } from './SourceContainer';
 import { getSourceProps, SourceState } from './Source';
 
-export { SourceState };
-
 type CanvasProps = PurePreviewProps & {
   withSource?: SourceState;
   mdxSource?: string;

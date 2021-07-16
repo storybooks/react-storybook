@@ -1,9 +1,9 @@
-import React, { FunctionComponent, useCallback, SyntheticEvent } from 'react';
+import React, { FunctionComponent, useCallback, SyntheticEvent, useRef } from 'react';
 import { styled } from '@storybook/theming';
 
 import ListItem, { LinkWrapperType, ListItemProps } from './ListItem';
 
-const List = styled.div<{}>(
+const List = styled.div(
   {
     minWidth: 180,
     overflow: 'hidden',
@@ -29,9 +29,11 @@ export interface TooltipLinkListProps {
 const Item: FunctionComponent<TooltipLinkListProps['links'][number]> = (props) => {
   const { LinkWrapper, onClick: onClickFromProps, ...rest } = props;
   const { title, href, active } = rest;
+  const ref = useRef(rest);
+  ref.current = rest;
   const onClick = useCallback(
     (event: SyntheticEvent) => {
-      onClickFromProps(event, rest);
+      onClickFromProps(event, ref.current);
     },
     [onClickFromProps]
   );

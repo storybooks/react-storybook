@@ -5,9 +5,7 @@ import dedent from 'ts-dedent';
 
 // LEGACY support for bad glob patterns we had in SB 5 - remove in SB7
 const fixBadGlob = deprecate(
-  (match: RegExpMatchArray) => {
-    return match.input.replace(match[1], `@${match[1]}`);
-  },
+  (match: RegExpMatchArray) => match.input.replace(match[1], `@${match[1]}`),
   dedent`
     You have specified an invalid glob, we've attempted to fix it, please ensure that the glob you specify is valid. See: https://github.com/storybookjs/storybook/blob/next/MIGRATION.md#correct-globs-in-mainjs
   `

@@ -11,7 +11,7 @@ export const Action = styled.div({
   whiteSpace: 'pre',
 });
 
-export const Counter = styled.div<{}>(({ theme }) => ({
+export const Counter = styled.div(({ theme }) => ({
   backgroundColor: opacify(0.5, theme.appBorderColor),
   color: theme.color.inverseText,
   fontSize: theme.typography.size.s1,

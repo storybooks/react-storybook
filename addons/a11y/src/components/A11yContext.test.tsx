@@ -107,7 +107,7 @@ describe('A11YPanel', () => {
     const Component = () => {
       const { results, setResults } = useA11yContext();
       // As any because of unit tests...
-      React.useEffect(() => setResults(axeResult as any), []);
+      React.useEffect(() => setResults(axeResult as any), [setResults]);
       return (
         <>
           {!!results.passes.length && <div data-testid="anyPassesResults" />}

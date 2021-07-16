@@ -1,4 +1,4 @@
-import { ModuleFn } from '../index';
+import type { ModuleFn } from '../index';
 
 export interface SubAPI {
   changeSettingsTab: (tab: string) => void;

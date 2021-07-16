@@ -1,5 +1,5 @@
 /* eslint no-underscore-dangle: 0 */
-import StoryStore from './story_store';
+import { StoryStore } from './story_store';
 
 export default class ConfigApi {
   _storyStore: StoryStore;

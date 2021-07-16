@@ -1,4 +1,4 @@
-/* eslint-disable */
+/* eslint-disable jsx-a11y/alt-text */
 import React from 'react';
 
 const text = 'Testing the a11y addon';

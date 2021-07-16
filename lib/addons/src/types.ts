@@ -1,6 +1,9 @@
-import { HooksContext } from './hooks';
-import { Addon } from './index';
+/* eslint-disable @typescript-eslint/ban-types */
+/* eslint-disable @typescript-eslint/no-shadow */
+import type { HooksContext } from './hooks';
+import type { Addon } from './index';
 
+// eslint-disable-next-line @typescript-eslint/naming-convention
 export enum types {
   TAB = 'tab',
   PANEL = 'panel',

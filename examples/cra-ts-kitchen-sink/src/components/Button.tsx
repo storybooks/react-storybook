@@ -15,12 +15,10 @@ interface Props {
   type?: Type;
 }
 
-const Button: FunctionComponent<Props> = ({ children, type = 'default', onClick }) => {
-  return (
-    <button type="button" onClick={onClick}>
-      {type}: {children}
-    </button>
-  );
-};
+const Button: FunctionComponent<Props> = ({ children, type = 'default', onClick }) => (
+  <button type="button" onClick={onClick}>
+    {type}: {children}
+  </button>
+);
 
 export default Button;

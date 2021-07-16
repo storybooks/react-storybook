@@ -1,4 +1,3 @@
-/* eslint-disable react/destructuring-assignment */
 import React, { Fragment } from 'react';
 import { DecoratorFn } from '@storybook/react';
 

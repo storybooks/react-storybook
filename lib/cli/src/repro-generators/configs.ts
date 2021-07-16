@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 import { SupportedFrameworks } from '../project_types';
 
 export interface Parameters {

@@ -2,7 +2,7 @@ import './page.css';
 import { createHeader } from './Header';
 
 export interface PageProps {
-  user?: {};
+  user?: Record<string, any>;
   onLogin: () => void;
   onLogout: () => void;
   onCreateAccount: () => void;

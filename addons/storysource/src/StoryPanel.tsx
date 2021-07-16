@@ -55,6 +55,7 @@ export const StoryPanel: React.FC<StoryPanelProps> = ({ api }) => {
 
   const story: Story | undefined = api.getCurrentStoryData() as Story;
   const selectedStoryRef = React.useRef<HTMLDivElement>(null);
+
   React.useEffect(() => {
     if (story) {
       const {
@@ -73,12 +74,13 @@ export const StoryPanel: React.FC<StoryPanelProps> = ({ api }) => {
         : undefined;
       setState({ source, locationsMap, currentLocation });
     }
-  }, [story ? story.id : null]);
+  }, [story]);
+
   React.useEffect(() => {
     if (selectedStoryRef.current) {
       selectedStoryRef.current.scrollIntoView();
     }
-  }, [selectedStoryRef.current]);
+  }, []);
 
   const { source, locationsMap, currentLocation } = state;
 

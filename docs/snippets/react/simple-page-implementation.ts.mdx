@@ -10,7 +10,7 @@ import DocumentHeader from './DocumentHeader';
 import DocumentList from './DocumentList';
 
 export interface DocumentScreen {
-  user?: {};
+  user?: Record<string, any>;
   document?: Document;
   subdocuments?: SubDocuments[];
 }

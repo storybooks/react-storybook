@@ -9,11 +9,9 @@ const StyledHello = styled.div\`
 
 const Hello = ({
   title
-}) => {
-  return /*#__PURE__*/React.createElement(StyledHello, {
-    className: \\"hello\\"
-  }, \\"Hello Component \\", title);
-};
+}) => /*#__PURE__*/React.createElement(StyledHello, {
+  className: \\"hello\\"
+}, \\"Hello Component \\", title);
 
 export const component = Hello;
 Hello.__docgenInfo = {

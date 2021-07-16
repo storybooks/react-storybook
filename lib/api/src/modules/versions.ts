@@ -4,7 +4,7 @@ import memoize from 'memoizerific';
 
 import { version as currentVersion } from '../version';
 
-import { ModuleFn } from '../index';
+import type { ModuleFn } from '../index';
 
 const { VERSIONCHECK } = global;
 

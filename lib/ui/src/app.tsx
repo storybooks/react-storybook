@@ -1,3 +1,4 @@
+/* eslint-disable react/display-name */
 import React, { FunctionComponent, useMemo } from 'react';
 import sizeMe from 'react-sizeme';
 

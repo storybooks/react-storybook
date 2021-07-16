@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 import { StoryFn as StoryFunction, StoryContext, useMemo, useEffect } from '@storybook/addons';
 
 import { clearStyles, addOutlineStyles } from './helpers';

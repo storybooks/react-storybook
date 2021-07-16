@@ -10,6 +10,7 @@ export default {
 const buttonFn = () => <Button secondary>Inline story</Button>;
 
 const buttonHookFn = () => {
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   const [count, setCount] = useState(0);
   return (
     <Button secondary onClick={() => setCount(count + 1)}>

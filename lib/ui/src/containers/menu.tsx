@@ -1,4 +1,4 @@
-import React, { useMemo, FunctionComponent } from 'react';
+import React, { useMemo, FunctionComponent, useCallback } from 'react';
 
 import { Badge } from '@storybook/components';
 import { API } from '@storybook/api';
@@ -57,7 +57,7 @@ export const useMenu = (
       right: api.versionUpdateAvailable() && <Badge status="positive">Update</Badge>,
       left: <MenuItemIcon />,
     }),
-    [api, enableShortcuts, shortcutKeys]
+    [api]
   );
 
   const releaseNotes = useMemo(
@@ -67,7 +67,7 @@ export const useMenu = (
       onClick: () => api.navigateToSettingsPage('/settings/release-notes'),
       left: <MenuItemIcon />,
     }),
-    [api, enableShortcuts, shortcutKeys]
+    [api]
   );
 
   const shortcuts = useMemo(
@@ -81,7 +81,7 @@ export const useMenu = (
         borderBottom: `4px solid ${theme.appBorderColor}`,
       },
     }),
-    [api, enableShortcuts, shortcutKeys]
+    [api, enableShortcuts, shortcutKeys.shortcutsPage, theme.appBorderColor]
   );
 
   const sidebarToggle = useMemo(
@@ -205,7 +205,7 @@ export const useMenu = (
     [api, enableShortcuts, shortcutKeys]
   );
 
-  const getAddonsShortcuts = (): any[] => {
+  const getAddonsShortcuts = useCallback((): any[] => {
     const addonsShortcuts = api.getAddonsShortcuts();
     const keys = shortcutKeys as any;
     return Object.entries(addonsShortcuts)
@@ -217,7 +217,7 @@ export const useMenu = (
         right: enableShortcuts ? <Shortcut keys={keys[actionName]} /> : null,
         left: <MenuItemIcon />,
       }));
-  };
+  }, [api, enableShortcuts, shortcutKeys]);
 
   return useMemo(
     () => [
@@ -239,7 +239,8 @@ export const useMenu = (
     ],
     [
       about,
-      ...(api.releaseNotesVersion() ? [releaseNotes] : []),
+      api,
+      releaseNotes,
       shortcuts,
       sidebarToggle,
       toolbarToogle,
@@ -252,6 +253,7 @@ export const useMenu = (
       prev,
       next,
       collapse,
+      getAddonsShortcuts,
     ]
   );
 };

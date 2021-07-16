@@ -47,9 +47,8 @@ interface RuleProps {
   rule: CheckResult;
 }
 
-const formatSeverityText = (severity: string) => {
-  return severity.charAt(0).toUpperCase().concat(severity.slice(1));
-};
+const formatSeverityText = (severity: string) =>
+  severity.charAt(0).toUpperCase().concat(severity.slice(1));
 
 const Rule: FunctionComponent<RuleProps> = ({ rule }) => {
   let badgeType: any = null;
@@ -85,13 +84,11 @@ interface RulesProps {
   rules: CheckResult[];
 }
 
-export const Rules: FunctionComponent<RulesProps> = ({ rules }) => {
-  return (
-    <List>
-      {rules.map((rule, index) => (
-        // eslint-disable-next-line react/no-array-index-key
-        <Rule rule={rule} key={index} />
-      ))}
-    </List>
-  );
-};
+export const Rules: FunctionComponent<RulesProps> = ({ rules }) => (
+  <List>
+    {rules.map((rule, index) => (
+      // eslint-disable-next-line react/no-array-index-key
+      <Rule rule={rule} key={index} />
+    ))}
+  </List>
+);

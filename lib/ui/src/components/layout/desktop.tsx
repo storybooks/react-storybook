@@ -1,3 +1,4 @@
+/* eslint-disable react/display-name */
 import React, { Fragment, ComponentType, FunctionComponent } from 'react';
 
 import { State } from '@storybook/api';

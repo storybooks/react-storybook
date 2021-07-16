@@ -1,3 +1,4 @@
+/* eslint-disable react/display-name */
 import { styled, Color, Theme } from '@storybook/theming';
 import { Icons } from '@storybook/components';
 import global from 'global';

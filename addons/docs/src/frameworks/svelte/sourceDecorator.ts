@@ -10,6 +10,7 @@ import { SourceType, SNIPPET_RENDERED } from '../../shared';
  */
 const skipSourceRender = (context: StoryContext) => {
   const sourceParams = context?.parameters.docs?.source;
+  // eslint-disable-next-line no-underscore-dangle
   const isArgsStory = context?.parameters.__isArgsStory;
 
   // always render if the user forces it
@@ -62,8 +63,8 @@ function getComponentName(component: any): string {
     return null;
   }
 
-  const { __docgen = {} } = component;
-  let { name } = __docgen;
+  const { __docgen: docGenInfo = {} } = component;
+  let { name } = docGenInfo;
 
   if (!name) {
     return component.name;
@@ -123,17 +124,17 @@ export function generateSvelteSource(
  * @param component Component
  */
 function getWrapperProperties(component: any) {
-  const { __docgen } = component;
-  if (!__docgen) {
+  const { __docgen: docGenInfo } = component;
+  if (!docGenInfo) {
     return { wrapper: false };
   }
 
   // the component should be declared as a wrapper
-  if (!__docgen.keywords.find((kw: any) => kw.name === 'wrapper')) {
+  if (!docGenInfo.keywords.find((kw: any) => kw.name === 'wrapper')) {
     return { wrapper: false };
   }
 
-  const slotProp = __docgen.data.find((prop: any) =>
+  const slotProp = docGenInfo.data.find((prop: any) =>
     prop.keywords.find((kw: any) => kw.name === 'slot')
   );
   return { wrapper: true, slotProperty: slotProp?.name as string };

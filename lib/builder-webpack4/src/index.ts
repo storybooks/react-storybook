@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 import webpackReal, { ProgressPlugin } from 'webpack';
 // @ts-ignore
 import webpackType, { Stats, Configuration } from '@types/webpack';
@@ -104,6 +105,7 @@ export const start: WebpackBuilder['start'] = async ({ startTime, options, route
   }
 
   if (stats.hasErrors()) {
+    // eslint-disable-next-line @typescript-eslint/no-throw-literal
     throw stats;
   }
 

@@ -9,6 +9,7 @@ type SnapshotsWithOptionsReturnType = (
 ) => any;
 
 export function snapshotWithOptions(
+  // eslint-disable-next-line @typescript-eslint/ban-types
   options: { renderer?: any; serializer?: any } | Function = {}
 ): SnapshotsWithOptionsReturnType {
   return ({ story, context, renderTree, snapshotFileName }) => {

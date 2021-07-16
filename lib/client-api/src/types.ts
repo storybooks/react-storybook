@@ -15,7 +15,7 @@ import {
   DecorateStoryFunction,
   StoryContext,
 } from '@storybook/addons';
-import StoryStore from './story_store';
+import type { StoryStore } from './story_store';
 import { HooksContext } from './hooks';
 
 export interface ErrorLike {

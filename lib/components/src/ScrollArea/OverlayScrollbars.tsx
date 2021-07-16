@@ -33,7 +33,7 @@ export const OverlayScrollbarsComponent: React.FC<OverlayScrollbarsComponentProp
         osInstance.current = null;
       }
     };
-  }, []);
+  }, [className, extensions, options]);
 
   React.useEffect(() => {
     if (OverlayScrollbars.valid(osInstance.current)) {

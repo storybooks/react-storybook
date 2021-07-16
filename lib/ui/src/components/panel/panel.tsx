@@ -1,3 +1,4 @@
+/* eslint-disable react/display-name */
 import React, { Component, Fragment, ReactElement } from 'react';
 import { shortcutToHumanString } from '@storybook/api/shortcut';
 import { styled } from '@storybook/theming';

@@ -1,9 +1,10 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 import { logger } from '@storybook/client-logger';
 import { addons, mockChannel } from '@storybook/addons';
 import Events from '@storybook/core-events';
 import ClientApi from './client_api';
 import ConfigApi from './config_api';
-import StoryStore from './story_store';
+import { StoryStore } from './story_store';
 
 const getContext = (clientApiOptions = {}) => {
   const channel = mockChannel();

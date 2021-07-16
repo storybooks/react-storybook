@@ -17,6 +17,8 @@ function getFirstStoryId(docsContext: DocsContextProps): string {
 }
 
 function renderAnchor() {
+  // FIXME THIS CANNOT CALL HOOKS!!!
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   const context = useContext(DocsContext);
   const anchorId = getFirstStoryId(context) || context.id;
 

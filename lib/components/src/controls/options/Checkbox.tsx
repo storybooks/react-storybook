@@ -1,7 +1,7 @@
 import React, { FC, ChangeEvent, useState, Fragment } from 'react';
 import { styled } from '@storybook/theming';
 import { logger } from '@storybook/client-logger';
-import { ControlProps, OptionsMultiSelection, NormalizedOptionsConfig } from '../types';
+import { ControlProps, OptionsMultiSelection, NormalizedOptionsConfig } from '../../types';
 import { selectedKeys, selectedValues } from './helpers';
 import { getControlId } from '../helpers';
 
@@ -56,6 +56,7 @@ export const CheckboxControl: FC<CheckboxProps> = ({
   }
 
   const initial = selectedKeys(value, options);
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   const [selected, setSelected] = useState(initial);
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {

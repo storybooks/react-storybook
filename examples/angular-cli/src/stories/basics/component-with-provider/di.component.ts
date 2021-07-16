@@ -1,4 +1,3 @@
-/* eslint-disable no-useless-constructor */
 import { Component, Input, InjectionToken, Injector, ElementRef, Inject } from '@angular/core';
 import { stringify } from 'telejson';
 

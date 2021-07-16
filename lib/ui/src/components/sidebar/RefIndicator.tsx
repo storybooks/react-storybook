@@ -1,3 +1,4 @@
+/* eslint-disable react/display-name */
 import global from 'global';
 import React, { FunctionComponent, useMemo, ComponentProps, useCallback, forwardRef } from 'react';
 
@@ -170,12 +171,12 @@ export const RefIndicator = React.memo(
       const componentCount = useMemo(() => list.filter((v) => v.isComponent).length, [list]);
       const leafCount = useMemo(() => list.filter((v) => v.isLeaf).length, [list]);
 
-      const changeVersion = useCallback(
-        ((event, item) => {
+      const changeVersion = useCallback<ClickHandler>(
+        (event, item) => {
           event.preventDefault();
           api.changeRefVersion(ref.id, item.href);
-        }) as ClickHandler,
-        []
+        },
+        [api, ref.id]
       );
 
       return (
@@ -249,20 +250,27 @@ const ReadyMessage: FunctionComponent<{
 );
 
 const LoginRequiredMessage: FunctionComponent<RefType> = ({ loginUrl, id }) => {
-  const open = useCallback((e) => {
-    e.preventDefault();
-    const childWindow = globalWindow.open(loginUrl, `storybook_auth_${id}`, 'resizable,scrollbars');
+  const open = useCallback(
+    (e) => {
+      e.preventDefault();
+      const childWindow = globalWindow.open(
+        loginUrl,
+        `storybook_auth_${id}`,
+        'resizable,scrollbars'
+      );
 
-    // poll for window to close
-    const timer = setInterval(() => {
-      if (!childWindow) {
-        clearInterval(timer);
-      } else if (childWindow.closed) {
-        clearInterval(timer);
-        document.location.reload();
-      }
-    }, 1000);
-  }, []);
+      // poll for window to close
+      const timer = setInterval(() => {
+        if (!childWindow) {
+          clearInterval(timer);
+        } else if (childWindow.closed) {
+          clearInterval(timer);
+          document.location.reload();
+        }
+      }, 1000);
+    },
+    [id, loginUrl]
+  );
 
   return (
     <Message onClick={open}>

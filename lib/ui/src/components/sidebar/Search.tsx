@@ -171,17 +171,21 @@ export const Search = React.memo<{
         inputRef.current.blur();
         showAllComponents(false);
       },
-      [api, inputRef, showAllComponents, DEFAULT_REF_ID]
+      [api, inputRef, showAllComponents]
     );
 
-    const list: SearchItem[] = useMemo(() => {
-      return dataset.entries.reduce((acc: SearchItem[], [refId, { stories }]) => {
-        if (stories) {
-          acc.push(...Object.values(stories).map((item) => searchItem(item, dataset.hash[refId])));
-        }
-        return acc;
-      }, []);
-    }, [dataset]);
+    const list: SearchItem[] = useMemo(
+      () =>
+        dataset.entries.reduce((acc: SearchItem[], [refId, { stories }]) => {
+          if (stories) {
+            acc.push(
+              ...Object.values(stories).map((item) => searchItem(item, dataset.hash[refId]))
+            );
+          }
+          return acc;
+        }, []),
+      [dataset]
+    );
 
     const fuse = useMemo(() => new Fuse(list, options), [list]);
 

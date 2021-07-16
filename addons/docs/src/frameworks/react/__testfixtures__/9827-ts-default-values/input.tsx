@@ -6,9 +6,7 @@ export interface HelloProps {
   bar?: string[];
 }
 
-const Hello = ({ title }: HelloProps) => {
-  return <div className="hello">Hello Component {title}</div>;
-};
+const Hello = ({ title }: HelloProps) => <div className="hello">Hello Component {title}</div>;
 
 Hello.defaultProps = {
   title: 'this is the default :)',

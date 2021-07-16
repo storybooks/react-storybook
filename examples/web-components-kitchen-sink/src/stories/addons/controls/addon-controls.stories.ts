@@ -41,5 +41,6 @@ Large.args = {
 export const ClickHandler = Template.bind({});
 ClickHandler.args = {
   label: 'Click me to fire an alert!',
+  // eslint-disable-next-line no-alert
   sbButtonClickHandler: () => alert('Storybook Button clicked!'),
 };

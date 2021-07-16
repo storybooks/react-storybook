@@ -21,6 +21,5 @@ const getCaptionForLocale = (locale: string) => {
   }
 };
 
-export const Locale: Story = (args, { globals: { locale } }) => {
-  return html` <div>Your locale is '${locale}', so I say: ${getCaptionForLocale(locale)}</div> `;
-};
+export const Locale: Story = (args, { globals: { locale } }) =>
+  html` <div>Your locale is '${locale}', so I say: ${getCaptionForLocale(locale)}</div> `;

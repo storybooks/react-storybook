@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 /* global window */
 import { render } from 'lit-html';
 import { addons, StoryContext, StoryFn } from '@storybook/addons';

@@ -38,14 +38,12 @@ export const Heading: FunctionComponent<HeadingProps & ComponentProps<typeof Hea
   menuHighlighted = false,
   menu,
   ...props
-}) => {
-  return (
-    <HeadingWrapper {...props}>
-      <BrandArea>
-        <Brand />
-      </BrandArea>
+}) => (
+  <HeadingWrapper {...props}>
+    <BrandArea>
+      <Brand />
+    </BrandArea>
 
-      <SidebarMenu menu={menu} isHighlighted={menuHighlighted} />
-    </HeadingWrapper>
-  );
-};
+    <SidebarMenu menu={menu} isHighlighted={menuHighlighted} />
+  </HeadingWrapper>
+);

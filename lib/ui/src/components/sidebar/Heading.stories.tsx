@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 import React from 'react';
 import { ThemeProvider, useTheme, Theme } from '@storybook/theming';
 import { action } from '@storybook/addon-actions';

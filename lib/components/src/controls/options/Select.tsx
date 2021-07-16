@@ -1,7 +1,7 @@
 import React, { FC, ChangeEvent } from 'react';
 import { styled, CSSObject } from '@storybook/theming';
 import { logger } from '@storybook/client-logger';
-import { ControlProps, OptionsSelection, NormalizedOptionsConfig } from '../types';
+import { ControlProps, OptionsSelection, NormalizedOptionsConfig } from '../../types';
 import { selectedKey, selectedKeys, selectedValues } from './helpers';
 import { Icons } from '../../icon/icon';
 import { getControlId } from '../helpers';

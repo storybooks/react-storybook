@@ -24,7 +24,7 @@ export type StorybookBuilderOptions = JsonObject & {
     'staticDir' | 'outputDir' | 'configDir' | 'loglevel' | 'quiet' | 'docs'
   >;
 
-export type StorybookBuilderOutput = JsonObject & BuilderOutput & {};
+export type StorybookBuilderOutput = JsonObject & BuilderOutput & Record<string, any>;
 
 export default createBuilder(commandBuilder);
 
@@ -46,9 +46,7 @@ function commandBuilder(
       angularBrowserTarget: options.browserTarget,
     })),
     switchMap((standaloneOptions) => runInstance({ ...standaloneOptions, mode: 'static' })),
-    map(() => {
-      return { success: true };
-    })
+    map(() => ({ success: true }))
   );
 }
 

@@ -2,7 +2,7 @@ import { SET_STORIES, UPDATE_GLOBALS, GLOBALS_UPDATED } from '@storybook/core-ev
 import { logger } from '@storybook/client-logger';
 import deepEqual from 'fast-deep-equal';
 
-import { Args, ModuleFn } from '../index';
+import type { Args, ModuleFn } from '../index';
 
 import { SetStoriesPayload } from '../lib/stories';
 import { getEventMetadata } from '../lib/events';

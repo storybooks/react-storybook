@@ -4,7 +4,7 @@ import { toId } from '@storybook/csf';
 import { addons, mockChannel } from '@storybook/addons';
 import Events from '@storybook/core-events';
 
-import StoryStore from './story_store';
+import { StoryStore } from './story_store';
 import { defaultDecorateStory } from './decorators';
 
 jest.mock('@storybook/node-logger', () => ({

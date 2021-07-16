@@ -81,7 +81,7 @@ export interface Theme {
   brand: Brand;
 
   code: {
-    [key: string]: string | object;
+    [key: string]: string | Record<string, unknown>;
   };
 
   [key: string]: any;

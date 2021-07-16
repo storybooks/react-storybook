@@ -27,7 +27,7 @@ export interface WithTooltipPureProps {
   trigger?: 'none' | 'hover' | 'click' | 'right-click';
   closeOnClick?: boolean;
   placement?: Placement;
-  modifiers?: Array<Partial<Modifier<string, {}>>>;
+  modifiers?: Array<Partial<Modifier<string, Record<string, unknown>>>>;
   hasChrome?: boolean;
   tooltip: ReactNode | ((p: WithHideFn) => ReactNode);
   children: ReactNode;

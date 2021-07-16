@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-types */
 import { html } from 'lit-html';
 import { styleMap } from 'lit-html/directives/style-map';
 import { addons, StoryContext } from '@storybook/addons';

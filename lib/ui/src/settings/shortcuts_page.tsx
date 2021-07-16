@@ -4,7 +4,7 @@ import { Consumer } from '@storybook/api';
 
 import { ShortcutsScreen } from './shortcuts';
 
-const ShortcutsPage: FunctionComponent<{}> = () => (
+const ShortcutsPage: FunctionComponent = () => (
   <Consumer>
     {({
       api: {

@@ -7,7 +7,7 @@ import {
   getAngularAppTsConfigPath,
   getBaseTsConfigName,
 } from './angular-helpers';
-import { writeFileAsJson, copyTemplate } from '../../helpers';
+import { writeFileAsJson, copyTemplate } from '../../helpers/helpers';
 import { baseGenerator, Generator } from '../baseGenerator';
 import { CoreBuilder } from '../../project_types';
 

@@ -33,7 +33,6 @@ class ComponentFactoryWrapperComponent implements AfterViewInit {
   @Input()
   args: any;
 
-  // eslint-disable-next-line no-useless-constructor
   constructor(
     private viewContainerRef: ViewContainerRef,
     private componentFactoryResolver: ComponentFactoryResolver

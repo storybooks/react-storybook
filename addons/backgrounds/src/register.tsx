@@ -1,3 +1,4 @@
+/* eslint-disable react/display-name */
 import React, { Fragment } from 'react';
 import { addons, types } from '@storybook/addons';
 

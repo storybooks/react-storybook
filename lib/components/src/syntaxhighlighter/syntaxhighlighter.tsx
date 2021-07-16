@@ -158,6 +158,7 @@ export const SyntaxHighlighter: FunctionComponent<Props> = ({
   }
 
   const highlightableCode = format ? formatter(children) : children.trim();
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   const [copied, setCopied] = useState(false);
 
   const onClick = (e: MouseEvent<HTMLButtonElement> | ClipboardEvent<HTMLDivElement>) => {

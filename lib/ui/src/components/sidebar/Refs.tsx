@@ -1,3 +1,4 @@
+/* eslint-disable react/display-name */
 import React, {
   FunctionComponent,
   useMemo,
@@ -128,6 +129,7 @@ export const Ref: FunctionComponent<RefType & RefProps> = React.memo((props) => 
   const handleClick = useCallback(() => setExpanded((value) => !value), [setExpanded]);
 
   const setHighlightedItemId = useCallback((itemId: string) => setHighlighted({ itemId, refId }), [
+    refId,
     setHighlighted,
   ]);
 

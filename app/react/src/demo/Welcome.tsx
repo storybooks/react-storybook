@@ -82,7 +82,8 @@ const Link: FunctionComponent<LinkProps> = ({ children, href, target, rel, ...pr
 type NavButtonProps = Omit<
   DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>,
   'style' | 'type'
-> & {};
+> &
+  Record<string, any>;
 const NavButton: FunctionComponent<NavButtonProps> = ({ children, onClick, ...props }) => (
   <button
     {...props}

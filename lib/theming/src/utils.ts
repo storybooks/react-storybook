@@ -25,9 +25,7 @@ const isColorString = (color: string) => {
 // to library polished's functions such as lighten or darken throws the error
 // that crashes the entire storybook. It needs to be guarded when arguments
 // of those functions are from user input.
-const isValidColorForPolished = (color: string) => {
-  return !/(gradient|var|calc)/.test(color);
-};
+const isValidColorForPolished = (color: string) => !/(gradient|var|calc)/.test(color);
 
 const applyPolished = (type: string, color: string) => {
   if (type === 'darken') {

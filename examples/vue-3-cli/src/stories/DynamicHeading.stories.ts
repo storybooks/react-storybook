@@ -14,9 +14,7 @@ export default {
       // Call the `storyFn` to receive a component that Vue can render
       const story = storyFn();
       // Vue 3 "Functional" component as decorator
-      return () => {
-        return h('div', { style: 'border: 2px solid red' }, h(story));
-      };
+      return () => h('div', { style: 'border: 2px solid red' }, h(story));
     },
   ],
 } as Meta;

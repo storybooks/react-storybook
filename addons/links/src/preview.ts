@@ -33,13 +33,12 @@ const generateUrl = (id: string) => {
   )}`;
 };
 
-const valueOrCall = (args: string[]) => (value: string | ((...args: string[]) => string)) =>
+const valueOrCall = (args: string[]) => (value: string | ((...a: string[]) => string)) =>
   typeof value === 'function' ? value(...args) : value;
 
-export const linkTo = (
-  idOrKindInput: string,
-  storyInput?: string | ((...args: any[]) => string)
-) => (...args: any[]) => {
+export const linkTo = (idOrKindInput: string, storyInput?: string | ((...a: any[]) => string)) => (
+  ...args: any[]
+) => {
   const resolver = valueOrCall(args);
   const { storyId } = storyStore.getSelection();
   const current = storyStore.fromId(storyId) || {};
@@ -76,13 +75,12 @@ export const linkTo = (
   }
 };
 
-export const hrefTo = (kind: string, name: string): Promise<string> => {
-  return new Promise((resolve) => {
+export const hrefTo = (kind: string, name: string): Promise<string> =>
+  new Promise((resolve) => {
     const { storyId } = storyStore.getSelection();
     const current = storyStore.fromId(storyId);
     resolve(generateUrl(toId(kind || current.kind, name)));
   });
-};
 
 const linksListener = (e: Event) => {
   const { target } = e;

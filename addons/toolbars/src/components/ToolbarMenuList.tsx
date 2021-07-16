@@ -44,7 +44,7 @@ export const ToolbarMenuList: FC<ToolbarMenuListProps> = withKeyboardCycle(
       (value: string) => {
         updateGlobals({ [id]: value });
       },
-      [currentValue, updateGlobals]
+      [id, updateGlobals]
     );
 
     return (

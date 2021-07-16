@@ -1,6 +1,5 @@
 /* eslint-disable react/no-unused-prop-types */
 import React from 'react';
-// @ts-ignore
 import PropTypes, { string, shape } from 'prop-types';
 import momentPropTypes from 'react-moment-proptypes';
 import { PRESET_SHAPE, SOME_PROP_TYPES } from './ext';
@@ -21,9 +20,7 @@ const NAMED_SHAPE = PropTypes.shape({
 
 export const POSITIONS = ['top-left', 'top-right', 'top-center'];
 
-const FunctionalComponent = () => {
-  return <div>FunctionalComponent!</div>;
-};
+const FunctionalComponent = () => <div>FunctionalComponent!</div>;
 
 class ClassComponent extends React.PureComponent {
   render() {
@@ -82,17 +79,11 @@ const SOME_INLINE_DEFAULT_PROPS = {
     { foo: 'bar' },
   ],
   inlineFunctionalElement: <FunctionalComponent />,
-  inlineFunctionalElementInline: () => {
-    return <div>Inlined FunctionalComponent!</div>;
-  },
-  inlineFunctionalElementInlineReturningNull: () => {
-    return null;
-  },
+  inlineFunctionalElementInline: () => <div>Inlined FunctionalComponent!</div>,
+  inlineFunctionalElementInlineReturningNull: () => null,
   inlineHtmlElement: <div>Hey!</div>,
   // eslint-disable-next-line react/prop-types
-  inlineFunctionalElementInlineWithProps: ({ foo }) => {
-    return <div>{foo}</div>;
-  },
+  inlineFunctionalElementInlineWithProps: ({ foo }) => <div>{foo}</div>,
   inlineFunctionalElementNamedInline: function InlinedFunctionalComponent() {
     return <div>Inlined FunctionalComponent!</div>;
   },
@@ -402,11 +393,6 @@ PropTypesProps.defaultProps = {
   string: 'Default string',
   func: () => {},
   funcWithJsDoc: (foo, bar) => {
-    // eslint-disable-next-line
-    const yo = window.document;
-    // eslint-disable-next-line
-    const pouf = souffle;
-
     return { foo, bar };
   },
   namedDefaultFunc: concat,
@@ -417,9 +403,7 @@ PropTypesProps.defaultProps = {
   symbol: Symbol('Default symbol'),
   node: <div>Hello!</div>,
   functionalElement: <FunctionalComponent className="toto" />,
-  functionalElementInline: () => {
-    return <div>Inlined FunctionalComponent!</div>;
-  },
+  functionalElementInline: () => <div>Inlined FunctionalComponent!</div>,
   functionalElementNamedInline: function InlinedFunctionalComponent() {
     return <div>Inlined FunctionalComponent!</div>;
   },

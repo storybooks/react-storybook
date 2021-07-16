@@ -58,7 +58,7 @@ export function useSharedState<S>(sharedId: string, defaultState?: S): [S, (s: S
     if (defaultState !== undefined && !lastValue) {
       emit(`${SHARED_STATE_SET}-client-${sharedId}`, defaultState);
     }
-  }, [sharedId]);
+  }, [defaultState, emit, lastValue, sharedId]);
 
   return [
     state,

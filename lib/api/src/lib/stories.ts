@@ -1,13 +1,14 @@
 import React from 'react';
 import deprecate from 'util-deprecate';
 import dedent from 'ts-dedent';
-import { sanitize } from '@storybook/csf';
 import mapValues from 'lodash/mapValues';
+import { sanitize } from '@storybook/csf';
+import { combineParameters } from './combineParameters';
 
-import { StoryId, StoryKind, Args, Parameters, combineParameters } from '../index';
+import type { StoryId, StoryKind, Args, Parameters } from '../index';
 import merge from './merge';
-import { Provider } from '../modules/provider';
-import { ViewMode } from '../modules/addons';
+import type { Provider } from '../modules/provider';
+import type { ViewMode } from '../modules/addons';
 
 export type { StoryId };
 
@@ -136,8 +137,8 @@ export const denormalizeStoryParameters = ({
   globalParameters,
   kindParameters,
   stories,
-}: SetStoriesPayload): StoriesRaw => {
-  return mapValues(stories, (storyData) => ({
+}: SetStoriesPayload): StoriesRaw =>
+  mapValues(stories, (storyData) => ({
     ...storyData,
     parameters: combineParameters(
       globalParameters,
@@ -145,7 +146,6 @@ export const denormalizeStoryParameters = ({
       (storyData.parameters as unknown) as Parameters
     ),
   }));
-};
 
 const STORY_KIND_PATH_SEPARATOR = /\s*\/\s*/;
 

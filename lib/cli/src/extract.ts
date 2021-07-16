@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 import path from 'path';
 import { writeFile } from 'fs-extra';
 import puppeteerCore from 'puppeteer-core';
@@ -15,10 +16,9 @@ const read = async (url: string) => {
     'window.__STORYBOOK_STORY_STORE__ && window.__STORYBOOK_STORY_STORE__.extract && window.__STORYBOOK_STORY_STORE__.extract()'
   );
   const data = JSON.parse(
-    await page.evaluate(async () => {
-      // eslint-disable-next-line no-undef
-      return JSON.stringify(window.__STORYBOOK_STORY_STORE__.getStoriesJsonData(), null, 2);
-    })
+    await page.evaluate(async () =>
+      JSON.stringify(window.__STORYBOOK_STORY_STORE__.getStoriesJsonData(), null, 2)
+    )
   );
 
   setImmediate(() => {

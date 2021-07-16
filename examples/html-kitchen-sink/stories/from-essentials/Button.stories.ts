@@ -14,12 +14,10 @@ export default {
   },
 } as Meta;
 
-const Template: Story<ButtonProps> = (args) => {
+const Template: Story<ButtonProps> = (args) =>
   // You can either use a function to create DOM elements or use a plain html string!
   // return `<div>${label}</div>`;
-  return createButton(args);
-};
-
+  createButton(args);
 export const Primary = Template.bind({});
 Primary.args = {
   primary: true,

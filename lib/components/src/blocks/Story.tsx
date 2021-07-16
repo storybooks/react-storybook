@@ -47,23 +47,21 @@ const InlineStory: FunctionComponent<InlineStoryProps> = ({ storyFn, height, id 
 const IFrameStory: FunctionComponent<IFrameStoryProps> = ({ id, title, height = '500px' }) => (
   <div style={{ width: '100%', height }}>
     <ZoomContext.Consumer>
-      {({ scale }) => {
-        return (
-          <IFrame
-            key="iframe"
-            id={`iframe--${id}`}
-            title={title}
-            src={`${BASE_URL}?id=${id}&viewMode=story`}
-            allowFullScreen
-            scale={scale}
-            style={{
-              width: '100%',
-              height: '100%',
-              border: '0 none',
-            }}
-          />
-        );
-      }}
+      {({ scale }) => (
+        <IFrame
+          key="iframe"
+          id={`iframe--${id}`}
+          title={title}
+          src={`${BASE_URL}?id=${id}&viewMode=story`}
+          allowFullScreen
+          scale={scale}
+          style={{
+            width: '100%',
+            height: '100%',
+            border: '0 none',
+          }}
+        />
+      )}
     </ZoomContext.Consumer>
   </div>
 );

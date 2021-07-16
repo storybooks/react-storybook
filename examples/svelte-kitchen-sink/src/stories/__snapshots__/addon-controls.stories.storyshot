@@ -41,7 +41,7 @@ exports[`Storyshots Addon/Controls Show Case 1`] = `
     max="100"
     min="0"
     step="1"
-    value={0}
+    value="0"
   />
    
   <h2>

@@ -1,3 +1,4 @@
+/* eslint-disable global-require, no-underscore-dangle, import/no-dynamic-require */
 import path from 'path';
 import fs from 'fs';
 
@@ -10,8 +11,8 @@ const fileExists = (basename: string) =>
 export function getMiddleware(configDir: string) {
   const middlewarePath = fileExists(path.resolve(configDir, 'middleware'));
   if (middlewarePath) {
-    let middlewareModule = require(middlewarePath); // eslint-disable-line
-    if (middlewareModule.__esModule) { // eslint-disable-line
+    let middlewareModule = require(middlewarePath);
+    if (middlewareModule.__esModule) {
       middlewareModule = middlewareModule.default;
     }
     return middlewareModule;

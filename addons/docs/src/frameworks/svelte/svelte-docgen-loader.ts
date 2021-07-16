@@ -14,10 +14,10 @@ function getNameFromFilename(filename: string) {
   const parts = filename.split(/[/\\]/).map(encodeURI);
 
   if (parts.length > 1) {
-    const index_match = parts[parts.length - 1].match(/^index(\.\w+)/);
-    if (index_match) {
+    const indexMatch = parts[parts.length - 1].match(/^index(\.\w+)/);
+    if (indexMatch) {
       parts.pop();
-      parts[parts.length - 1] += index_match[1];
+      parts[parts.length - 1] += indexMatch[1];
     }
   }
 

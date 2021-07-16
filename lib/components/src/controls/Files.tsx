@@ -1,6 +1,6 @@
 import React, { ChangeEvent, FunctionComponent } from 'react';
 import { styled } from '@storybook/theming';
-import { ControlProps } from './types';
+import { ControlProps } from '../types';
 
 import { Form } from '../form';
 import { getControlId } from './helpers';

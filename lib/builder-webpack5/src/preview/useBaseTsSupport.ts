@@ -3,7 +3,6 @@
  * @param {string} framework
  */
 
-export const useBaseTsSupport = (framework: string) => {
+export const useBaseTsSupport = (framework: string) =>
   // These packages both have their own TS implementation.
-  return !['vue', 'angular'].includes(framework);
-};
+  !['vue', 'angular'].includes(framework);

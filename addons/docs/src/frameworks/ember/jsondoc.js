@@ -4,9 +4,7 @@
 export const setJSONDoc = (jsondoc) => {
   window.__EMBER_GENERATED_DOC_JSON__ = jsondoc;
 };
-export const getJSONDoc = () => {
-  return window.__EMBER_GENERATED_DOC_JSON__;
-};
+export const getJSONDoc = () => window.__EMBER_GENERATED_DOC_JSON__;
 
 export const extractArgTypes = (componentName) => {
   const json = getJSONDoc();

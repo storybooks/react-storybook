@@ -2,7 +2,7 @@
 import path from 'path';
 import { sync as spawnSync } from 'cross-spawn';
 import { packageNames } from '@storybook/codemod';
-import { getBabelDependencies } from '../../helpers';
+import { getBabelDependencies } from '../../helpers/helpers';
 import { NpmOptions } from '../../NpmOptions';
 import { JsPackageManager, PackageJson, writePackageJson } from '../../js-package-manager';
 

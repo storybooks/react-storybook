@@ -10,13 +10,11 @@ const getReleaseNotesVersion = (version: string): string => {
   const { version: releaseNotesVersion } = semver.coerce(`${major}.${minor}`);
   return releaseNotesVersion;
 };
-export const getReleaseNotesFailedState = (version: string) => {
-  return {
-    success: false,
-    currentVersion: getReleaseNotesVersion(version),
-    showOnFirstLaunch: false,
-  };
-};
+export const getReleaseNotesFailedState = (version: string) => ({
+  success: false,
+  currentVersion: getReleaseNotesVersion(version),
+  showOnFirstLaunch: false,
+});
 
 export const RELEASE_NOTES_CACHE_KEY = 'releaseNotesData';
 

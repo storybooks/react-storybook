@@ -1,16 +1,14 @@
 // Just going to use the Button component for this example
 import MyButton from './Button.vue';
 
-const withTheme = (Story, context) => {
-  return {
-    data() {
-      return {
-        theme: context.globals.theme,
-      };
-    },
-    template: `<div class="theme" :class="theme"><story /></div>`,
-  };
-};
+const withTheme = (Story, context) => ({
+  data() {
+    return {
+      theme: context.globals.theme,
+    };
+  },
+  template: `<div class="theme" :class="theme"><story /></div>`,
+});
 
 export default {
   title: 'Example/Theme Decorator',

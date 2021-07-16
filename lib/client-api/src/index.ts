@@ -6,8 +6,7 @@ import ClientApi, {
   addArgTypesEnhancer,
 } from './client_api';
 import { defaultDecorateStory } from './decorators';
-import { combineParameters } from './parameters';
-import StoryStore from './story_store';
+import { StoryStore } from './story_store';
 import ConfigApi from './config_api';
 import pathToId from './pathToId';
 import { simulatePageLoad, simulateDOMContentLoaded } from './simulate-pageload';
@@ -31,7 +30,6 @@ export {
   addLoader,
   addParameters,
   ClientApi,
-  combineParameters,
   ConfigApi,
   defaultDecorateStory,
   filterArgTypes,

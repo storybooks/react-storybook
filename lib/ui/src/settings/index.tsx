@@ -1,3 +1,4 @@
+/* eslint-disable react/display-name */
 import { useStorybookApi, useStorybookState } from '@storybook/api';
 import { IconButton, Icons, FlexBar, TabBar, TabButton, ScrollArea } from '@storybook/components';
 import { Location, Route } from '@storybook/router';
@@ -67,7 +68,7 @@ const Pages: FunctionComponent<{
     };
     document.addEventListener('keydown', handleEscape);
     return () => document.removeEventListener('keydown', handleEscape);
-  }, []);
+  }, [enableShortcuts, onClose]);
 
   return (
     <Fragment>

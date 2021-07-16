@@ -1,3 +1,4 @@
+/* eslint-disable import/extensions */
 const base = require('./jest.config.js');
 
 module.exports = {

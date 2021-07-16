@@ -9,7 +9,7 @@ import {
   UPDATE_GLOBALS,
 } from '@storybook/core-events';
 import { addons } from './index';
-import { StoryGetter, StoryContext, Args } from './types';
+import type { StoryGetter, StoryContext, Args } from './types';
 
 const { window: globalWindow } = global;
 

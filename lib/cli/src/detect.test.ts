@@ -1,11 +1,11 @@
 import fs from 'fs';
 
-import { getBowerJson } from './helpers';
+import { getBowerJson } from './helpers/helpers';
 import { isStorybookInstalled, detectFrameworkPreset, detect, detectLanguage } from './detect';
 import { ProjectType, SUPPORTED_FRAMEWORKS, SupportedLanguage } from './project_types';
 import { readPackageJson } from './js-package-manager';
 
-jest.mock('./helpers', () => ({
+jest.mock('./helpers/helpers', () => ({
   getBowerJson: jest.fn(),
 }));
 
@@ -351,9 +351,9 @@ describe('Detect', () => {
 
     MOCK_FRAMEWORK_FILES.forEach((structure) => {
       it(`${structure.name}`, () => {
-        (fs.existsSync as jest.Mock).mockImplementation((filePath) => {
-          return Object.keys(structure.files).includes(filePath);
-        });
+        (fs.existsSync as jest.Mock).mockImplementation((filePath) =>
+          Object.keys(structure.files).includes(filePath)
+        );
 
         const result = detectFrameworkPreset(structure.files['package.json']);
 
@@ -382,9 +382,9 @@ describe('Detect', () => {
         '/node_modules/.bin/react-scripts': 'file content',
       };
 
-      (fs.existsSync as jest.Mock).mockImplementation((filePath) => {
-        return Object.keys(forkedReactScriptsConfig).includes(filePath);
-      });
+      (fs.existsSync as jest.Mock).mockImplementation((filePath) =>
+        Object.keys(forkedReactScriptsConfig).includes(filePath)
+      );
 
       const result = detectFrameworkPreset();
       expect(result).toBe(ProjectType.REACT_SCRIPTS);

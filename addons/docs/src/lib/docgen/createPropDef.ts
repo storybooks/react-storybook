@@ -1,17 +1,18 @@
 import { PropDefaultValue } from '@storybook/components';
-import { PropDef, TypeSystem, DocgenInfo, DocgenType, DocgenPropDefaultValue } from './types';
-import { JsDocParsingResult } from '../jsdocParser';
+import {
+  PropDef,
+  TypeSystem,
+  DocgenInfo,
+  DocgenType,
+  DocgenPropDefaultValue,
+  JsDocParsingResult,
+  PropDefFactory,
+} from './types';
 import { createSummaryValue } from '../utils';
 import { createFlowPropDef } from './flow/createPropDef';
 import { isDefaultValueBlacklisted } from './utils/defaultValue';
 import { createTsPropDef } from './typeScript/createPropDef';
 import { convert } from '../convert';
-
-export type PropDefFactory = (
-  propName: string,
-  docgenInfo: DocgenInfo,
-  jsDocParsingResult?: JsDocParsingResult
-) => PropDef;
 
 function createType(type: DocgenType) {
   // A type could be null if a defaultProp has been provided without a type definition.

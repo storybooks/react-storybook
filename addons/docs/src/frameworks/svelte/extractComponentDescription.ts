@@ -5,6 +5,6 @@ export function extractComponentDescription(component?: Component): string {
     return null;
   }
 
-  const { __docgen = {} } = component;
-  return __docgen.description;
+  const { __docgen: docgenInfo = {} } = component;
+  return docgenInfo.description;
 }

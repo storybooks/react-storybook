@@ -74,7 +74,7 @@ export const useHighlighted = ({
         );
       }, 0);
     }
-  }, [dataset, highlightedRef, containerRef, selected]);
+  }, [dataset, highlightedRef, containerRef, selected, updateHighlighted]);
 
   // Highlight nodes up/down the tree using arrow keys
   useEffect(() => {
@@ -114,7 +114,7 @@ export const useHighlighted = ({
 
     document.addEventListener('keydown', navigateTree);
     return () => document.removeEventListener('keydown', navigateTree);
-  }, [isLoading, isBrowsing, highlightedRef, highlightElement]);
+  }, [isLoading, isBrowsing, highlightedRef, highlightElement, containerRef]);
 
   return [highlighted, updateHighlighted, highlightedRef];
 };

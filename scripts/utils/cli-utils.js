@@ -1,4 +1,4 @@
-/* eslint-disable global-require, no-octal-escape */
+/* eslint-disable global-require, no-octal-escape, @typescript-eslint/no-implied-eval */
 const childProcess = require('child_process');
 
 const logger = console;

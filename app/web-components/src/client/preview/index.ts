@@ -19,11 +19,10 @@ interface ClientApi extends ClientStoryApi<StoryFnHtmlReturnType> {
 
 const api = start(render);
 
-export const storiesOf: ClientApi['storiesOf'] = (kind, m) => {
-  return (api.clientApi.storiesOf(kind, m) as ReturnType<ClientApi['storiesOf']>).addParameters({
+export const storiesOf: ClientApi['storiesOf'] = (kind, m) =>
+  (api.clientApi.storiesOf(kind, m) as ReturnType<ClientApi['storiesOf']>).addParameters({
     framework,
   });
-};
 
 export const configure: ClientApi['configure'] = (...args) => api.configure(framework, ...args);
 export const addDecorator: ClientApi['addDecorator'] = api.clientApi

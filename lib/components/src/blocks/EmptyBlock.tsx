@@ -3,7 +3,7 @@ import { styled } from '@storybook/theming';
 import { transparentize } from 'polished';
 import { withReset } from '../typography/shared';
 
-const Wrapper = styled.div<{}>(withReset, ({ theme }) => ({
+const Wrapper = styled.div(withReset, ({ theme }) => ({
   backgroundColor: theme.base === 'light' ? 'rgba(0,0,0,.01)' : 'rgba(255,255,255,.01)',
   borderRadius: theme.appBorderRadius,
   border: `1px dashed ${theme.appBorderColor}`,

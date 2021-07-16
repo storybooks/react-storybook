@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 import mapValues from 'lodash/mapValues';
 import { ArgType } from '@storybook/addons';
 import { logger } from '@storybook/client-logger';
@@ -66,9 +67,10 @@ export const inferControls: ArgTypesEnhancer = (context) => {
   if (!__isArgsStory) return argTypes;
 
   const filteredArgTypes = filterArgTypes(argTypes, include, exclude);
-  const withControls = mapValues(filteredArgTypes, (argType, name) => {
-    return argType?.type && inferControl(argType, name, matchers);
-  });
+  const withControls = mapValues(
+    filteredArgTypes,
+    (argType, name) => argType?.type && inferControl(argType, name, matchers)
+  );
 
   return combineParameters(withControls, filteredArgTypes);
 };

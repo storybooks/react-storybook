@@ -6,8 +6,12 @@ import chalk from 'chalk';
 import { satisfies } from '@storybook/semver';
 import stripJsonComments from 'strip-json-comments';
 
-import { StoryFormat, SupportedFrameworks, SupportedLanguage } from './project_types';
-import { JsPackageManager, PackageJson, PackageJsonWithDepsAndDevDeps } from './js-package-manager';
+import { StoryFormat, SupportedFrameworks, SupportedLanguage } from '../project_types';
+import {
+  JsPackageManager,
+  PackageJson,
+  PackageJsonWithDepsAndDevDeps,
+} from '../js-package-manager';
 
 const logger = console;
 
@@ -46,31 +50,6 @@ export const writeFileAsJson = (jsonPath: string, content: unknown) => {
 
   fs.writeFileSync(filePath, `${JSON.stringify(content, null, 2)}\n`);
   return true;
-};
-
-export const commandLog = (message: string) => {
-  process.stdout.write(chalk.cyan(' • ') + message);
-
-  // Need `void` to be able to use this function in a then of a Promise<void>
-  return (errorMessage?: string | void, errorInfo?: string) => {
-    if (errorMessage) {
-      process.stdout.write(`. ${chalk.red('✖')}\n`);
-      logger.error(`\n     ${chalk.red(errorMessage)}`);
-
-      if (!errorInfo) {
-        return;
-      }
-
-      const newErrorInfo = errorInfo
-        .split('\n')
-        .map((line) => `     ${chalk.dim(line)}`)
-        .join('\n');
-      logger.error(`${newErrorInfo}\n`);
-      return;
-    }
-
-    process.stdout.write(`. ${chalk.green('✓')}\n`);
-  };
 };
 
 export function paddedLog(message: string) {

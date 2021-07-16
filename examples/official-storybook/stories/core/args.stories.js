@@ -42,14 +42,12 @@ export default {
   ],
 };
 
-const Template = (args) => {
-  return (
-    <div>
-      <h3>Input args:</h3>
-      <pre>{JSON.stringify(args)}</pre>
-    </div>
-  );
-};
+const Template = (args) => (
+  <div>
+    <h3>Input args:</h3>
+    <pre>{JSON.stringify(args)}</pre>
+  </div>
+);
 
 export const PassedToStory = Template.bind({});
 

@@ -1,3 +1,4 @@
+/* eslint-disable react/display-name */
 import React, { Fragment, useMemo, useEffect, useRef } from 'react';
 import { Helmet } from 'react-helmet-async';
 
@@ -38,72 +39,68 @@ const createCanvas = (id: string, baseUrl = 'iframe.html', withLoader = true): A
   title: 'Canvas',
   route: ({ storyId, refId }) => (refId ? `/story/${refId}_${storyId}` : `/story/${storyId}`),
   match: ({ viewMode }) => !!(viewMode && viewMode.match(/^(story|docs)$/)),
-  render: () => {
-    return (
-      <Consumer filter={canvasMapper}>
-        {({
-          story,
-          refs,
-          customCanvas,
-          storyId,
-          refId,
-          viewMode,
-          queryParams,
+  render: () => (
+    <Consumer filter={canvasMapper}>
+      {({
+        story,
+        refs,
+        customCanvas,
+        storyId,
+        refId,
+        viewMode,
+        queryParams,
+        getElements,
+        storiesConfigured,
+        storiesFailed,
+        active,
+      }) => {
+        const wrappers = useMemo(() => [...defaultWrappers, ...getWrappers(getElements)], [
           getElements,
-          storiesConfigured,
-          storiesFailed,
-          active,
-        }) => {
-          const wrappers = useMemo(() => [...defaultWrappers, ...getWrappers(getElements)], [
-            getElements,
-            ...defaultWrappers,
-          ]);
+          ...defaultWrappers,
+        ]);
 
-          const isLoading = story
-            ? !!refs[refId] && !refs[refId].ready
-            : !storiesFailed && !storiesConfigured;
+        const isLoading = story
+          ? !!refs[refId] && !refs[refId].ready
+          : !storiesFailed && !storiesConfigured;
 
-          return (
-            <ZoomConsumer>
-              {({ value: scale }) => {
-                return (
-                  <>
-                    {withLoader && isLoading && (
-                      <S.LoaderWrapper>
-                        <Loader id="preview-loader" role="progressbar" />
-                      </S.LoaderWrapper>
-                    )}
-                    <ApplyWrappers
-                      id={id}
-                      storyId={storyId}
+        return (
+          <ZoomConsumer>
+            {({ value: scale }) => (
+              <>
+                {withLoader && isLoading && (
+                  <S.LoaderWrapper>
+                    <Loader id="preview-loader" role="progressbar" />
+                  </S.LoaderWrapper>
+                )}
+                <ApplyWrappers
+                  id={id}
+                  storyId={storyId}
+                  viewMode={viewMode}
+                  active={active}
+                  wrappers={wrappers}
+                >
+                  {customCanvas ? (
+                    customCanvas(storyId, viewMode, id, baseUrl, scale, queryParams)
+                  ) : (
+                    <FramesRenderer
+                      baseUrl={baseUrl}
+                      refs={refs}
+                      scale={scale}
+                      story={story}
                       viewMode={viewMode}
-                      active={active}
-                      wrappers={wrappers}
-                    >
-                      {customCanvas ? (
-                        customCanvas(storyId, viewMode, id, baseUrl, scale, queryParams)
-                      ) : (
-                        <FramesRenderer
-                          baseUrl={baseUrl}
-                          refs={refs}
-                          scale={scale}
-                          story={story}
-                          viewMode={viewMode}
-                          refId={refId}
-                          queryParams={queryParams}
-                          storyId={storyId}
-                        />
-                      )}
-                    </ApplyWrappers>
-                  </>
-                );
-              }}
-            </ZoomConsumer>
-          );
-        }}
-      </Consumer>
-    );
-  },
+                      refId={refId}
+                      queryParams={queryParams}
+                      storyId={storyId}
+                    />
+                  )}
+                </ApplyWrappers>
+              </>
+            )}
+          </ZoomConsumer>
+        );
+      }}
+    </Consumer>
+  ),
 });
 
 const useTabs = (
@@ -113,13 +110,9 @@ const useTabs = (
   getElements: API['getElements'],
   story: PreviewProps['story']
 ) => {
-  const canvas = useMemo(() => {
-    return createCanvas(id, baseUrl, withLoader);
-  }, [id, baseUrl, withLoader]);
+  const canvas = useMemo(() => createCanvas(id, baseUrl, withLoader), [id, baseUrl, withLoader]);
 
-  const tabsFromConfig = useMemo(() => {
-    return getTabs(getElements);
-  }, [getElements]);
+  const tabsFromConfig = useMemo(() => getTabs(getElements), [getElements]);
 
   return useMemo(() => {
     if (story?.parameters) {
@@ -127,7 +120,7 @@ const useTabs = (
     }
 
     return [canvas, ...tabsFromConfig];
-  }, [story, canvas, ...tabsFromConfig]);
+  }, [story?.parameters, canvas, tabsFromConfig]);
 };
 
 const Preview = React.memo<PreviewProps>((props) => {
@@ -171,7 +164,7 @@ const Preview = React.memo<PreviewProps>((props) => {
         }
       }
     }
-  }, [story, viewMode]);
+  }, [api, story, storyId, viewMode]);
 
   return (
     <Fragment>
@@ -219,13 +212,13 @@ function filterTabs(panels: Addon[], parameters: Record<string, any>) {
       })
       .map((panel, index) => ({ ...panel, index } as Addon))
       .sort((p1, p2) => {
-        const tab_1 = arrTabs.find((tab) => tab.id === p1.id);
+        const tab1 = arrTabs.find((tab) => tab.id === p1.id);
         // @ts-ignore
-        const index_1 = tab_1 ? tab_1.index : arrTabs.length + p1.index;
-        const tab_2 = arrTabs.find((tab) => tab.id === p2.id);
+        const index1 = tab1 ? tab1.index : arrTabs.length + p1.index;
+        const tab2 = arrTabs.find((tab) => tab.id === p2.id);
         // @ts-ignore
-        const index_2 = tab_2 ? tab_2.index : arrTabs.length + p2.index;
-        return index_1 - index_2;
+        const index2 = tab2 ? tab2.index : arrTabs.length + p2.index;
+        return index1 - index2;
       })
       .map((panel) => {
         const t = arrTabs.find((tab) => tab.id === panel.id);

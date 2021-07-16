@@ -1,3 +1,4 @@
+/* eslint-disable import/namespace */
 import path from 'path';
 import { ensureDir, pathExists, remove } from 'fs-extra';
 import prompts from 'prompts';

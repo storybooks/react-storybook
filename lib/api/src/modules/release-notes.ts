@@ -1,7 +1,7 @@
 import global from 'global';
 import memoize from 'memoizerific';
 
-import { ModuleFn } from '../index';
+import type { ModuleFn } from '../index';
 
 const { RELEASE_NOTES_DATA } = global;
 

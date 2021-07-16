@@ -6,7 +6,7 @@ import { createHeader } from './Header';
 const { document } = global;
 
 export interface PageProps {
-  user?: {};
+  user?: Record<string, any>;
   onLogin: () => void;
   onLogout: () => void;
   onCreateAccount: () => void;

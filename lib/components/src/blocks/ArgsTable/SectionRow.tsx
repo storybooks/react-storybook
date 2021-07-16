@@ -26,13 +26,13 @@ const ExpanderIcon = styled(Icons)(({ theme }) => ({
   display: 'inline-block',
 }));
 
-const FlexWrapper = styled.span<{}>(({ theme }) => ({
+const FlexWrapper = styled.span(({ theme }) => ({
   display: 'flex',
   lineHeight: '20px',
   alignItems: 'center',
 }));
 
-const Section = styled.td<{}>(({ theme }) => ({
+const Section = styled.td(({ theme }) => ({
   position: 'relative',
   letterSpacing: '0.35em',
   textTransform: 'uppercase',
@@ -48,18 +48,18 @@ const Section = styled.td<{}>(({ theme }) => ({
   },
 }));
 
-const Subsection = styled.td<{}>(({ theme }) => ({
+const Subsection = styled.td(({ theme }) => ({
   position: 'relative',
   fontWeight: theme.typography.weight.bold,
   fontSize: theme.typography.size.s2 - 1,
   background: theme.background.content,
 }));
 
-const StyledTd = styled.td<{}>(({ theme }) => ({
+const StyledTd = styled.td(({ theme }) => ({
   position: 'relative',
 }));
 
-const StyledTr = styled.tr<{}>(({ theme }) => ({
+const StyledTr = styled.tr(({ theme }) => ({
   '&:hover > td': {
     backgroundColor: `${theme.background.hoverable} !important`,
     boxShadow: `${theme.color.mediumlight} 0 - 1px 0 0 inset`,
@@ -67,7 +67,7 @@ const StyledTr = styled.tr<{}>(({ theme }) => ({
   },
 }));
 
-const ClickIntercept = styled.button<{}>(() => ({
+const ClickIntercept = styled.button(() => ({
   // reset button style
   background: 'none',
   border: 'none',

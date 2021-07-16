@@ -1,3 +1,4 @@
+/* eslint-disable react/display-name */
 import global from 'global';
 import React, { FunctionComponent, useMemo } from 'react';
 
@@ -71,7 +72,7 @@ const useCombination = (
       },
       ...refs,
     }),
-    [refs, stories]
+    [error, ready, refs, stories]
   );
   return useMemo(() => ({ hash, entries: Object.entries(hash) }), [hash]);
 };
@@ -103,7 +104,7 @@ export const Sidebar: FunctionComponent<SidebarProps> = React.memo(
     const selected: Selection = useMemo(() => storyId && { storyId, refId }, [storyId, refId]);
     const stories = useMemo(
       () => (DOCS_MODE ? collapseAllStories : collapseDocsOnlyStories)(storiesHash),
-      [DOCS_MODE, storiesHash]
+      [storiesHash]
     );
     const dataset = useCombination(stories, storiesConfigured, storiesFailed, refs);
     const isLoading = !dataset.hash[DEFAULT_REF_ID].ready;

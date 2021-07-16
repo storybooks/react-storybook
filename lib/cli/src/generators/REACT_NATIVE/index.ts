@@ -1,6 +1,6 @@
 import chalk from 'chalk';
 import shell from 'shelljs';
-import { getBabelDependencies, paddedLog, copyTemplate } from '../../helpers';
+import { getBabelDependencies, paddedLog, copyTemplate } from '../../helpers/helpers';
 import { JsPackageManager } from '../../js-package-manager';
 import { NpmOptions } from '../../NpmOptions';
 import { GeneratorOptions } from '../baseGenerator';

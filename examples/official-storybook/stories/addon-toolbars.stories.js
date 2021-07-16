@@ -24,15 +24,13 @@ const getCaptionForLocale = (locale) => {
   }
 };
 
-export const Locale = (_args, { globals: { locale } }) => {
-  return (
-    <Themed>
-      <div style={{ fontSize: 30 }}>Your locale is '{locale}', so I say:</div>
-      <div style={{ fontSize: 14 }}>note: cycle backwards and forwards with "K" & "L"</div>
-      <div style={{ fontSize: 60, fontWeight: 'bold' }}>{getCaptionForLocale(locale)}</div>
-    </Themed>
-  );
-};
+export const Locale = (_args, { globals: { locale } }) => (
+  <Themed>
+    <div style={{ fontSize: 30 }}>Your locale is '{locale}', so I say:</div>
+    <div style={{ fontSize: 14 }}>note: cycle backwards and forwards with "K" & "L"</div>
+    <div style={{ fontSize: 60, fontWeight: 'bold' }}>{getCaptionForLocale(locale)}</div>
+  </Themed>
+);
 
 const Themed = styled.div(({ theme }) => ({
   color: theme.color.defaultText,

@@ -22,9 +22,8 @@ export default function decorateStory(
       context: StoryContext = defaultContext
     ) => {
       const decoratedStory = decorator(
-        ({ parameters, ...innerContext }: StoryContext = {} as StoryContext) => {
-          return previousStoryFn({ ...context, ...innerContext });
-        },
+        ({ parameters, ...innerContext }: StoryContext = {} as StoryContext) =>
+          previousStoryFn({ ...context, ...innerContext }),
         context
       );
 

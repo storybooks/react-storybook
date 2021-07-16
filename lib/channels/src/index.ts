@@ -27,11 +27,9 @@ interface ChannelArgs {
   async?: boolean;
 }
 
-const generateRandomId = () => {
+const generateRandomId = () =>
   // generates a random 13 character string
-  return Math.random().toString(16).slice(2);
-};
-
+  Math.random().toString(16).slice(2);
 export class Channel {
   readonly isAsync: boolean;
 

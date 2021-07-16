@@ -37,8 +37,7 @@ const hasBuildScript = (l) => {
   return !!json.scripts['build-storybook'];
 };
 
-const createContent = (deployables) => {
-  return `
+const createContent = (deployables) => `
     <style>
       body {
         background: black;
@@ -109,7 +108,6 @@ const createContent = (deployables) => {
 
     <iframe id="frame" src="/${deployables[0]}/" />
   `;
-};
 
 const handleExamples = async (deployables) => {
   await deployables.reduce(async (acc, d) => {

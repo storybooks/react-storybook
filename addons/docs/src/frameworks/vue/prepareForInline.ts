@@ -1,3 +1,4 @@
+/* eslint-disable react/no-this-in-sfc */
 import React from 'react';
 import Vue from 'vue';
 import { StoryFn, StoryContext } from '@storybook/addons';
@@ -9,7 +10,7 @@ import { StoryFn, StoryContext } from '@storybook/addons';
 const COMPONENT = 'STORYBOOK_COMPONENT';
 const VALUES = 'STORYBOOK_VALUES';
 
-export const prepareForInline = (storyFn: StoryFn, { args }: StoryContext) => {
+const Prepare = (storyFn: StoryFn, { args }: StoryContext) => {
   const component = storyFn();
   const el = React.useRef(null);
 
@@ -33,3 +34,5 @@ export const prepareForInline = (storyFn: StoryFn, { args }: StoryContext) => {
 
   return React.createElement('div', null, React.createElement('div', { ref: el }));
 };
+
+export { Prepare as prepareForInline };

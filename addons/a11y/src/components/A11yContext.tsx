@@ -68,10 +68,13 @@ export const A11yContextProvider: React.FC<A11yContextProviderProps> = ({ active
     emit(EVENTS.REQUEST, renderedStoryId);
   };
   const handleClearHighlights = React.useCallback(() => setHighlighted([]), []);
-  const handleSetTab = React.useCallback((index: number) => {
-    handleClearHighlights();
-    setTab(index);
-  }, []);
+  const handleSetTab = React.useCallback(
+    (index: number) => {
+      handleClearHighlights();
+      setTab(index);
+    },
+    [handleClearHighlights]
+  );
 
   const handleReset = React.useCallback(() => {
     setTab(0);
@@ -86,7 +89,7 @@ export const A11yContextProvider: React.FC<A11yContextProviderProps> = ({ active
 
   React.useEffect(() => {
     emit(EVENTS.HIGHLIGHT, { elements: highlighted, color: colorsByType[tab] });
-  }, [highlighted, tab]);
+  }, [emit, highlighted, tab]);
 
   React.useEffect(() => {
     if (active) {
@@ -94,6 +97,7 @@ export const A11yContextProvider: React.FC<A11yContextProviderProps> = ({ active
     } else {
       handleClearHighlights();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [active, handleClearHighlights, emit, storyId]);
 
   if (!active) return null;

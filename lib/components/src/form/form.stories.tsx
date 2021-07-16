@@ -37,7 +37,7 @@ storiesOf('Basics/Form/Select', module)
     <div>
       <Spaced>
         {['error', 'warn', 'valid', null].map((valid) => (
-          <Field label={String(valid)}>
+          <Field label={String(valid)} key={String(valid)}>
             <Select
               key={valid}
               value="val2"

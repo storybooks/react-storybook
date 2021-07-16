@@ -20,6 +20,6 @@ export interface TooltipNoteProps {
   note: string;
 }
 
-export const TooltipNote: FunctionComponent<TooltipNoteProps> = ({ note, ...props }) => {
-  return <Note {...props}>{note}</Note>;
-};
+export const TooltipNote: FunctionComponent<TooltipNoteProps> = ({ note, ...props }) => (
+  <Note {...props}>{note}</Note>
+);

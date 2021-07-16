@@ -5,7 +5,7 @@ import { opacify, transparentize, darken, lighten } from 'polished';
 import { Icons } from '../../icon/icon';
 import { ArgRow } from './ArgRow';
 import { SectionRow } from './SectionRow';
-import { ArgType, ArgTypes, Args } from './types';
+import { ArgType, ArgTypes, Args } from '../../types';
 import { EmptyBlock } from '../EmptyBlock';
 import { Link } from '../../typography/link/link';
 import { ResetWrapper } from '../../typography/DocumentFormatting';

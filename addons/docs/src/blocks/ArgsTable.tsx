@@ -62,13 +62,14 @@ const useArgs = (
     };
     storyStore._channel.on(Events.STORY_ARGS_UPDATED, cb);
     return () => storyStore._channel.off(Events.STORY_ARGS_UPDATED, cb);
-  }, [storyId]);
+  }, [storyId, storyStore._channel]);
   const updateArgs = useCallback((newArgs) => storyStore.updateStoryArgs(storyId, newArgs), [
     storyId,
+    storyStore,
   ]);
   const resetArgs = useCallback(
     (argNames?: string[]) => storyStore.resetStoryArgs(storyId, argNames),
-    [storyId]
+    [storyId, storyStore]
   );
   return [args, updateArgs, resetArgs];
 };
@@ -90,9 +91,7 @@ export const extractComponentArgTypes = (
   return argTypes;
 };
 
-const isShortcut = (value?: string) => {
-  return value && [CURRENT_SELECTION, PRIMARY_STORY].includes(value);
-};
+const isShortcut = (value?: string) => value && [CURRENT_SELECTION, PRIMARY_STORY].includes(value);
 
 export const getComponent = (props: ArgsTableProps = {}, context: DocsContextProps): Component => {
   const { of } = props as OfProps;
@@ -158,7 +157,7 @@ export const StoryTable: FC<
 
     const mainLabel = getComponentName(component) || 'Story';
 
-    // eslint-disable-next-line prefer-const
+    // eslint-disable-next-line prefer-const, react-hooks/rules-of-hooks
     let [args, updateArgs, resetArgs] = useArgs(storyId, storyStore);
     let tabs = { [mainLabel]: { rows: storyArgTypes, args, updateArgs, resetArgs } } as Record<
       string,

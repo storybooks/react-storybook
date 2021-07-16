@@ -6,7 +6,7 @@ import { createButton } from './Button';
 const { document } = global;
 
 export interface HeaderProps {
-  user?: {};
+  user?: Record<string, any>;
   onLogin: () => void;
   onLogout: () => void;
   onCreateAccount: () => void;

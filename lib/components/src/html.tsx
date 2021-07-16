@@ -11,5 +11,8 @@ const deprecatedHtmlEndpoint = deprecate(
 );
 deprecatedHtmlEndpoint();
 
+// TODO: THIS IS ACTUALLY A REALLY BIG PROBLEM: MULTIPLE EXPORTS OF THE SAME NAME: 'components'
+// eslint-disable-next-line import/export
 export * from './typography/DocumentFormatting';
+// eslint-disable-next-line import/export
 export { components, resetComponents } from './index';

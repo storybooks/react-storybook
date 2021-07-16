@@ -1,4 +1,4 @@
-import React, { AnchorHTMLAttributes, FunctionComponent, MouseEvent } from 'react';
+import React, { AnchorHTMLAttributes, CSSProperties, FunctionComponent, MouseEvent } from 'react';
 import { styled } from '@storybook/theming';
 import { darken } from 'polished';
 
@@ -178,7 +178,7 @@ const A = styled.a<LinkStylesProps>(
 export interface LinkProps extends LinkInnerProps, LinkStylesProps {
   cancel?: boolean;
   className?: string;
-  style?: object;
+  style?: CSSProperties;
   onClick?: (e: MouseEvent) => void;
   href?: string;
 }
@@ -191,16 +191,14 @@ export const Link: FunctionComponent<LinkProps & AProps> = ({
   containsIcon,
   className,
   ...rest
-}) => {
-  return (
-    <A {...rest} onClick={cancel ? (e) => cancelled(e, onClick) : onClick} className={className}>
-      <LinkInner withArrow={withArrow} containsIcon={containsIcon}>
-        {children}
-        {withArrow && <Icons icon="arrowright" />}
-      </LinkInner>
-    </A>
-  );
-};
+}) => (
+  <A {...rest} onClick={cancel ? (e) => cancelled(e, onClick) : onClick} className={className}>
+    <LinkInner withArrow={withArrow} containsIcon={containsIcon}>
+      {children}
+      {withArrow && <Icons icon="arrowright" />}
+    </LinkInner>
+  </A>
+);
 
 Link.defaultProps = {
   cancel: true,

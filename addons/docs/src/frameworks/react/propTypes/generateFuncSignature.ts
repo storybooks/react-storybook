@@ -1,4 +1,4 @@
-import { ExtractedJsDocParam, ExtractedJsDocReturns } from '../../../lib/jsdocParser';
+import { ExtractedJsDocParam, ExtractedJsDocReturns } from '../../../lib/docgen/types';
 
 export function generateFuncSignature(
   params: ExtractedJsDocParam[],

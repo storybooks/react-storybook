@@ -20,6 +20,7 @@ export const useManagerCache = async (
     .catch(() => []);
 
   // Drop the `cache` property because it'll change as a result of writing to the cache.
+  // eslint-disable-next-line @typescript-eslint/naming-convention
   const { cache: _, ...baseConfig } = managerConfig;
   const configString = stringify(baseConfig);
   await options.cache.set(cacheKey, `${new Date().toISOString()}_${configString}`);
@@ -39,7 +40,7 @@ export const useManagerCache = async (
         if (ignoredConfigFiles.some((pattern) => pattern.test(file))) return;
         const filepath = path.join(options.configDir, file);
         const { mtime: fileModificationDate } = await fs.stat(filepath);
-        if (fileModificationDate > cacheCreationDate) throw filepath;
+        if (fileModificationDate > cacheCreationDate) throw new Error(filepath);
       })
     );
     return true;

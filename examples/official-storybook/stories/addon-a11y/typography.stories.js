@@ -1,4 +1,4 @@
-/* eslint-disable */
+/* eslint-disable jsx-a11y/anchor-has-content, jsx-a11y/anchor-is-valid, jsx-a11y/control-has-associated-label, jsx-a11y/heading-has-content */
 import React, { Fragment } from 'react';
 
 const text = 'Testing the a11y addon';

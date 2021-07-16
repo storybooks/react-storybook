@@ -1,3 +1,4 @@
+/* eslint-disable react/display-name */
 import React, { FunctionComponent, forwardRef, HTMLProps, SelectHTMLAttributes } from 'react';
 import { styled, Theme, CSSObject } from '@storybook/theming';
 
@@ -170,7 +171,7 @@ const ButtonStyled = styled(
 });
 
 export const Button: FunctionComponent<any> = Object.assign(
-  forwardRef<{}, {}>((props, ref) => (
+  forwardRef((props, ref) => (
     <ButtonStyled {...props} {...{ tertiary: true, small: true, inForm: true }} ref={ref} />
   )),
   {

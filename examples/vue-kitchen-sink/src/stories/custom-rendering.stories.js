@@ -64,7 +64,8 @@ export const VuexActions = () => ({
     state: { count: 0 },
     mutations: {
       increment(state) {
-        state.count += 1; // eslint-disable-line
+        // eslint-disable-next-line no-param-reassign
+        state.count += 1;
         action('vuex state')(state);
       },
     },
@@ -85,7 +86,8 @@ export const WhateverYouWant = () => ({
     state: { count: 0 },
     mutations: {
       increment(state) {
-        state.count += 1; // eslint-disable-line
+        // eslint-disable-next-line no-param-reassign
+        state.count += 1;
         action('vuex state')(state);
       },
     },

@@ -20,7 +20,7 @@ class TestDetail {
 
   stackTrace: string;
 }
-const StackTrace = styled.pre<{}>(({ theme }) => ({
+const StackTrace = styled.pre(({ theme }) => ({
   background: theme.color.lighter,
   paddingTop: 4,
   paddingBottom: 4,
@@ -37,7 +37,7 @@ const Results = styled.div({
   marginRight: 30,
 });
 
-const Description = styled.div<{}>(({ theme }) => ({
+const Description = styled.div(({ theme }) => ({
   paddingBottom: 10,
   paddingTop: 10,
   borderBottom: theme.appBorderColor,

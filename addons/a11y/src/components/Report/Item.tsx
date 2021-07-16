@@ -7,10 +7,10 @@ import { Result } from 'axe-core';
 import { Info } from './Info';
 import { Elements } from './Elements';
 import { Tags } from './Tags';
-import { RuleType } from '../A11YPanel';
+import { RuleType } from '../../types';
 import HighlightToggle from './HighlightToggle';
 
-const Wrapper = styled.div<{}>(({ theme }) => ({
+const Wrapper = styled.div(({ theme }) => ({
   display: 'flex',
   width: '100%',
   borderBottom: `1px solid ${theme.appBorderColor}`,
@@ -30,7 +30,7 @@ const Icon = styled<any, any>(Icons)(({ theme }) => ({
   display: 'inline-flex',
 }));
 
-const HeaderBar = styled.div<{}>(({ theme }) => ({
+const HeaderBar = styled.div(({ theme }) => ({
   padding: theme.layoutMargin,
   paddingLeft: theme.layoutMargin - 3,
   lineHeight: '20px',

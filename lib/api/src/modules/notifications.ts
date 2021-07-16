@@ -1,5 +1,5 @@
-import { ReactNode } from 'react';
-import { ModuleFn } from '../index';
+import type { ReactNode } from 'react';
+import type { ModuleFn } from '../index';
 
 export interface Notification {
   id: string;

@@ -8,8 +8,8 @@ const makeProperty = (compodocType?: string) => ({
   optional: true,
 });
 
-const getDummyCompodocJson = () => {
-  return {
+const getDummyCompodocJson = () =>
+  ({
     miscellaneous: {
       typealiases: [
         {
@@ -92,8 +92,7 @@ const getDummyCompodocJson = () => {
         },
       ],
     },
-  } as CompodocJson;
-};
+  } as CompodocJson);
 
 describe('extractType', () => {
   describe('with compodoc type', () => {

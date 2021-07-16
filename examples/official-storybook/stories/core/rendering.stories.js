@@ -48,7 +48,7 @@ ArgsChange.decorators = [
       if (args.first === 0) {
         updateArgs({ first: 1 });
       }
-    }, []);
+    }, [args.first, updateArgs]);
 
     return <StoryFn />;
   },

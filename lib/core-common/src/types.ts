@@ -31,20 +31,20 @@ export interface Presets {
     config: TypescriptConfig,
     args?: Options
   ): Promise<TypescriptConfig>;
-  apply(extension: 'babel', config: {}, args: any): Promise<TransformOptions>;
+  apply(extension: 'babel', config: Record<string, unknown>, args: any): Promise<TransformOptions>;
   apply(extension: 'entries', config: [], args: any): Promise<unknown>;
   apply(extension: 'stories', config: [], args: any): Promise<StoriesEntry[]>;
   apply(
     extension: 'webpack',
-    config: {},
+    config: Record<string, unknown>,
     args: { babelOptions?: TransformOptions } & any
   ): Promise<Configuration>;
   apply(extension: 'managerEntries', config: [], args: any): Promise<string[]>;
   apply(extension: 'refs', config: [], args: any): Promise<unknown>;
-  apply(extension: 'core', config: {}, args: any): Promise<CoreConfig>;
+  apply(extension: 'core', config: Record<string, unknown>, args: any): Promise<CoreConfig>;
   apply(
     extension: 'managerWebpack',
-    config: {},
+    config: Record<string, unknown>,
     args: Options & { babelOptions?: TransformOptions } & ManagerWebpackOptions
   ): Promise<Configuration>;
   apply<T extends unknown>(extension: string, config?: T, args?: unknown): Promise<T>;

@@ -1,7 +1,7 @@
 import { STORIES_COLLAPSE_ALL, STORIES_EXPAND_ALL } from '@storybook/core-events';
 import { Channel, Listener } from '@storybook/channels';
 
-import { ModuleFn } from '../index';
+import type { ModuleFn } from '../index';
 
 export interface SubAPI {
   getChannel: () => Channel;

@@ -2,7 +2,7 @@ import React, { FC, useState } from 'react';
 import { styled } from '@storybook/theming';
 import memoize from 'memoizerific';
 import uniq from 'lodash/uniq';
-import { PropSummaryValue } from './types';
+import { PropSummaryValue } from '../../types';
 import { WithTooltipPure } from '../../tooltip/lazy-WithTooltip';
 import { Icons } from '../../icon/icon';
 import { SyntaxHighlighter } from '../../syntaxhighlighter/lazy-syntaxhighlighter';
@@ -54,7 +54,7 @@ const Text = styled.span<{ simple?: boolean }>(codeCommon, ({ theme, simple = fa
   }),
 }));
 
-const ExpandButton = styled.button<{}>(({ theme }) => ({
+const ExpandButton = styled.button(({ theme }) => ({
   fontFamily: theme.typography.fonts.mono,
   color: theme.color.secondary,
   marginBottom: '4px',
@@ -62,7 +62,7 @@ const ExpandButton = styled.button<{}>(({ theme }) => ({
   border: 'none',
 }));
 
-const Expandable = styled.div<{}>(codeCommon, ({ theme }) => ({
+const Expandable = styled.div(codeCommon, ({ theme }) => ({
   fontFamily: theme.typography.fonts.mono,
   color: theme.color.secondary,
   fontSize: theme.typography.size.s1, // overrides codeCommon
@@ -95,13 +95,9 @@ const ArrowIcon = styled(Icons)({
   marginLeft: 4,
 });
 
-const EmptyArg = () => {
-  return <span>-</span>;
-};
+const EmptyArg = () => <span>-</span>;
 
-const ArgText: FC<ArgTextProps> = ({ text, simple }) => {
-  return <Text simple={simple}>{text}</Text>;
-};
+const ArgText: FC<ArgTextProps> = ({ text, simple }) => <Text simple={simple}>{text}</Text>;
 
 const calculateDetailWidth = memoize(1000)((detail: string): string => {
   const lines = detail.split(/\r?\n/);
@@ -185,10 +181,9 @@ const ArgSummary: FC<ArgSummaryProps> = ({ value, initialExpandedArgs }) => {
   );
 };
 
-export const ArgValue: FC<ArgValueProps> = ({ value, initialExpandedArgs }) => {
-  return value == null ? (
+export const ArgValue: FC<ArgValueProps> = ({ value, initialExpandedArgs }) =>
+  value == null ? (
     <EmptyArg />
   ) : (
     <ArgSummary value={value} initialExpandedArgs={initialExpandedArgs} />
   );
-};

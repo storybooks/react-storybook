@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import { styled } from '@storybook/theming';
-import { JsDocTags } from './types';
+import { JsDocTags } from '../../types';
 import { codeCommon } from '../../typography/shared';
 
 interface ArgJsDocArgs {
@@ -75,16 +75,14 @@ export const ArgJsDoc: FC<ArgJsDocArgs> = ({ tags }) => {
     <Table>
       <tbody>
         {hasDisplayableParams &&
-          params.map((x) => {
-            return (
-              <tr key={x.name}>
-                <td>
-                  <code>{x.name}</code>
-                </td>
-                <td>{x.description}</td>
-              </tr>
-            );
-          })}
+          params.map((x) => (
+            <tr key={x.name}>
+              <td>
+                <code>{x.name}</code>
+              </td>
+              <td>{x.description}</td>
+            </tr>
+          ))}
         {hasDisplayableReturns && (
           <tr key="returns">
             <td>

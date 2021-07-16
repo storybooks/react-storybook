@@ -3,8 +3,8 @@ import { WindowLocation } from '@reach/router';
 import deprecate from 'util-deprecate';
 import dedent from 'ts-dedent';
 
-import { ModuleFn } from '../index';
-import { Options } from '../store';
+import type { ModuleFn } from '../index';
+import type { Options } from '../store';
 import { isStory } from '../lib/stories';
 
 const warnDisabledDeprecated = deprecate(
@@ -18,6 +18,7 @@ const warnDisabledDeprecated = deprecate(
 
 export type ViewMode = 'story' | 'info' | 'settings' | 'page' | undefined | string;
 
+// eslint-disable-next-line @typescript-eslint/naming-convention
 export enum types {
   TAB = 'tab',
   PANEL = 'panel',
@@ -155,9 +156,7 @@ export const init: ModuleFn = ({ provider, store, fullAPI }) => {
         .setState({ addons: { ...existing, [addonId]: nextState } }, options)
         .then(() => api.getAddonState(addonId));
     },
-    getAddonState: (addonId) => {
-      return store.getState().addons[addonId];
-    },
+    getAddonState: (addonId) => store.getState().addons[addonId],
   };
 
   return {

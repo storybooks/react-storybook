@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 /* eslint no-underscore-dangle: 0 */
 import memoize from 'memoizerific';
 import dedent from 'ts-dedent';
@@ -20,7 +21,7 @@ import {
   StoryKind,
   StoryId,
 } from '@storybook/addons';
-import {
+import type {
   DecoratorFunction,
   StoryMetadata,
   StoreData,
@@ -65,9 +66,7 @@ function extractIdFromStorySpecifier(storySpecifier: StorySpecifier): string {
   return toId(storySpecifier.kind, storySpecifier.name);
 }
 
-const isStoryDocsOnly = (parameters?: Parameters) => {
-  return parameters && parameters.docsOnly;
-};
+const isStoryDocsOnly = (parameters?: Parameters) => parameters && parameters.docsOnly;
 
 const includeStory = (story: StoreItem, options: StoryOptions = { includeDocsOnly: false }) => {
   if (options.includeDocsOnly) {
@@ -131,7 +130,7 @@ const toExtracted = <T>(obj: T) =>
     return Object.assign(acc, { [key]: value });
   }, {});
 
-export default class StoryStore {
+export class StoryStore {
   _error?: ErrorLike;
 
   _channel: Channel;
@@ -765,16 +764,14 @@ export default class StoryStore {
 
   getSelection = (): StoreSelection => this._selection;
 
-  getDataForManager = () => {
-    return {
-      v: 2,
-      globalParameters: this._globalMetadata.parameters,
-      globals: this._globals,
-      error: this.getError(),
-      kindParameters: mapValues(this._kinds, (metadata) => metadata.parameters),
-      stories: this.extract({ includeDocsOnly: true, normalizeParameters: true }),
-    };
-  };
+  getDataForManager = () => ({
+    v: 2,
+    globalParameters: this._globalMetadata.parameters,
+    globals: this._globals,
+    error: this.getError(),
+    kindParameters: mapValues(this._kinds, (metadata) => metadata.parameters),
+    stories: this.extract({ includeDocsOnly: true, normalizeParameters: true }),
+  });
 
   getStoriesJsonData = () => {
     const value = this.getDataForManager();
@@ -852,3 +849,5 @@ export default class StoryStore {
     };
   }
 }
+
+export { StoryStore as default };

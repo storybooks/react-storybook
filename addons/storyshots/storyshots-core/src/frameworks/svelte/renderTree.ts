@@ -25,7 +25,8 @@ function getRenderedTree(story: any) {
   // We need to create a target to mount onto.
   const target = document.createElement('section');
 
-  new DefaultCompatComponent({ target, props }); // eslint-disable-line
+  // eslint-disable-next-line no-new
+  new DefaultCompatComponent({ target, props });
 
   // Classify the target so that it is clear where the markup
   // originates from, and that it is specific for snapshot tests.

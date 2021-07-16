@@ -64,7 +64,6 @@ export const createStorybookWrapperComponent = (
     // Used in case of a component without selector
     storyComponent = storyComponent ?? '';
 
-    // eslint-disable-next-line no-useless-constructor
     constructor(
       @Inject(STORY_PROPS) private storyProps$: Subject<ICollection | undefined>,
       private changeDetectorRef: ChangeDetectorRef
@@ -117,11 +116,11 @@ export const createStorybookWrapperComponent = (
                 {} as ICollection
               );
             }),
-            map((props) => {
+            map((props) =>
               // In case a component uses an input with `bindingPropertyName` (ex: @Input('name'))
               // find the value of the local propName in the component Inputs
               // otherwise use the input key
-              return Object.entries(props).reduce((prev, [propKey, value]) => {
+              Object.entries(props).reduce((prev, [propKey, value]) => {
                 const input = ngComponentInputsOutputs.inputs.find(
                   (o) => o.templateName === propKey
                 );
@@ -130,8 +129,8 @@ export const createStorybookWrapperComponent = (
                   ...prev,
                   ...(input ? { [input.propName]: value } : { [propKey]: value }),
                 };
-              }, {} as ICollection);
-            })
+              }, {} as ICollection)
+            )
           )
           .subscribe((props) => {
             // Replace inputs with new ones from props

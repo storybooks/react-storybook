@@ -31,6 +31,7 @@ afterEach(() => {
 });
 
 function makeMocks() {
+  // eslint-disable-next-line @typescript-eslint/ban-types
   const configApi = ({ configure: (x: Function) => x() } as unknown) as ConfigApi;
   const storyStore = ({
     removeStoryKind: jest.fn(),

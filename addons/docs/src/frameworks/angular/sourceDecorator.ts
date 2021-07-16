@@ -17,13 +17,12 @@ export const skipSourceRender = (context: StoryContext) => {
   return sourceParams?.code || sourceParams?.type === SourceType.CODE;
 };
 
-const prettyUp = (source: string) => {
-  return prettier.format(source, {
+const prettyUp = (source: string) =>
+  prettier.format(source, {
     parser: 'angular',
     plugins: [prettierHtml],
     htmlWhitespaceSensitivity: 'ignore',
   });
-};
 
 /**
  * Svelte source decorator.

@@ -2,7 +2,7 @@ import React, { FunctionComponent, MouseEvent } from 'react';
 
 import { styled } from '@storybook/theming';
 
-const Container = styled.div<{}>(({ theme }) => ({
+const Container = styled.div(({ theme }) => ({
   position: 'absolute',
   bottom: 0,
   right: 0,

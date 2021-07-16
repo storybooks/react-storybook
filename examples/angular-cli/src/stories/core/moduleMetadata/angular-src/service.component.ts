@@ -11,12 +11,12 @@ import { DummyService } from './dummy.service';
   `,
 })
 export class ServiceComponent implements OnInit {
+  // eslint-disable-next-line @typescript-eslint/ban-types
   items: {};
 
   @Input()
   name: any;
 
-  // eslint-disable-next-line no-useless-constructor
   constructor(private dummy: DummyService) {}
 
   async ngOnInit() {

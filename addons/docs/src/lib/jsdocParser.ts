@@ -1,37 +1,11 @@
 import doctrine, { Annotation } from 'doctrine';
-
-export interface ExtractedJsDocParam {
-  name: string;
-  type?: any;
-  description?: string;
-  getPrettyName: () => string;
-  getTypeName: () => string;
-}
-
-export interface ExtractedJsDocReturns {
-  type?: any;
-  description?: string;
-  getTypeName: () => string;
-}
-
-export interface ExtractedJsDoc {
-  params?: ExtractedJsDocParam[];
-  returns?: ExtractedJsDocReturns;
-  ignore: boolean;
-}
-
-export interface JsDocParsingOptions {
-  tags?: string[];
-}
-
-export interface JsDocParsingResult {
-  includesJsDoc: boolean;
-  ignore: boolean;
-  description?: string;
-  extractedTags?: ExtractedJsDoc;
-}
-
-export type ParseJsDoc = (value?: string, options?: JsDocParsingOptions) => JsDocParsingResult;
+import {
+  ExtractedJsDoc,
+  ExtractedJsDocParam,
+  ExtractedJsDocReturns,
+  JsDocParsingOptions,
+  ParseJsDoc,
+} from './docgen/types';
 
 function containsJsDoc(value?: string): boolean {
   return value != null && value.includes('@');
@@ -154,9 +128,7 @@ function extractParam(tag: doctrine.Tag): ExtractedJsDocParam {
 
         return tag.name;
       },
-      getTypeName: () => {
-        return tag.type != null ? extractTypeName(tag.type) : null;
-      },
+      getTypeName: () => (tag.type != null ? extractTypeName(tag.type) : null),
     };
   }
 
@@ -168,9 +140,7 @@ function extractReturns(tag: doctrine.Tag): ExtractedJsDocReturns {
     return {
       type: tag.type,
       description: tag.description,
-      getTypeName: () => {
-        return extractTypeName(tag.type);
-      },
+      getTypeName: () => extractTypeName(tag.type),
     };
   }
 

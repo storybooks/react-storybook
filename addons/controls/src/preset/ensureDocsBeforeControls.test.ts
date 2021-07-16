@@ -20,7 +20,7 @@ describe.each([
   [[{ name: '@storybook/addon-docs' }, '@storybook/addon-controls']],
   [['@storybook/addon-essentials', '@storybook/addon-controls']],
   [['@storybook/addon-essentials']],
-])('verifyDocsBeforeControls', (input) => {
+])('verifyDocsBeforeControls-truthy', (input) => {
   it(`valid ${input}`, () => {
     expect(verifyDocsBeforeControls(input)).toBeTruthy();
   });

@@ -108,34 +108,32 @@ describe('renderJsx', () => {
   });
 
   it('forwardRef component', () => {
-    const MyExoticComponent = React.forwardRef(function MyExoticComponent(props: any, _ref: any) {
-      return <div>{props.children}</div>;
-    });
+    const MyExoticComponent = React.forwardRef((props: any, _ref: any) => (
+      <div>{props.children}</div>
+    ));
 
     expect(renderJsx(<MyExoticComponent>I'm forwardRef!</MyExoticComponent>, {}))
       .toMatchInlineSnapshot(`
-        <MyExoticComponent>
-          I'm forwardRef!
-        </MyExoticComponent>
-      `);
+      <[object Object]>
+        I'm forwardRef!
+      </[object Object]>
+    `);
   });
 
   it('memo component', () => {
-    const MyMemoComponent = React.memo(function MyMemoComponent(props: any) {
-      return <div>{props.children}</div>;
-    });
+    const MyMemoComponent = React.memo((props: any) => <div>{props.children}</div>);
 
     expect(renderJsx(<MyMemoComponent>I'm memo!</MyMemoComponent>, {})).toMatchInlineSnapshot(`
-      <MyMemoComponent>
+      <[object Object]>
         I'm memo!
-      </MyMemoComponent>
+      </[object Object]>
     `);
   });
 
   it('should not add default props to string if the prop value has not changed', () => {
-    const Container = ({ className, children }: { className: string; children: string }) => {
-      return <div className={className}>{children}</div>;
-    };
+    const Container = ({ className, children }: { className: string; children: string }) => (
+      <div className={className}>{children}</div>
+    );
 
     Container.propTypes = {
       children: PropTypes.string.isRequired,
@@ -154,15 +152,22 @@ describe('renderJsx', () => {
   });
 });
 
-// @ts-ignore
-const makeContext = (name: string, parameters: any, args: any, extra?: object): StoryContext => ({
-  id: `jsx-test--${name}`,
-  kind: 'js-text',
-  name,
-  parameters,
-  args,
-  ...extra,
-});
+const makeContext = (
+  name: string,
+  parameters: any,
+  args: any,
+  extra: Partial<StoryContext> = {}
+): StoryContext => {
+  // @ts-ignore
+  return {
+    id: `jsx-test--${name}`,
+    kind: 'js-text',
+    name,
+    parameters,
+    args,
+    ...extra,
+  };
+};
 
 describe('jsxDecorator', () => {
   let mockChannel: { on: jest.Mock; emit?: jest.Mock };

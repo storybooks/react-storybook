@@ -30,14 +30,12 @@ function run() {
 
   const packages = getStorybookPackages();
   const packageTasks = packages
-    .map((package) => {
-      return {
-        name: package,
-        suffix: package.replace('@storybook/', ''),
-        defaultValue: false,
-        helpText: `build only the ${package} package`,
-      };
-    })
+    .map((package) => ({
+      name: package,
+      suffix: package.replace('@storybook/', ''),
+      defaultValue: false,
+      helpText: `build only the ${package} package`,
+    }))
     .reduce((acc, next) => {
       acc[next.name] = next;
       return acc;

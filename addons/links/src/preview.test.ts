@@ -4,11 +4,11 @@ import { SELECT_STORY } from '@storybook/core-events';
 import globalPkg from 'global';
 import { linkTo, hrefTo } from './preview';
 
+// eslint-disable-next-line @typescript-eslint/naming-convention
 const { __STORYBOOK_STORY_STORE__ } = globalPkg;
 
 jest.mock('@storybook/addons');
 jest.mock('global', () => ({
-  // @ts-ignore
   document: global.document,
   __STORYBOOK_STORY_STORE__: {
     getSelection: jest.fn(() => ({
@@ -20,7 +20,6 @@ jest.mock('global', () => ({
       kind: 'kind',
     })),
   },
-  // @ts-ignore
   window: global,
   __STORYBOOK_CLIENT_API__: {
     raw: jest.fn(() => [

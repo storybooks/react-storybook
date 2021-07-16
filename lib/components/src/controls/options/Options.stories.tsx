@@ -14,9 +14,11 @@ const objectOptions = {
 };
 
 const rawOptionsHelper = (options, type, isMulti, initial) => {
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   const [value, setValue] = useState(isMulti ? [initial] : initial);
   return (
     <>
+      {/* @ts-ignore */}
       <OptionsControl
         name="options"
         options={options}

@@ -12,12 +12,7 @@ import { Tabs } from './Tabs';
 import { useA11yContext } from './A11yContext';
 import { EVENTS } from '../constants';
 import { A11yParameters } from '../params';
-
-export enum RuleType {
-  VIOLATION,
-  PASS,
-  INCOMPLETION,
-}
+import { RuleType } from '../types';
 
 const Icon = styled(Icons)({
   height: 12,
@@ -25,23 +20,23 @@ const Icon = styled(Icons)({
   marginRight: 4,
 });
 
-const RotatingIcon = styled(Icon)<{}>(({ theme }) => ({
+const RotatingIcon = styled(Icon)(({ theme }) => ({
   animation: `${theme.animation.rotate360} 1s linear infinite;`,
 }));
 
-const Passes = styled.span<{}>(({ theme }) => ({
+const Passes = styled.span(({ theme }) => ({
   color: theme.color.positive,
 }));
 
-const Violations = styled.span<{}>(({ theme }) => ({
+const Violations = styled.span(({ theme }) => ({
   color: theme.color.negative,
 }));
 
-const Incomplete = styled.span<{}>(({ theme }) => ({
+const Incomplete = styled.span(({ theme }) => ({
   color: theme.color.warning,
 }));
 
-const Centered = styled.span<{}>({
+const Centered = styled.span({
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
@@ -92,7 +87,7 @@ export const A11YPanel: React.FC = () => {
   const handleManual = useCallback(() => {
     setStatus('running');
     emit(EVENTS.MANUAL, storyId);
-  }, [storyId]);
+  }, [emit, storyId]);
 
   const manualActionItems = useMemo(() => [{ title: 'Run test', onClick: handleManual }], [
     handleManual,

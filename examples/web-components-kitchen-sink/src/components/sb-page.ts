@@ -94,7 +94,7 @@ export class SbPage extends LitElement {
     };
   }
 
-  user?: {};
+  user?: Record<string, any>;
 
   render() {
     return html`

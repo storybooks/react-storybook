@@ -12,7 +12,7 @@ import deepEqual from 'fast-deep-equal';
 import global from 'global';
 import dedent from 'ts-dedent';
 
-import { ModuleArgs, ModuleFn } from '../index';
+import type { ModuleArgs, ModuleFn } from '../index';
 import { Layout, UI } from './layout';
 import { isStory } from '../lib/stories';
 
@@ -130,7 +130,7 @@ export interface QueryParams {
 }
 
 export interface SubAPI {
-  navigateUrl: (url: string, options: NavigateOptions<{}>) => void;
+  navigateUrl: (url: string, options: NavigateOptions<Record<string, unknown>>) => void;
   getQueryParam: (key: string) => string | undefined;
   getUrlState: () => {
     queryParams: QueryParams;
@@ -167,7 +167,7 @@ export const init: ModuleFn = ({ store, navigate, state, provider, fullAPI, ...r
       const equal = deepEqual(customQueryParams, update);
       if (!equal) store.setState({ customQueryParams: update });
     },
-    navigateUrl(url: string, options: NavigateOptions<{}>) {
+    navigateUrl(url: string, options: NavigateOptions<Record<string, unknown>>) {
       navigateRouter(url, options);
     },
   };

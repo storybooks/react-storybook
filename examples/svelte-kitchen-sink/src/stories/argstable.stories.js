@@ -1,5 +1,5 @@
 import ArgsTableView from './views/ArgsTableView.svelte';
-// eslint-disable-next-line
+// eslint-disable-next-line import/no-unresolved, import/no-webpack-loader-syntax, import/extensions
 import srcArgsTableView from '!!raw-loader!./views/ArgsTableView.svelte';
 
 export default {

@@ -10,7 +10,8 @@ import {
   Builder,
   CoreBuilder,
 } from './project_types';
-import { commandLog, codeLog, paddedLog } from './helpers';
+import { codeLog, paddedLog } from './helpers/helpers';
+import { commandLog } from './helpers/commandLog';
 import angularGenerator from './generators/ANGULAR';
 import aureliaGenerator from './generators/AURELIA';
 import emberGenerator from './generators/EMBER';
@@ -298,7 +299,7 @@ const projectTypeInquirer = async (options: { yes?: boolean }) => {
   return Promise.resolve();
 };
 
-export default function (options: CommandOptions, pkg: Package): Promise<void> {
+export default function initiate(options: CommandOptions, pkg: Package): Promise<void> {
   const welcomeMessage = 'sb init - the simplest way to add a Storybook to your project.';
   logger.log(chalk.inverse(`\n ${welcomeMessage} \n`));
 

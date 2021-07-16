@@ -9,8 +9,8 @@ const StyledHello = styled.div`
   color: red;
 `;
 
-const Hello = ({ title }: HelloProps) => {
-  return <StyledHello className="hello">Hello Component {title}</StyledHello>;
-};
+const Hello = ({ title }: HelloProps) => (
+  <StyledHello className="hello">Hello Component {title}</StyledHello>
+);
 
 export const component = Hello;

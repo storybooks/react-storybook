@@ -14,6 +14,5 @@ const isStylingRule = (rule: RuleSetRule) => {
   return test.test('.css') || test.test('.scss') || test.test('.sass');
 };
 
-export const filterOutStylingRules = (config: Configuration) => {
-  return config.module.rules.filter((rule) => !isStylingRule(rule));
-};
+export const filterOutStylingRules = (config: Configuration) =>
+  config.module.rules.filter((rule) => !isStylingRule(rule));

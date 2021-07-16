@@ -1,7 +1,7 @@
 import global from 'global';
 
 // The shortcut is our JSON-ifiable representation of a shortcut combination
-import { KeyCollection, Event } from '../modules/shortcuts';
+import type { KeyCollection, Event } from '../modules/shortcuts';
 
 const { navigator } = global;
 
@@ -72,9 +72,8 @@ export const shortcutMatchesShortcut = (
 };
 
 // Should this keyboard event trigger this keyboard shortcut?
-export const eventMatchesShortcut = (e: Event, shortcut: KeyCollection): boolean => {
-  return shortcutMatchesShortcut(eventToShortcut(e), shortcut);
-};
+export const eventMatchesShortcut = (e: Event, shortcut: KeyCollection): boolean =>
+  shortcutMatchesShortcut(eventToShortcut(e), shortcut);
 
 export const keyToSymbol = (key: string): string => {
   if (key === 'alt') {
@@ -114,6 +113,5 @@ export const keyToSymbol = (key: string): string => {
 };
 
 // Display the shortcut as a human readable string
-export const shortcutToHumanString = (shortcut: KeyCollection): string => {
-  return shortcut.map(keyToSymbol).join(' ');
-};
+export const shortcutToHumanString = (shortcut: KeyCollection): string =>
+  shortcut.map(keyToSymbol).join(' ');

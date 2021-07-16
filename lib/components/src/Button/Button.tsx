@@ -1,3 +1,4 @@
+/* eslint-disable react/display-name */
 import React, { forwardRef, FunctionComponent, ComponentProps } from 'react';
 import { styled } from '@storybook/theming';
 import { darken, lighten, rgba, transparentize } from 'polished';

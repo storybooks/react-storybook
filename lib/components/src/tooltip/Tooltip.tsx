@@ -133,14 +133,12 @@ export const Tooltip: FunctionComponent<TooltipProps> = ({
   arrowRef,
   color,
   ...props
-}) => {
-  return (
-    <Wrapper hasChrome={hasChrome} placement={placement} ref={tooltipRef} {...props} color={color}>
-      {hasChrome && <Arrow placement={placement} ref={arrowRef} {...arrowProps} color={color} />}
-      {children}
-    </Wrapper>
-  );
-};
+}) => (
+  <Wrapper hasChrome={hasChrome} placement={placement} ref={tooltipRef} {...props} color={color}>
+    {hasChrome && <Arrow placement={placement} ref={arrowRef} {...arrowProps} color={color} />}
+    {children}
+  </Wrapper>
+);
 
 Tooltip.defaultProps = {
   color: undefined,

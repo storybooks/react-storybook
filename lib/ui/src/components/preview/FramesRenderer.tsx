@@ -29,16 +29,17 @@ export const FramesRenderer: FunctionComponent<FramesRendererProps> = ({
   });
   const active = getActive(refId);
 
-  const styles = useMemo<CSSObject>(() => {
-    return {
+  const styles = useMemo<CSSObject>(
+    () => ({
       '[data-is-storybook="false"]': {
         visibility: 'hidden',
       },
       '[data-is-storybook="true"]': {
         visibility: 'visible',
       },
-    };
-  }, []);
+    }),
+    []
+  );
 
   const [frames, setFrames] = useState<Record<string, string>>({
     'storybook-preview-iframe': `${baseUrl}?id=${storyId}&viewMode=${viewMode}${stringifiedQueryParams}`,
@@ -59,15 +60,16 @@ export const FramesRenderer: FunctionComponent<FramesRendererProps> = ({
 
         return false;
       })
-      .reduce((acc, r) => {
-        return {
+      .reduce(
+        (acc, r) => ({
           ...acc,
           [`storybook-ref-${r.id}`]: `${r.url}/iframe.html?id=${storyId}&viewMode=${viewMode}&refId=${r.id}${stringifiedQueryParams}`,
-        };
-      }, frames);
+        }),
+        frames
+      );
 
     setFrames(newFrames);
-  }, [storyId, story, refs]);
+  }, [storyId, story, refs, frames, viewMode, stringifiedQueryParams]);
 
   return (
     <Fragment>

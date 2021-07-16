@@ -15,9 +15,8 @@ import {
   Directive,
 } from './types';
 
-export const isMethod = (methodOrProp: Method | Property): methodOrProp is Method => {
-  return (methodOrProp as Method).args !== undefined;
-};
+export const isMethod = (methodOrProp: Method | Property): methodOrProp is Method =>
+  (methodOrProp as Method).args !== undefined;
 
 export const setCompodocJson = (compodocJson: CompodocJson) => {
   // @ts-ignore
@@ -171,20 +170,21 @@ const resolveTypealias = (compodocType: string): string => {
   return typeAlias ? resolveTypealias(typeAlias.rawtype) : compodocType;
 };
 
+type CompodocClass =
+  | 'properties'
+  | 'methods'
+  | 'propertiesClass'
+  | 'methodsClass'
+  | 'inputsClass'
+  | 'outputsClass';
+
 export const extractArgTypesFromData = (componentData: Class | Directive | Injectable | Pipe) => {
   const sectionToItems: Record<string, ArgType[]> = {};
   const compodocClasses = ['component', 'directive'].includes(componentData.type)
     ? ['propertiesClass', 'methodsClass', 'inputsClass', 'outputsClass']
     : ['properties', 'methods'];
-  type COMPODOC_CLASS =
-    | 'properties'
-    | 'methods'
-    | 'propertiesClass'
-    | 'methodsClass'
-    | 'inputsClass'
-    | 'outputsClass';
 
-  compodocClasses.forEach((key: COMPODOC_CLASS) => {
+  compodocClasses.forEach((key: CompodocClass) => {
     const data = (componentData as any)[key] || [];
     data.forEach((item: Method | Property) => {
       const section = mapItemToSection(key, item);

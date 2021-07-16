@@ -6,9 +6,8 @@
  * @param bindings {Object} key-value object use to fill the template, `{{key}}` will be replaced by `escaped(value)`
  * @returns {String} Filled template
  */
-export const interpolate = (template: string, bindings: Record<string, string>) => {
-  return Object.entries(bindings).reduce((acc, [k, v]) => {
+export const interpolate = (template: string, bindings: Record<string, string>) =>
+  Object.entries(bindings).reduce((acc, [k, v]) => {
     const escapedString = v.replace(/\\/g, '/').replace(/\$/g, '$$$');
     return acc.replace(new RegExp(`{{${k}}}`, 'g'), escapedString);
   }, template);
-};

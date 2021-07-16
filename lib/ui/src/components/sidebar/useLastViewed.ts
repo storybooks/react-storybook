@@ -12,7 +12,7 @@ export const useLastViewed = (selection: Selection) => {
     if (!items || !Array.isArray(items)) return [];
     if (!items.some((item) => typeof item === 'object' && item.storyId && item.refId)) return [];
     return items;
-  }, [store]);
+  }, []);
 
   const lastViewedRef = useRef(initialLastViewedStoryIds);
 
@@ -35,7 +35,7 @@ export const useLastViewed = (selection: Selection) => {
 
   useEffect(() => {
     if (selection) updateLastViewed(selection);
-  }, [selection]);
+  }, [selection, updateLastViewed]);
 
   return {
     getLastViewed: useCallback(() => lastViewedRef.current, [lastViewedRef]),

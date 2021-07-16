@@ -20,8 +20,8 @@ describe('JsPackageManagerFactory', () => {
       });
 
       it('when NPM command is ok, Yarn is ok, there is no `yarn.lock` file', () => {
-        spawnSyncMock.mockImplementation((command) => {
-          return command === 'yarn'
+        spawnSyncMock.mockImplementation((command) =>
+          command === 'yarn'
             ? {
                 // Yarn is ok
                 status: 0,
@@ -31,8 +31,8 @@ describe('JsPackageManagerFactory', () => {
                 // NPM is ok
                 status: 0,
                 output: '6.5.12',
-              };
-        });
+              }
+        );
 
         // There is no yarn.lock
         findUpSyncMock.mockImplementation((file) => (file === 'yarn.lock' ? undefined : ''));
@@ -43,8 +43,8 @@ describe('JsPackageManagerFactory', () => {
 
     describe('return a Yarn 1 proxy', () => {
       it('when Yarn command is ok, Yarn version is <2, NPM is ko', () => {
-        spawnSyncMock.mockImplementation((command) => {
-          return command === 'yarn'
+        spawnSyncMock.mockImplementation((command) =>
+          command === 'yarn'
             ? {
                 // Yarn is ok
                 status: 0,
@@ -53,8 +53,8 @@ describe('JsPackageManagerFactory', () => {
             : {
                 // NPM is ko
                 status: 1,
-              };
-        });
+              }
+        );
 
         // there is no
         findUpSyncMock.mockReturnValue(undefined);
@@ -63,8 +63,8 @@ describe('JsPackageManagerFactory', () => {
       });
 
       it('when Yarn command is ok, Yarn version is <2, NPM is ok, there is a `yarn.lock` file', () => {
-        spawnSyncMock.mockImplementation((command) => {
-          return command === 'yarn'
+        spawnSyncMock.mockImplementation((command) =>
+          command === 'yarn'
             ? {
                 // Yarn is ok
                 status: 0,
@@ -74,8 +74,8 @@ describe('JsPackageManagerFactory', () => {
                 // NPM is ok
                 status: 0,
                 output: '6.5.12',
-              };
-        });
+              }
+        );
 
         // There is a yarn.lock
         findUpSyncMock.mockImplementation((file) =>
@@ -88,8 +88,8 @@ describe('JsPackageManagerFactory', () => {
 
     describe('return a Yarn 2 proxy', () => {
       it('when Yarn command is ok, Yarn version is >=2, NPM is ko', () => {
-        spawnSyncMock.mockImplementation((command) => {
-          return command === 'yarn'
+        spawnSyncMock.mockImplementation((command) =>
+          command === 'yarn'
             ? {
                 // Yarn is ok
                 status: 0,
@@ -98,15 +98,15 @@ describe('JsPackageManagerFactory', () => {
             : {
                 // NPM is ko
                 status: 1,
-              };
-        });
+              }
+        );
 
         expect(JsPackageManagerFactory.getPackageManager(false)).toBeInstanceOf(Yarn2Proxy);
       });
 
       it('when Yarn command is ok, Yarn version is >=2, NPM is ok, there is a `yarn.lock` file', () => {
-        spawnSyncMock.mockImplementation((command) => {
-          return command === 'yarn'
+        spawnSyncMock.mockImplementation((command) =>
+          command === 'yarn'
             ? {
                 // Yarn is ok
                 status: 0,
@@ -116,8 +116,8 @@ describe('JsPackageManagerFactory', () => {
                 // NPM is ok
                 status: 0,
                 output: '6.5.12',
-              };
-        });
+              }
+        );
 
         // There is a yarn.lock
         findUpSyncMock.mockImplementation((file) =>

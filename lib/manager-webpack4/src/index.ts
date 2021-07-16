@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 import webpack, { Stats, Configuration, ProgressPlugin } from 'webpack';
 import webpackDevMiddleware from 'webpack-dev-middleware';
 import { logger } from '@storybook/node-logger';

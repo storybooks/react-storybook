@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/rules-of-hooks, react/display-name */
 import React from 'react';
 import { addons, types } from '@storybook/addons';
 import { AddonPanel } from '@storybook/components';

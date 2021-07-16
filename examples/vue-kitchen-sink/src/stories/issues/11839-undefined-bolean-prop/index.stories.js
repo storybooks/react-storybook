@@ -5,11 +5,9 @@ export default {
   component: Comp,
 };
 
-export const Primary = (args, { argTypes }) => {
-  return {
-    props: Object.keys(argTypes),
-    components: { Comp },
-    // template: '<Comp />', // this will log out `false`
-    template: '<Comp v-bind="$props" />', // this will log out `undefined`
-  };
-};
+export const Primary = (args, { argTypes }) => ({
+  props: Object.keys(argTypes),
+  components: { Comp },
+  // template: '<Comp />', // this will log out `false`
+  template: '<Comp v-bind="$props" />', // this will log out `undefined`
+});

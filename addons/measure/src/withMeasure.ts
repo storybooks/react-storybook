@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 /* eslint-env browser */
 import { StoryFn as StoryFunction, StoryContext, useEffect } from '@storybook/addons';
 import { drawSelectedElement } from './box-model/visualizer';

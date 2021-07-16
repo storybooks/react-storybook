@@ -37,13 +37,12 @@ const map = (arg: unknown, type: ValueType): any => {
   }
 };
 
-export const mapArgsToTypes = (args: Args, argTypes: ArgTypes): Args => {
-  return Object.entries(args).reduce((acc, [key, value]) => {
+export const mapArgsToTypes = (args: Args, argTypes: ArgTypes): Args =>
+  Object.entries(args).reduce((acc, [key, value]) => {
     if (!argTypes[key]) return acc;
     const mapped = map(value, argTypes[key].type);
     return mapped === INCOMPATIBLE ? acc : Object.assign(acc, { [key]: mapped });
   }, {});
-};
 
 export const combineArgs = (value: any, update: any): Args => {
   if (Array.isArray(value) && Array.isArray(update)) {
@@ -69,8 +68,8 @@ export const combineArgs = (value: any, update: any): Args => {
   }, {} as any);
 };
 
-export const validateOptions = (args: Args, argTypes: ArgTypes): Args => {
-  return Object.entries(argTypes).reduce((acc, [key, { options }]) => {
+export const validateOptions = (args: Args, argTypes: ArgTypes): Args =>
+  Object.entries(argTypes).reduce((acc, [key, { options }]) => {
     if (!options) {
       acc[key] = args[key];
       return acc;
@@ -113,4 +112,3 @@ export const validateOptions = (args: Args, argTypes: ArgTypes): Args => {
 
     return acc;
   }, {} as Args);
-};

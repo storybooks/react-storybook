@@ -22,13 +22,11 @@ jest.mock('global', () => ({
   },
 }));
 
-const mockChannel = () => {
-  return {
-    emit: jest.fn(),
-    on: jest.fn(),
-    once: jest.fn(),
-  };
-};
+const mockChannel = () => ({
+  emit: jest.fn(),
+  on: jest.fn(),
+  once: jest.fn(),
+});
 const mockAddons = (addons as unknown) as jest.Mocked<typeof addons>;
 
 describe('LinkTo', () => {

@@ -1,7 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`react component properties 9493-ts-display-name 1`] = `
-"import styled from '@emotion/styled';
+"/* eslint-disable @typescript-eslint/ban-types */
+import styled from '@emotion/styled';
 import React from 'react';
 const Wrapper = styled('div')(({
   theme

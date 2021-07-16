@@ -29,10 +29,10 @@ const hasMatchInAncestry = (element: any, selector: any): boolean => {
   return hasMatchInAncestry(parent, selector);
 };
 
-const createHandlers = (actionsFn: (...arg: any[]) => object, ...handles: any[]) => {
+const createHandlers = (actionsFn: (...arg: any[]) => Record<string, any>, ...handles: any[]) => {
   const actionsObject = actionsFn(...handles);
   return Object.entries(actionsObject).map(([key, action]) => {
-    const [_, eventName, selector] = key.match(delegateEventSplitter);
+    const [, eventName, selector] = key.match(delegateEventSplitter);
     return {
       eventName,
       handler: (e: { target: any }) => {
@@ -56,7 +56,7 @@ const applyEventHandlers = deprecate(
           );
       }
       return undefined;
-    }, [root, actionsFn, handles]);
+    }, [actionsFn, handles]);
   },
   dedent`
     withActions(options) is deprecated, please configure addon-actions using the addParameter api:

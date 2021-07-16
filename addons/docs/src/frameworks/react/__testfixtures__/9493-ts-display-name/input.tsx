@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-types */
 import styled from '@emotion/styled';
 import React from 'react';
 

@@ -79,7 +79,7 @@ export async function useStoriesJson(router: any, options: Options) {
         return res.send(json);
       }
       // eslint-disable-next-line no-await-in-loop
-      await new Promise((r: any) => setTimeout(r, step));
+      await new Promise((r) => setTimeout(r, step));
     }
     return res.status(408).send('stories.json timeout');
   });

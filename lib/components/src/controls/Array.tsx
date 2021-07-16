@@ -3,14 +3,13 @@ import { styled } from '@storybook/theming';
 
 import { Form } from '../form';
 import { getControlId } from './helpers';
-import { ControlProps, ArrayValue, ArrayConfig } from './types';
+import { ControlProps, ArrayValue, ArrayConfig } from '../types';
 
 const parse = (value: string, separator: string): ArrayValue =>
   !value || value.trim() === '' ? [] : value.split(separator);
 
-const format = (value: ArrayValue | undefined, separator: string) => {
-  return value && Array.isArray(value) ? value.join(separator) : '';
-};
+const format = (value: ArrayValue | undefined, separator: string) =>
+  value && Array.isArray(value) ? value.join(separator) : '';
 
 const Wrapper = styled.label({
   display: 'flex',
@@ -30,14 +29,14 @@ export const ArrayControl: FC<ArrayProps> = ({
       const { value: newVal } = e.target;
       onChange(parse(newVal, separator));
     },
-    [onChange]
+    [onChange, separator]
   );
 
   const [forceVisible, setForceVisible] = useState(false);
   const onForceVisible = useCallback(() => {
     onChange([]);
     setForceVisible(true);
-  }, [setForceVisible]);
+  }, [onChange]);
   if (value === undefined) {
     return <Form.Button onClick={onForceVisible}>Set array</Form.Button>;
   }

@@ -14,14 +14,11 @@ const nodeModulesThatNeedToBeParsedBecauseTheyExposeES6 = [
 export const es6Transpiler: () => RuleSetRule = () => {
   // TODO: generate regexp using are-you-es5
 
-  const include = (input: string) => {
-    return (
-      !!nodeModulesThatNeedToBeParsedBecauseTheyExposeES6.find((p) => input.includes(p)) ||
-      !!input.match(
-        /[\\/]node_modules[\\/](@storybook\/node-logger|are-you-es5|better-opn|boxen|chalk|commander|find-cache-dir|find-up|fs-extra|json5|node-fetch|pkg-dir|prettier|resolve-from|semver|highlight\.js|acorn-jsx)/
-      )
+  const include = (input: string) =>
+    !!nodeModulesThatNeedToBeParsedBecauseTheyExposeES6.find((p) => input.includes(p)) ||
+    !!input.match(
+      /[\\/]node_modules[\\/](@storybook\/node-logger|are-you-es5|better-opn|boxen|chalk|commander|find-cache-dir|find-up|fs-extra|json5|node-fetch|pkg-dir|prettier|resolve-from|semver|highlight\.js|acorn-jsx)/
     );
-  };
   return {
     test: /\.js$/,
     use: [

@@ -7,7 +7,7 @@ import {
   StoriesHash,
 } from '../lib/stories';
 
-import { ModuleFn } from '../index';
+import type { ModuleFn } from '../index';
 
 const { location, fetch } = global;
 
@@ -77,15 +77,13 @@ export const getSourceType = (source: string, refId: string) => {
   return [null, null];
 };
 
-export const defaultStoryMapper: StoryMapper = (b, a) => {
-  return { ...a, kind: a.kind.replace('|', '/') };
-};
+export const defaultStoryMapper: StoryMapper = (b, a) => ({ ...a, kind: a.kind.replace('|', '/') });
 
-const addRefIds = (input: StoriesHash, ref: ComposedRef): StoriesHash => {
-  return Object.entries(input).reduce((acc, [id, item]) => {
-    return { ...acc, [id]: { ...item, refId: ref.id } };
-  }, {} as StoriesHash);
-};
+const addRefIds = (input: StoriesHash, ref: ComposedRef): StoriesHash =>
+  Object.entries(input).reduce(
+    (acc, [id, item]) => ({ ...acc, [id]: { ...item, refId: ref.id } }),
+    {} as StoriesHash
+  );
 
 const handle = async (request: Response | false): Promise<SetRefData> => {
   if (request) {
@@ -103,9 +101,10 @@ const map = (
 ): StoriesRaw => {
   const { storyMapper } = options;
   if (storyMapper) {
-    return Object.entries(input).reduce((acc, [id, item]) => {
-      return { ...acc, [id]: storyMapper(ref, item) };
-    }, {} as StoriesRaw);
+    return Object.entries(input).reduce(
+      (acc, [id, item]) => ({ ...acc, [id]: storyMapper(ref, item) }),
+      {} as StoriesRaw
+    );
   }
   return input;
 };

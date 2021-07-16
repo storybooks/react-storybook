@@ -1,3 +1,4 @@
+/* eslint-disable react/display-name */
 import type { Group, Story, StoriesHash } from '@storybook/api';
 import { isRoot, isStory } from '@storybook/api';
 import { styled } from '@storybook/theming';
@@ -286,61 +287,70 @@ export const Tree = React.memo<{
     // displayed at the top of the tree, before any root items.
     // Also create a map of expandable descendants for each root/orphan item, which is needed later.
     // Doing that here is a performance enhancement, as it avoids traversing the tree again later.
-    const { orphansFirst, expandableDescendants } = useMemo(() => {
-      return orphanIds.concat(rootIds).reduce(
-        (acc, nodeId) => {
-          const descendantIds = getDescendantIds(data, nodeId, false);
-          acc.orphansFirst.push(nodeId, ...descendantIds);
-          acc.expandableDescendants[nodeId] = descendantIds.filter((d) => !data[d].isLeaf);
-          return acc;
-        },
-        { orphansFirst: [] as string[], expandableDescendants: {} as Record<string, string[]> }
-      );
-    }, [data, rootIds, orphanIds]);
+    const { orphansFirst, expandableDescendants } = useMemo(
+      () =>
+        orphanIds.concat(rootIds).reduce(
+          (acc, nodeId) => {
+            const descendantIds = getDescendantIds(data, nodeId, false);
+            acc.orphansFirst.push(nodeId, ...descendantIds);
+            acc.expandableDescendants[nodeId] = descendantIds.filter((d) => !data[d].isLeaf);
+            return acc;
+          },
+          { orphansFirst: [] as string[], expandableDescendants: {} as Record<string, string[]> }
+        ),
+      [data, rootIds, orphanIds]
+    );
 
     // Create a list of component IDs which have exactly one story, which name exactly matches the component name.
-    const singleStoryComponentIds = useMemo(() => {
-      return orphansFirst.filter((nodeId) => {
-        const { children = [], isComponent, isLeaf, name } = data[nodeId];
-        return (
-          !isLeaf &&
-          isComponent &&
-          children.length === 1 &&
-          isStory(data[children[0]]) &&
-          data[children[0]].name === name
-        );
-      });
-    }, [data, orphansFirst]);
+    const singleStoryComponentIds = useMemo(
+      () =>
+        orphansFirst.filter((nodeId) => {
+          const { children = [], isComponent, isLeaf, name } = data[nodeId];
+          return (
+            !isLeaf &&
+            isComponent &&
+            children.length === 1 &&
+            isStory(data[children[0]]) &&
+            data[children[0]].name === name
+          );
+        }),
+      [data, orphansFirst]
+    );
 
     // Omit single-story components from the list of nodes.
-    const collapsedItems = useMemo(() => {
-      return orphansFirst.filter((id) => !singleStoryComponentIds.includes(id));
-    }, [orphanIds, orphansFirst, singleStoryComponentIds]);
+    const collapsedItems = useMemo(
+      () => orphansFirst.filter((id) => !singleStoryComponentIds.includes(id)),
+      [orphansFirst, singleStoryComponentIds]
+    );
 
     // Rewrite the dataset to place the child story in place of the component.
-    const collapsedData = useMemo(() => {
-      return singleStoryComponentIds.reduce(
-        (acc, id) => {
-          const { children, parent } = data[id] as Group;
-          const [childId] = children;
-          if (parent) {
-            const siblings = [...data[parent].children];
-            siblings[siblings.indexOf(id)] = childId;
-            acc[parent] = { ...data[parent], children: siblings };
-          }
-          acc[childId] = { ...data[childId], parent, depth: data[childId].depth - 1 } as Story;
-          return acc;
-        },
-        { ...data }
-      );
-    }, [data]);
+    const collapsedData = useMemo(
+      () =>
+        singleStoryComponentIds.reduce(
+          (acc, id) => {
+            const { children, parent } = data[id] as Group;
+            const [childId] = children;
+            if (parent) {
+              const siblings = [...data[parent].children];
+              siblings[siblings.indexOf(id)] = childId;
+              acc[parent] = { ...data[parent], children: siblings };
+            }
+            acc[childId] = { ...data[childId], parent, depth: data[childId].depth - 1 } as Story;
+            return acc;
+          },
+          { ...data }
+        ),
+      [data, singleStoryComponentIds]
+    );
 
-    const ancestry = useMemo(() => {
-      return collapsedItems.reduce(
-        (acc, id) => Object.assign(acc, { [id]: getAncestorIds(collapsedData, id) }),
-        {} as { [key: string]: string[] }
-      );
-    }, [collapsedItems, collapsedData]);
+    const ancestry = useMemo(
+      () =>
+        collapsedItems.reduce(
+          (acc, id) => Object.assign(acc, { [id]: getAncestorIds(collapsedData, id) }),
+          {} as { [key: string]: string[] }
+        ),
+      [collapsedItems, collapsedData]
+    );
 
     // Track expanded nodes, keep it in sync with props and enable keyboard shortcuts.
     const [expanded, setExpanded] = useExpanded({

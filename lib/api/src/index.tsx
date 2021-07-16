@@ -10,7 +10,6 @@ import React, {
   useMemo,
   useRef,
 } from 'react';
-import mergeWith from 'lodash/mergeWith';
 
 import {
   STORY_CHANGED,
@@ -40,6 +39,7 @@ import * as shortcuts from './modules/shortcuts';
 import * as url from './modules/url';
 import * as version from './modules/versions';
 import * as globals from './modules/globals';
+import { combineParameters } from './lib/combineParameters';
 
 const { ActiveTabs } = layout;
 
@@ -126,15 +126,6 @@ export interface ArgTypes {
 export interface Parameters {
   [key: string]: any;
 }
-
-// This is duplicated from @storybook/client-api for the reasons mentioned in lib-addons/types.js
-export const combineParameters = (...parameterSets: Parameters[]) =>
-  mergeWith({}, ...parameterSets, (objValue: any, srcValue: any) => {
-    // Treat arrays as scalars:
-    if (Array.isArray(srcValue)) return srcValue;
-
-    return undefined;
-  });
 
 export type ModuleFn = (m: ModuleArgs) => Module;
 
@@ -308,10 +299,13 @@ function ManagerConsumer<P = Combo>({
 
   const data = filterer.current(c);
 
-  const l = useMemo(() => {
-    return [...Object.entries(data).reduce((acc, keyval) => acc.concat(keyval), [])];
-  }, [c.state]);
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const l = useMemo(
+    () => [...Object.entries(data).reduce((acc, keyval) => acc.concat(keyval), [])],
+    [data]
+  );
 
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   return useMemo(() => {
     const Child = renderer.current as FunctionComponent<P>;
 
@@ -467,3 +461,5 @@ export function useArgTypes(): ArgTypes {
 export function useGlobalTypes(): ArgTypes {
   return useParameter<ArgTypes>('globalTypes', {});
 }
+
+export { combineParameters };

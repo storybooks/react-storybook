@@ -5,7 +5,7 @@ import React from 'react';
 // @ts-ignore
 import HOC from './HOC.svelte';
 
-export const prepareForInline = (storyFn: StoryFn) => {
+const Prepare = (storyFn: StoryFn) => {
   const el = React.useRef(null);
   React.useEffect(() => {
     const root = new HOC({
@@ -19,3 +19,5 @@ export const prepareForInline = (storyFn: StoryFn) => {
 
   return React.createElement('div', { ref: el });
 };
+
+export { Prepare as prepareForInline };

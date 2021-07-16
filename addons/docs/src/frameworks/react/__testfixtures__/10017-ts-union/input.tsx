@@ -5,8 +5,6 @@ interface AvatarProps {
   icon: React.ReactNode | string;
 }
 
-const Avatar = ({ icon }: AvatarProps) => {
-  return <div className="hello">Hello Component {icon}</div>;
-};
+const Avatar = ({ icon }: AvatarProps) => <div className="hello">Hello Component {icon}</div>;
 
 export const component = Avatar;

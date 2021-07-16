@@ -28,9 +28,7 @@ describe('Start Storybook Builder', () => {
 
     architectHost.addBuilder(
       '@angular-devkit/build-angular:browser',
-      createBuilder(() => {
-        return { success: true };
-      })
+      createBuilder(() => ({ success: true }))
     );
     architectHost.addTarget(
       { project: 'angular-cli', target: 'build-2' },

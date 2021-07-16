@@ -7,8 +7,6 @@ export default {
   component: Welcome,
 };
 
-export const welcome = () => {
-  return {
-    render: (h) => h(Welcome, { listeners: { buttonRequested: linkTo('Button') } }),
-  };
-};
+export const welcome = () => ({
+  render: (h) => h(Welcome, { listeners: { buttonRequested: linkTo('Button') } }),
+});

@@ -1,4 +1,3 @@
-/* eslint-disable no-useless-constructor */
 // We could use NgComponentOutlet here but there's currently no easy way
 // to provide @Inputs and subscribe to @Outputs, see
 // https://github.com/angular/angular/issues/15360

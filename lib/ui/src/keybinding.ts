@@ -28,7 +28,6 @@ export const matchesModifiers = (modifiers: Modifiers | false, event: KeyboardEv
   return true;
 };
 
-export const matchesKeyCode = (code: keyof typeof codeToKeyMap, event: KeyboardEvent) => {
+export const matchesKeyCode = (code: keyof typeof codeToKeyMap, event: KeyboardEvent) =>
   // event.code is preferable but not supported in IE
-  return event.code ? event.code === code : event.key === codeToKeyMap[code];
-};
+  event.code ? event.code === code : event.key === codeToKeyMap[code];

@@ -1,7 +1,7 @@
 import path from 'path';
 import fs from 'fs';
 import { sync as spawnSync } from 'cross-spawn';
-import { commandLog } from './helpers';
+import { commandLog } from './helpers/commandLog';
 import { JsPackageManager, JsPackageManagerFactory, PackageJson } from './js-package-manager';
 
 const logger = console;

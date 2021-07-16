@@ -17,7 +17,7 @@ class NotificationClearer extends Component<{ api: API; notificationId: string }
   }
 }
 
-const AboutPage: FunctionComponent<{}> = () => {
+const AboutPage: FunctionComponent = () => {
   const api = useStorybookApi();
 
   return (

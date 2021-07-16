@@ -4,11 +4,9 @@ import type { Options } from '@storybook/core-common';
 import * as preset from './framework-preset-react';
 
 const mockApply = jest.fn();
-jest.mock('@pmmmwh/react-refresh-webpack-plugin', () => {
-  return jest.fn().mockImplementation(() => {
-    return { apply: mockApply };
-  });
-});
+jest.mock('@pmmmwh/react-refresh-webpack-plugin', () =>
+  jest.fn().mockImplementation(() => ({ apply: mockApply }))
+);
 
 describe('framework-preset-react', () => {
   const reactRefreshPath = require.resolve('react-refresh/babel');

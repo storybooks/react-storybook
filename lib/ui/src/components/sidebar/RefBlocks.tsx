@@ -116,21 +116,28 @@ export const AuthBlock: FunctionComponent<{ loginUrl: string; id: string }> = ({
     globalWindow.document.location.reload();
   }, []);
 
-  const open = useCallback((e) => {
-    e.preventDefault();
-    const childWindow = globalWindow.open(loginUrl, `storybook_auth_${id}`, 'resizable,scrollbars');
+  const open = useCallback(
+    (e) => {
+      e.preventDefault();
+      const childWindow = globalWindow.open(
+        loginUrl,
+        `storybook_auth_${id}`,
+        'resizable,scrollbars'
+      );
 
-    // poll for window to close
-    const timer = setInterval(() => {
-      if (!childWindow) {
-        logger.error('unable to access loginUrl window');
-        clearInterval(timer);
-      } else if (childWindow.closed) {
-        clearInterval(timer);
-        setAuthAttempted(true);
-      }
-    }, 1000);
-  }, []);
+      // poll for window to close
+      const timer = setInterval(() => {
+        if (!childWindow) {
+          logger.error('unable to access loginUrl window');
+          clearInterval(timer);
+        } else if (childWindow.closed) {
+          clearInterval(timer);
+          setAuthAttempted(true);
+        }
+      }, 1000);
+    },
+    [id, loginUrl]
+  );
 
   return (
     <Contained>

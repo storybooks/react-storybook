@@ -1,4 +1,3 @@
-/* eslint-disable no-useless-constructor */
 import { Directive, ElementRef, AfterViewInit, Input } from '@angular/core';
 
 /**

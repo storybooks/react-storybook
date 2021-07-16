@@ -5,7 +5,7 @@ import { styled } from '@storybook/theming';
 
 import { getControlId } from './helpers';
 import { Form } from '../form';
-import { ControlProps, BooleanValue, BooleanConfig } from './types';
+import { ControlProps, BooleanValue, BooleanConfig } from '../types';
 
 const Label = styled.label(({ theme }) => ({
   lineHeight: '18px',

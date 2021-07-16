@@ -1,3 +1,4 @@
+/* eslint-disable react/display-name */
 import { styled } from '@storybook/theming';
 import { Icons } from '@storybook/components';
 import global from 'global';
@@ -266,6 +267,7 @@ export const SearchResults: FunctionComponent<{
           const key = `${item.refId}::${item.id}`;
           return (
             <Result
+              key={key}
               {...result}
               {...getItemProps({ key, index, item: result })}
               isHighlighted={highlightedIndex === index}

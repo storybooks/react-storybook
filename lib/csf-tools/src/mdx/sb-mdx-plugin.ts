@@ -346,7 +346,7 @@ componentMeta.parameters.docs = {
 // Use this rather than JSON.stringify because `Meta`'s attributes
 // are already valid code strings, so we want to insert them raw
 // rather than add an extra set of quotes
-function stringifyMeta(meta: object) {
+function stringifyMeta(meta: Record<string, string>) {
   let result = '{ ';
   Object.entries(meta).forEach(([key, val]) => {
     if (val) {

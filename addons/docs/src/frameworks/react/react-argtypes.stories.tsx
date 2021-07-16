@@ -1,3 +1,4 @@
+/* eslint-disable global-require, import/no-dynamic-require */
 import React, { useState } from 'react';
 import mapValues from 'lodash/mapValues';
 import { storiesOf, StoryContext } from '@storybook/react';
@@ -23,7 +24,7 @@ const ArgsStory = ({ component }: any) => {
   return (
     <>
       <p>
-        <b>NOTE:</b> these stories are to help visualise the snapshot tests in{' '}
+        <b>NOTE:</b> these stories are to help visualize the snapshot tests in{' '}
         <code>./react-properties.test.js</code>.
       </p>
       <ArgsTable rows={rows} args={args} updateArgs={(val) => setArgs({ ...args, ...val })} />
@@ -67,18 +68,20 @@ const typescriptFixtures = [
 
 const typescriptStories = storiesOf('ArgTypes/TypeScript', module);
 typescriptFixtures.forEach((fixture) => {
-  // eslint-disable-next-line import/no-dynamic-require, global-require, no-shadow
-  const { Component } = require(`../../lib/convert/__testfixtures__/typescript/${fixture}`);
-  typescriptStories.add(fixture, () => <ArgsStory component={Component} />);
+  const {
+    Component: FixtureComponent,
+  } = require(`../../lib/convert/__testfixtures__/typescript/${fixture}`);
+  typescriptStories.add(fixture, () => <ArgsStory component={FixtureComponent} />);
 });
 
 const proptypesFixtures = ['arrays', 'enums', 'misc', 'objects', 'react', 'scalars'];
 
 const proptypesStories = storiesOf('ArgTypes/PropTypes', module);
 proptypesFixtures.forEach((fixture) => {
-  // eslint-disable-next-line import/no-dynamic-require, global-require, no-shadow
-  const { Component } = require(`../../lib/convert/__testfixtures__/proptypes/${fixture}`);
-  proptypesStories.add(fixture, () => <ArgsStory component={Component} />);
+  const {
+    Component: FixtureComponent,
+  } = require(`../../lib/convert/__testfixtures__/proptypes/${fixture}`);
+  proptypesStories.add(fixture, () => <ArgsStory component={FixtureComponent} />);
 });
 
 const issuesFixtures = [
@@ -115,7 +118,6 @@ const issuesFixtures = [
 
 const issuesStories = storiesOf('ArgTypes/Issues', module);
 issuesFixtures.forEach((fixture) => {
-  // eslint-disable-next-line import/no-dynamic-require, global-require
   const { component } = require(`./__testfixtures__/${fixture}/input`);
 
   issuesStories.add(fixture, () => <ArgsStory component={component} />, {

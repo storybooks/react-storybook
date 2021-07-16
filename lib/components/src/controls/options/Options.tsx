@@ -5,7 +5,7 @@ import { once } from '@storybook/client-logger';
 import { CheckboxControl } from './Checkbox';
 import { RadioControl } from './Radio';
 import { SelectControl } from './Select';
-import { ControlProps, OptionsSelection, OptionsConfig, Options } from '../types';
+import { ControlProps, OptionsSelection, OptionsConfig, Options } from '../../types';
 
 /**
  * Options can accept `options` in two formats:

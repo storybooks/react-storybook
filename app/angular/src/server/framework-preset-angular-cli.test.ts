@@ -549,8 +549,8 @@ describe('framework-preset-angular-cli', () => {
 
 const newWebpackConfiguration = (
   transformer: (c: Configuration) => Configuration = (c) => c
-): Configuration => {
-  return transformer({
+): Configuration =>
+  transformer({
     name: 'preview',
     mode: 'development',
     bail: false,
@@ -617,4 +617,3 @@ const newWebpackConfiguration = (
     },
     performance: { hints: false },
   });
-};

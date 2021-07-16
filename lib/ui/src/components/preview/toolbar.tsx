@@ -1,3 +1,4 @@
+/* eslint-disable react/display-name */
 import React, { Fragment, useMemo, FunctionComponent } from 'react';
 
 import { styled } from '@storybook/theming';
@@ -117,20 +118,18 @@ const useTools = (
   const toolsFromConfig = useMemo(() => getTools(getElements), [getElements]);
   const toolsExtraFromConfig = useMemo(() => getToolsExtra(getElements), [getElements]);
 
-  const tools = useMemo(() => [...defaultTools, ...toolsFromConfig], [
-    defaultTools,
-    toolsFromConfig,
-  ]);
+  const tools = useMemo(() => [...defaultTools, ...toolsFromConfig], [toolsFromConfig]);
   const toolsExtra = useMemo(() => [...defaultToolsExtra, ...toolsExtraFromConfig], [
-    defaultToolsExtra,
     toolsExtraFromConfig,
   ]);
 
-  return useMemo(() => {
-    return story && story.parameters
-      ? filterTools(tools, toolsExtra, tabs, { viewMode, story, location, path })
-      : { left: tools, right: toolsExtra };
-  }, [viewMode, story, location, path, tools, toolsExtra, tabs]);
+  return useMemo(
+    () =>
+      story && story.parameters
+        ? filterTools(tools, toolsExtra, tabs, { viewMode, story, location, path })
+        : { left: tools, right: toolsExtra },
+    [viewMode, story, location, path, tools, toolsExtra, tabs]
+  );
 };
 
 export interface ToolData {

@@ -6,7 +6,7 @@ import {
   Builder,
   CoreBuilder,
 } from '../project_types';
-import { getBabelDependencies, copyComponents } from '../helpers';
+import { getBabelDependencies, copyComponents } from '../helpers/helpers';
 import { configure } from './configure';
 import { getPackageDetails, JsPackageManager } from '../js-package-manager';
 

@@ -1,4 +1,4 @@
-import React, { FC, Context, createContext, useEffect, useState } from 'react';
+import React, { FC, Context, createContext, useEffect, useState, useCallback } from 'react';
 import deepEqual from 'fast-deep-equal';
 import { addons } from '@storybook/addons';
 import { StoryId } from '@storybook/api';
@@ -14,17 +14,20 @@ export interface SourceContextProps {
 
 export const SourceContext: Context<SourceContextProps> = createContext({ sources: {} });
 
-export const SourceContainer: FC<{}> = ({ children }) => {
+export const SourceContainer: FC = ({ children }) => {
   const [sources, setSources] = useState<StorySources>({});
   const channel = addons.getChannel();
 
   const sourcesRef = React.useRef<StorySources>();
-  const handleSnippetRendered = (id: StoryId, newItem: SourceItem) => {
-    if (newItem !== sources[id]) {
-      const newSources = { ...sourcesRef.current, [id]: newItem };
-      sourcesRef.current = newSources;
-    }
-  };
+  const handleSnippetRendered = useCallback(
+    (id: StoryId, newItem: SourceItem) => {
+      if (newItem !== sources[id]) {
+        const newSources = { ...sourcesRef.current, [id]: newItem };
+        sourcesRef.current = newSources;
+      }
+    },
+    [sources]
+  );
 
   // Bind this early (instead of inside `useEffect`), because the `SNIPPET_RENDERED` event
   // is triggered *during* the rendering process, not after. We have to use the ref
@@ -38,7 +41,7 @@ export const SourceContainer: FC<{}> = ({ children }) => {
     }
 
     return () => channel.off(SNIPPET_RENDERED, handleSnippetRendered);
-  });
+  }, [sources, channel, handleSnippetRendered]);
 
   return <SourceContext.Provider value={{ sources }}>{children}</SourceContext.Provider>;
 };

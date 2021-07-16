@@ -13,8 +13,8 @@ describe('Button Component', () => {
     component = new Button({ target });
   });
 
-  it('should render `text` property', () => {
-    return new Promise((done) => {
+  it('should render `text` property', () =>
+    new Promise((done) => {
       const text = 'Hello world';
       const expected = `Round corners  ${text}`;
 
@@ -27,6 +27,5 @@ describe('Button Component', () => {
       });
 
       component.$set({ text });
-    });
-  });
+    }));
 });

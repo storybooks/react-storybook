@@ -1,4 +1,3 @@
-/* eslint-disable react/destructuring-assignment */
 import React, { Fragment } from 'react';
 import { ActiveTabs } from '@storybook/api';
 import { DecoratorFn } from '@storybook/react';

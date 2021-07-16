@@ -2,7 +2,7 @@ import * as path from 'path';
 import * as fs from 'fs';
 import { pathExists } from 'fs-extra';
 
-import { readFileAsJson, writeFileAsJson } from '../../helpers';
+import { readFileAsJson, writeFileAsJson } from '../../helpers/helpers';
 
 type TsConfig = {
   extends: string;

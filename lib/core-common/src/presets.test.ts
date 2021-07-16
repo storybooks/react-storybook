@@ -1,3 +1,4 @@
+// eslint-disable-next-line @typescript-eslint/ban-types
 function wrapPreset(basePresets: any): { babel: Function; webpack: Function } {
   return {
     babel: async (config: any, args: any) => basePresets.apply('babel', config, args),

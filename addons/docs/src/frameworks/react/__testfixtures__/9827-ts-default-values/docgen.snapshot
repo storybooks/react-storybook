@@ -5,11 +5,9 @@ exports[`react component properties 9827-ts-default-values 1`] = `
 
 const Hello = ({
   title
-}) => {
-  return /*#__PURE__*/React.createElement(\\"div\\", {
-    className: \\"hello\\"
-  }, \\"Hello Component \\", title);
-};
+}) => /*#__PURE__*/React.createElement(\\"div\\", {
+  className: \\"hello\\"
+}, \\"Hello Component \\", title);
 
 Hello.defaultProps = {
   title: 'this is the default :)'

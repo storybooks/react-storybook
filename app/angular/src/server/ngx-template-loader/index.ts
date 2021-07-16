@@ -12,8 +12,8 @@ const templateUrlRegex = /templateUrl\s*:(\s*['"`](.*?)['"`]\s*([,}]))/gm;
 const stylesRegex = /styleUrls *:(\s*\[[^\]]*?\])/g;
 const stringRegex = /(['`"])((?:[^\\]\\\1|.)*?)\1/g;
 
-const replaceStringsWithRequires = (string: string) => {
-  return string.replace(stringRegex, (match, quote, url) => {
+const replaceStringsWithRequires = (string: string) =>
+  string.replace(stringRegex, (match, quote, url) => {
     let newUrl = url;
     if (url.charAt(0) !== '.') {
       newUrl = `./${url}`;
@@ -24,25 +24,28 @@ const replaceStringsWithRequires = (string: string) => {
     // "Expected 'styles' to be an array of strings"
     return `${requireString}.length ? ${requireString} : ''`;
   });
-};
 
 export default function (source: string) {
   const styleProperty = 'styles';
   const templateProperty = 'template';
 
   return source
-    .replace(templateUrlRegex, (_, templateUrlString: string) => {
-      // replace: templateUrl: './path/to/template.html'
-      // with: template: require('./path/to/template.html')
-      // or: templateUrl: require('./path/to/template.html')
-      // if `keepUrl` query parameter is set to true.
-      return `${templateProperty}:${replaceStringsWithRequires(templateUrlString)}`;
-    })
-    .replace(stylesRegex, (_, styleUrlsString: string) => {
-      // replace: stylesUrl: ['./foo.css', "./baz.css", "./index.component.css"]
-      // with: styles: [require('./foo.css'), require("./baz.css"), require("./index.component.css")]
-      // or: styleUrls: [require('./foo.css'), require("./baz.css"), require("./index.component.css")]
-      // if `keepUrl` query parameter is set to true.
-      return `${styleProperty}:${replaceStringsWithRequires(styleUrlsString)}`;
-    });
+    .replace(
+      templateUrlRegex,
+      (_, templateUrlString: string) =>
+        // replace: templateUrl: './path/to/template.html'
+        // with: template: require('./path/to/template.html')
+        // or: templateUrl: require('./path/to/template.html')
+        // if `keepUrl` query parameter is set to true.
+        `${templateProperty}:${replaceStringsWithRequires(templateUrlString)}`
+    )
+    .replace(
+      stylesRegex,
+      (_, styleUrlsString: string) =>
+        // replace: stylesUrl: ['./foo.css', "./baz.css", "./index.component.css"]
+        // with: styles: [require('./foo.css'), require("./baz.css"), require("./index.component.css")]
+        // or: styleUrls: [require('./foo.css'), require("./baz.css"), require("./index.component.css")]
+        // if `keepUrl` query parameter is set to true.
+        `${styleProperty}:${replaceStringsWithRequires(styleUrlsString)}`
+    );
 }

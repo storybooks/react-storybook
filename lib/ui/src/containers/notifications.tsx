@@ -5,6 +5,7 @@ import { Consumer, Combo, useStorybookApi } from '@storybook/api';
 import NotificationList from '../components/notifications/NotificationList';
 
 export const mapper = ({ state }: Combo) => {
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   const { clearNotification } = useStorybookApi();
   const { notifications } = state;
 

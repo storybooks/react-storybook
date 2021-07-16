@@ -2,7 +2,7 @@ import { sync as spawnSync } from 'cross-spawn';
 import semver from '@storybook/semver';
 import { logger } from '@storybook/node-logger';
 import { JsPackageManagerFactory } from './js-package-manager';
-import { commandLog } from './helpers';
+import { commandLog } from './helpers/commandLog';
 
 type Package = {
   package: string;

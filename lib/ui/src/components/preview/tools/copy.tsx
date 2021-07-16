@@ -1,3 +1,4 @@
+/* eslint-disable react/display-name */
 import global from 'global';
 import React from 'react';
 import copy from 'copy-to-clipboard';

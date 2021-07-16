@@ -52,7 +52,7 @@ export interface QueryLinkProps {
 
 const getBase = () => `${document.location.pathname}?`;
 
-const queryNavigate: NavigateFn = (to: string | number, options?: NavigateOptions<{}>) =>
+const queryNavigate: NavigateFn = (to: string | number, options?: NavigateOptions<unknown>) =>
   typeof to === 'number' ? navigate(to) : navigate(`${getBase()}path=${to}`, options);
 
 // A component that will navigate to a new location/path when clicked

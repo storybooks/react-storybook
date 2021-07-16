@@ -25,9 +25,7 @@ export const previewHead = async (base: any, { configDir, presets }: Options) =>
   return getPreviewHeadTemplate(configDir, interpolations);
 };
 
-export const env = async () => {
-  return loadEnvs({ production: true }).raw;
-};
+export const env = async () => loadEnvs({ production: true }).raw;
 
 export const previewBody = async (base: any, { configDir, presets }: Options) => {
   const interpolations = await presets.apply<Record<string, string>>('env');

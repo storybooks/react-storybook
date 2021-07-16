@@ -4,9 +4,8 @@ export default {
   title: 'EmberOptions/Polyfills',
 };
 
-export const namedBlockExample = () => {
-  return {
-    template: hbs`
+export const namedBlockExample = () => ({
+  template: hbs`
       <NamedBlock
       >
         <:title>This article is awesome!</:title>
@@ -16,5 +15,4 @@ export const namedBlockExample = () => {
         </:body>
       </NamedBlock>
   `,
-  };
-};
+});

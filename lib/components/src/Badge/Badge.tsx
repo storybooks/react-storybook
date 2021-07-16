@@ -66,6 +66,4 @@ export interface BadgeProps {
   status: 'positive' | 'negative' | 'neutral' | 'warning' | 'critical';
 }
 
-export const Badge: FunctionComponent<BadgeProps> = ({ ...props }) => {
-  return <BadgeWrapper {...props} />;
-};
+export const Badge: FunctionComponent<BadgeProps> = ({ ...props }) => <BadgeWrapper {...props} />;

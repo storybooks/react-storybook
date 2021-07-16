@@ -216,6 +216,9 @@ export const useExpanded = ({
     highlightedRef,
     setHighlightedItemId,
     onSelectStoryId,
+    getElementByDataItemId,
+    highlightElement,
+    updateExpanded,
   ]);
 
   return [expanded, updateExpanded];

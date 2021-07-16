@@ -1,8 +1,8 @@
 import { Component } from '../../blocks/types';
-import { ExtractedJsDoc, parseJsDoc } from '../jsdocParser';
-import { PropDef, DocgenInfo, TypeSystem } from './types';
+import { parseJsDoc } from '../jsdocParser';
+import { PropDef, DocgenInfo, TypeSystem, ExtractedJsDoc, PropDefFactory } from './types';
 import { getDocgenSection, isValidDocgenSection, getDocgenDescription } from './utils';
-import { getPropDefFactory, PropDefFactory } from './createPropDef';
+import { getPropDefFactory } from './createPropDef';
 
 export interface ExtractedProp {
   propDef: PropDef;

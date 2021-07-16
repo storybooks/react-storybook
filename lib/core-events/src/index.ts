@@ -1,4 +1,4 @@
-enum events {
+enum Events {
   CHANNEL_CREATED = 'channelCreated',
   // When the preview boots, the first story is chosen via a selection specifier
   STORY_SPECIFIED = 'storySpecified',
@@ -40,7 +40,7 @@ enum events {
 }
 
 // Enables: `import Events from ...`
-export default events;
+export default Events;
 
 // Enables: `import * as Events from ...` or `import { CHANNEL_CREATED } as Events from ...`
 // This is the preferred method
@@ -71,4 +71,4 @@ export const {
   SHARED_STATE_CHANGED,
   SHARED_STATE_SET,
   NAVIGATE_URL,
-} = events;
+} = Events;

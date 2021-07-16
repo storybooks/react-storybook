@@ -1,4 +1,4 @@
-import { OptionsObject } from '../types';
+import { OptionsObject } from '../../types';
 
 export const selectedKey = (value: any, options: OptionsObject) => {
   const entry = options && Object.entries(options).find(([_key, val]) => val === value);

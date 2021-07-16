@@ -5,13 +5,6 @@ Object {
   "entry": Array [
     "ROOT/lib/core-client/dist/esm/globals/polyfills.js",
     "ROOT/lib/core-client/dist/esm/manager/index.js",
-    "ROOT/addons/docs/dist/esm/register.js",
-    "ROOT/addons/controls/dist/esm/register.js",
-    "ROOT/addons/actions/dist/esm/register.js",
-    "ROOT/addons/backgrounds/dist/esm/register.js",
-    "ROOT/addons/toolbars/dist/esm/register.js",
-    "ROOT/addons/measure/dist/esm/register.js",
-    "ROOT/addons/outline/dist/esm/register.js",
   ],
   "keys": Array [
     "name",

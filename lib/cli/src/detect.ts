@@ -10,7 +10,7 @@ import {
   TemplateMatcher,
   unsupportedTemplate,
 } from './project_types';
-import { getBowerJson } from './helpers';
+import { getBowerJson } from './helpers/helpers';
 import { PackageJson, readPackageJson } from './js-package-manager';
 
 const hasDependency = (
@@ -87,9 +87,9 @@ const getFrameworkPreset = (
 };
 
 export function detectFrameworkPreset(packageJson = {}) {
-  const result = [...supportedTemplates, unsupportedTemplate].find((framework) => {
-    return getFrameworkPreset(packageJson, framework) !== null;
-  });
+  const result = [...supportedTemplates, unsupportedTemplate].find(
+    (framework) => getFrameworkPreset(packageJson, framework) !== null
+  );
 
   return result ? result.preset : ProjectType.UNDETECTED;
 }

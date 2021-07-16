@@ -42,27 +42,23 @@ export default {
   ],
 };
 
-export const PassedToStory = ({ globals }) => {
-  return (
-    <div>
-      <h3>Global args:</h3>
-      <pre>{JSON.stringify(globals)}</pre>
-    </div>
-  );
-};
+export const PassedToStory = ({ globals }) => (
+  <div>
+    <h3>Global args:</h3>
+    <pre>{JSON.stringify(globals)}</pre>
+  </div>
+);
 
 PassedToStory.propTypes = {
   globals: PropTypes.shape({}).isRequired,
 };
 
-export const SecondStory = ({ globals }) => {
-  return (
-    <div>
-      <h3>Global args (2):</h3>
-      <pre>{JSON.stringify(globals)}</pre>
-    </div>
-  );
-};
+export const SecondStory = ({ globals }) => (
+  <div>
+    <h3>Global args (2):</h3>
+    <pre>{JSON.stringify(globals)}</pre>
+  </div>
+);
 
 SecondStory.propTypes = {
   globals: PropTypes.shape({}).isRequired,

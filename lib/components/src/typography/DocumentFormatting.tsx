@@ -3,35 +3,35 @@ import { styled, CSSObject } from '@storybook/theming';
 import { withReset, withMargin, headerCommon, codeCommon } from './shared';
 import { StyledSyntaxHighlighter } from '../blocks/Source';
 
-export const H1 = styled.h1<{}>(withReset, headerCommon, ({ theme }) => ({
+export const H1 = styled.h1(withReset, headerCommon, ({ theme }) => ({
   fontSize: `${theme.typography.size.l1}px`,
   fontWeight: theme.typography.weight.black,
 }));
 
-export const H2 = styled.h2<{}>(withReset, headerCommon, ({ theme }) => ({
+export const H2 = styled.h2(withReset, headerCommon, ({ theme }) => ({
   fontSize: `${theme.typography.size.m2}px`,
   paddingBottom: 4,
   borderBottom: `1px solid ${theme.appBorderColor}`,
 }));
 
-export const H3 = styled.h3<{}>(withReset, headerCommon, ({ theme }) => ({
+export const H3 = styled.h3(withReset, headerCommon, ({ theme }) => ({
   fontSize: `${theme.typography.size.m1}px`,
 }));
 
-export const H4 = styled.h4<{}>(withReset, headerCommon, ({ theme }) => ({
+export const H4 = styled.h4(withReset, headerCommon, ({ theme }) => ({
   fontSize: `${theme.typography.size.s3}px`,
 }));
 
-export const H5 = styled.h5<{}>(withReset, headerCommon, ({ theme }) => ({
+export const H5 = styled.h5(withReset, headerCommon, ({ theme }) => ({
   fontSize: `${theme.typography.size.s2}px`,
 }));
 
-export const H6 = styled.h6<{}>(withReset, headerCommon, ({ theme }) => ({
+export const H6 = styled.h6(withReset, headerCommon, ({ theme }) => ({
   fontSize: `${theme.typography.size.s2}px`,
   color: theme.color.dark,
 }));
 
-export const Pre = styled.pre<{}>(withReset, withMargin, ({ theme }) => ({
+export const Pre = styled.pre(withReset, withMargin, ({ theme }) => ({
   // reset
   fontFamily: theme.typography.fonts.mono,
   WebkitFontSmoothing: 'antialiased',
@@ -83,7 +83,7 @@ const Link: FunctionComponent<any> = ({ href: input, children, ...props }) => {
   );
 };
 
-export const A = styled(Link)<{}>(withReset, ({ theme }) => ({
+export const A = styled(Link)(withReset, ({ theme }) => ({
   fontSize: 'inherit',
   lineHeight: '24px',
 
@@ -104,14 +104,14 @@ export const A = styled(Link)<{}>(withReset, ({ theme }) => ({
   },
 }));
 
-export const HR = styled.hr<{}>(({ theme }) => ({
+export const HR = styled.hr(({ theme }) => ({
   border: '0 none',
   borderTop: `1px solid ${theme.appBorderColor}`,
   height: 4,
   padding: 0,
 }));
 
-export const DL = styled.dl<{}>(withReset, {
+export const DL = styled.dl(withReset, {
   ...withMargin,
   padding: 0,
   '& dt': {
@@ -146,7 +146,7 @@ export const DL = styled.dl<{}>(withReset, {
   },
 });
 
-export const Blockquote = styled.blockquote<{}>(withReset, withMargin, ({ theme }) => ({
+export const Blockquote = styled.blockquote(withReset, withMargin, ({ theme }) => ({
   borderLeft: `4px solid ${theme.color.medium}`,
   padding: '0 15px',
   color: theme.color.dark,
@@ -158,7 +158,7 @@ export const Blockquote = styled.blockquote<{}>(withReset, withMargin, ({ theme 
   },
 }));
 
-export const Table = styled.table<{}>(withReset, withMargin, ({ theme }) => ({
+export const Table = styled.table(withReset, withMargin, ({ theme }) => ({
   fontSize: theme.typography.size.s2,
   lineHeight: '24px',
   padding: 0,
@@ -193,13 +193,13 @@ export const Table = styled.table<{}>(withReset, withMargin, ({ theme }) => ({
   },
 }));
 
-export const Img = styled.img<{}>({
+export const Img = styled.img({
   maxWidth: '100%',
 });
 
-export const Div = styled.div<{}>(withReset);
+export const Div = styled.div(withReset);
 
-export const Span = styled.span<{}>(withReset, ({ theme }) => ({
+export const Span = styled.span(withReset, ({ theme }) => ({
   '&.frame': {
     display: 'block',
     overflow: 'hidden',
@@ -290,7 +290,7 @@ const listCommon: CSSObject = {
   },
 };
 
-export const LI = styled.li<{}>(withReset, ({ theme }) => ({
+export const LI = styled.li(withReset, ({ theme }) => ({
   fontSize: theme.typography.size.s2,
   color: theme.color.defaultText,
   lineHeight: '24px',
@@ -304,18 +304,18 @@ export const LI = styled.li<{}>(withReset, ({ theme }) => ({
   '& code': codeCommon({ theme }),
 }));
 
-export const UL = styled.ul<{}>(withReset, withMargin, { ...listCommon, listStyle: 'disc' });
+export const UL = styled.ul(withReset, withMargin, { ...listCommon, listStyle: 'disc' });
 
-export const OL = styled.ol<{}>(withReset, withMargin, { ...listCommon, listStyle: 'decimal' });
+export const OL = styled.ol(withReset, withMargin, { ...listCommon, listStyle: 'decimal' });
 
-export const P = styled.p<{}>(withReset, withMargin, ({ theme }) => ({
+export const P = styled.p(withReset, withMargin, ({ theme }) => ({
   fontSize: theme.typography.size.s2,
   lineHeight: '24px',
   color: theme.color.defaultText,
   '& code': codeCommon({ theme }),
 }));
 
-const DefaultCodeBlock = styled.code<{}>(
+const DefaultCodeBlock = styled.code(
   ({ theme }) => ({
     // from reset
     fontFamily: theme.typography.fonts.mono,
@@ -359,7 +359,7 @@ export const Code = ({
   );
 };
 
-export const TT = styled.title<{}>(codeCommon);
+export const TT = styled.title(codeCommon);
 
 /**
  * This is a "local" reset to style subtrees with Storybook styles
@@ -369,7 +369,7 @@ export const TT = styled.title<{}>(codeCommon);
  * easily override child elements that are not expecting it.
  */
 
-export const ResetWrapper = styled.div<{}>(withReset);
+export const ResetWrapper = styled.div(withReset);
 
 const nameSpaceClassNames = ({ ...props }, key: string) => {
   const classes = [props.class, props.className];

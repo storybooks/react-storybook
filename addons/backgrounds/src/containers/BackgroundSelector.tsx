@@ -1,3 +1,4 @@
+/* eslint-disable react/display-name */
 import React, { FunctionComponent, Fragment, useCallback, useMemo, memo } from 'react';
 import memoize from 'memoizerific';
 
@@ -81,13 +82,15 @@ export const BackgroundSelector: FunctionComponent = memo(() => {
 
   const globalsBackgroundColor = globals[BACKGROUNDS_PARAM_KEY]?.value;
 
-  const selectedBackgroundColor = useMemo(() => {
-    return getBackgroundColorByName(
-      globalsBackgroundColor,
-      backgroundsConfig.values,
-      backgroundsConfig.default
-    );
-  }, [backgroundsConfig, globalsBackgroundColor]);
+  const selectedBackgroundColor = useMemo(
+    () =>
+      getBackgroundColorByName(
+        globalsBackgroundColor,
+        backgroundsConfig.values,
+        backgroundsConfig.default
+      ),
+    [backgroundsConfig, globalsBackgroundColor]
+  );
 
   if (Array.isArray(backgroundsConfig)) {
     logger.warn(
@@ -99,7 +102,7 @@ export const BackgroundSelector: FunctionComponent = memo(() => {
     (value: string) => {
       updateGlobals({ [BACKGROUNDS_PARAM_KEY]: { ...globals[BACKGROUNDS_PARAM_KEY], value } });
     },
-    [backgroundsConfig, globals, updateGlobals]
+    [globals, updateGlobals]
   );
 
   if (backgroundsConfig.disable) {
@@ -112,22 +115,20 @@ export const BackgroundSelector: FunctionComponent = memo(() => {
         placement="top"
         trigger="click"
         closeOnClick
-        tooltip={({ onHide }) => {
-          return (
-            <TooltipLinkList
-              links={getDisplayedItems(
-                backgroundsConfig.values,
-                selectedBackgroundColor,
-                ({ selected }: GlobalState) => {
-                  if (selectedBackgroundColor !== selected) {
-                    onBackgroundChange(selected);
-                  }
-                  onHide();
+        tooltip={({ onHide }) => (
+          <TooltipLinkList
+            links={getDisplayedItems(
+              backgroundsConfig.values,
+              selectedBackgroundColor,
+              ({ selected }: GlobalState) => {
+                if (selectedBackgroundColor !== selected) {
+                  onBackgroundChange(selected);
                 }
-              )}
-            />
-          );
-        }}
+                onHide();
+              }
+            )}
+          />
+        )}
       >
         <IconButton
           key="background"

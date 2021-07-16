@@ -11,8 +11,8 @@ const limit = pLimit(1);
 /**
  * Uses the angular renderer to generate a story. Uses p-limit to run synchronously
  */
-export const prepareForInline = (storyFn: StoryFn<IStory>, { id, parameters }: StoryContext) => {
-  return React.createElement('div', {
+export const prepareForInline = (storyFn: StoryFn<IStory>, { id, parameters }: StoryContext) =>
+  React.createElement('div', {
     ref: async (node?: HTMLDivElement): Promise<void> => {
       if (!node) {
         return null;
@@ -29,4 +29,3 @@ export const prepareForInline = (storyFn: StoryFn<IStory>, { id, parameters }: S
       });
     },
   });
-};

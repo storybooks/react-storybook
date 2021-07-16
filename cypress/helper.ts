@@ -1,5 +1,4 @@
-/* eslint-disable no-unused-expressions */
-/* eslint-disable jest/valid-expect */
+/* eslint-disable @typescript-eslint/no-unused-expressions, jest/valid-expect */
 type StorybookApps = 'official-storybook';
 
 type Addons = 'Actions' | 'Knobs';
@@ -10,13 +9,13 @@ const getUrl = (route: string) => {
   return `${host}/${route}`;
 };
 
-export const visit = (route = '') => {
-  return cy
+export const visit = (route = '') =>
+  cy
     .clearLocalStorage()
     .visit(getUrl(route))
     .get(`#storybook-preview-iframe`)
-    .then({ timeout: 15000 }, (iframe) => {
-      return cy.wrap(iframe, { timeout: 10000 }).should(() => {
+    .then({ timeout: 15000 }, (iframe) =>
+      cy.wrap(iframe, { timeout: 10000 }).should(() => {
         const content: Document | null = (iframe[0] as HTMLIFrameElement).contentDocument;
         const element: HTMLElement | null = content !== null ? content.documentElement : null;
 
@@ -25,20 +24,16 @@ export const visit = (route = '') => {
         if (element !== null) {
           expect(element.querySelector('#root > *')).not.null;
         }
-      });
-    });
-};
+      })
+    );
 
-export const clickAddon = (addonName: Addons) => {
-  return cy.get(`[role=tablist] button[role=tab]`).contains(addonName).click();
-};
+export const clickAddon = (addonName: Addons) =>
+  cy.get(`[role=tablist] button[role=tab]`).contains(addonName).click();
 
-export const getStorybookPreview = () => {
-  return cy.get(`#storybook-preview-iframe`).then({ timeout: 10000 }, (iframe) => {
+export const getStorybookPreview = () =>
+  cy.get(`#storybook-preview-iframe`).then({ timeout: 10000 }, (iframe) => {
     const content: Document | null = (iframe[0] as HTMLIFrameElement).contentDocument;
     const element: HTMLElement | null = content !== null ? content.documentElement : null;
-
-    console.log({ element, content, iframe });
 
     return cy
       .wrap(iframe)
@@ -49,8 +44,5 @@ export const getStorybookPreview = () => {
           expect(element.querySelector('#root > *')).not.null;
         }
       })
-      .then(() => {
-        return cy.wrap(element).get('#root');
-      });
+      .then(() => cy.wrap(element).get('#root'));
   });
-};

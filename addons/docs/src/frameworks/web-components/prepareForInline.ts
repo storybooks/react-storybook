@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-types */
 import type { StoryFn } from '@storybook/addons';
 import React from 'react';
 import { render } from 'lit-html';

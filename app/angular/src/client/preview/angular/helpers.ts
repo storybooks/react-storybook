@@ -75,12 +75,11 @@ const getModule = (
   return NgModule(moduleMeta)(moduleClass);
 };
 
-const createComponentFromTemplate = (template: string, styles: string[]) => {
-  return Component({
+const createComponentFromTemplate = (template: string, styles: string[]) =>
+  Component({
     template,
     styles,
   })(componentClass);
-};
 
 const extractNgModuleMetadata = (importItem: any): NgModule => {
   const target = importItem && importItem.ngModule ? importItem.ngModule : importItem;
@@ -178,7 +177,6 @@ const insertDynamicRoot = () => {
 const draw = (newModule: DynamicComponentType): void => {
   if (!platform) {
     insertDynamicRoot();
-    // eslint-disable-next-line no-undef
     if (typeof NODE_ENV === 'string' && NODE_ENV !== 'development') {
       try {
         enableProdMode();

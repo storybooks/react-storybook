@@ -5,7 +5,6 @@ import { TranslateService } from './translate.service';
   name: 'translate',
 })
 export class TranslatePipe implements PipeTransform {
-  // eslint-disable-next-line no-useless-constructor
   constructor(private readonly translateService: TranslateService) {}
 
   transform(value: string): string {

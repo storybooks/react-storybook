@@ -28,8 +28,8 @@ import type {
   SetStoriesPayload,
 } from '../lib/stories';
 
-import { Args, ModuleFn } from '../index';
-import { ComposedRef } from './refs';
+import type { Args, ModuleFn } from '../index';
+import type { ComposedRef } from './refs';
 
 const { DOCS_MODE } = global;
 

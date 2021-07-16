@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 import { getProjectRoot } from '@storybook/core-common';
 import { useBaseTsSupport } from './useBaseTsSupport';
 

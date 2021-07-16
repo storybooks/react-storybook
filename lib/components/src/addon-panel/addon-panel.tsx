@@ -22,12 +22,10 @@ export interface AddonPanelProps {
   children: ReactNode;
 }
 
-export const AddonPanel = ({ active, children }: AddonPanelProps) => {
-  return (
-    // the transform is to prevent a bug where the content would be invisible
-    // the hidden attribute is an valid html element that's both accessible and works to visually hide content
-    <div hidden={!active} style={{ transform: 'translateX(0px)' }}>
-      {useUpdate(active, children)}
-    </div>
-  );
-};
+export const AddonPanel = ({ active, children }: AddonPanelProps) => (
+  // the transform is to prevent a bug where the content would be invisible
+  // the hidden attribute is an valid html element that's both accessible and works to visually hide content
+  <div hidden={!active} style={{ transform: 'translateX(0px)' }}>
+    {useUpdate(active, children)}
+  </div>
+);

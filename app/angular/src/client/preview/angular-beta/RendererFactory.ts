@@ -33,9 +33,8 @@ export class RendererFactory {
   }
 }
 
-export const getRenderType = (targetDOMNode: HTMLElement): RenderType => {
-  return targetDOMNode.id === 'root' ? 'canvas' : 'docs';
-};
+export const getRenderType = (targetDOMNode: HTMLElement): RenderType =>
+  targetDOMNode.id === 'root' ? 'canvas' : 'docs';
 
 export function clearRootHTMLElement(renderType: RenderType) {
   switch (renderType) {

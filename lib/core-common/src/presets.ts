@@ -14,6 +14,7 @@ import { loadCustomPresets } from './utils/load-custom-presets';
 
 const isObject = (val: unknown): val is Record<string, any> =>
   val != null && typeof val === 'object' && Array.isArray(val) === false;
+// eslint-disable-next-line @typescript-eslint/ban-types
 const isFunction = (val: unknown): val is Function => typeof val === 'function';
 
 export function filterPresetsConfig(presetsConfig: PresetConfig[]): PresetConfig[] {
@@ -24,6 +25,7 @@ export function filterPresetsConfig(presetsConfig: PresetConfig[]): PresetConfig
 }
 
 function resolvePresetFunction<T = any>(
+  // eslint-disable-next-line @typescript-eslint/ban-types
   input: T[] | Function,
   presetOptions: any,
   storybookOptions: InterPresetOptions

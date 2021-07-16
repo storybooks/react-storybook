@@ -2,9 +2,9 @@ import { ReactNode } from 'react';
 import { Channel } from '@storybook/channels';
 import { ThemeVars } from '@storybook/theming';
 
-import { API, State, ModuleFn, Root, Group, Story } from '../index';
-import { StoryMapper, Refs } from './refs';
-import { UIOptions } from './layout';
+import type { API, State, ModuleFn, Root, Group, Story } from '../index';
+import type { StoryMapper, Refs } from './refs';
+import type { UIOptions } from './layout';
 
 interface SidebarOptions {
   showRoots?: boolean;
@@ -39,11 +39,9 @@ export interface SubAPI {
   renderPreview?: Provider['renderPreview'];
 }
 
-export const init: ModuleFn = ({ provider, fullAPI }) => {
-  return {
-    api: provider.renderPreview ? { renderPreview: provider.renderPreview } : {},
-    init: () => {
-      provider.handleAPI(fullAPI);
-    },
-  };
-};
+export const init: ModuleFn = ({ provider, fullAPI }) => ({
+  api: provider.renderPreview ? { renderPreview: provider.renderPreview } : {},
+  init: () => {
+    provider.handleAPI(fullAPI);
+  },
+});

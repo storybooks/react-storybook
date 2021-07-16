@@ -28,7 +28,7 @@ export function ZoomElement({ scale, children }: ZoomProps) {
     if (componentWrapperRef.current) {
       setHeight(componentWrapperRef.current.getBoundingClientRect().height);
     }
-  }, [scale, componentWrapperRef.current]);
+  }, [scale]);
 
   return (
     <ZoomElementWrapper scale={scale} height={height}>

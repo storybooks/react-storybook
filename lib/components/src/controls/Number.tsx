@@ -3,7 +3,7 @@ import { styled } from '@storybook/theming';
 
 import { Form } from '../form';
 import { getControlId } from './helpers';
-import { ControlProps, NumberValue, NumberConfig } from './types';
+import { ControlProps, NumberValue, NumberConfig } from '../types';
 
 const Wrapper = styled.label({
   display: 'flex',
@@ -51,7 +51,7 @@ export const NumberControl: FC<NumberProps> = ({
     setInputValue('0');
     onChange(0);
     setForceVisible(true);
-  }, [setForceVisible]);
+  }, [onChange]);
 
   const htmlElRef = useRef(null);
   useEffect(() => {

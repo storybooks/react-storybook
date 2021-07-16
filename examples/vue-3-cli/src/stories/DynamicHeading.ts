@@ -11,9 +11,8 @@ export type Props = {
 
 export type Component = FunctionalComponent<Props>;
 
-const DynamicHeading: Component = (props, context) => {
-  return h(`h${props.level}`, context.attrs, context.slots);
-};
+const DynamicHeading: Component = (props, context) =>
+  h(`h${props.level}`, context.attrs, context.slots);
 
 /*
   Props object definition is tied to the Props type used in FunctionalComponent<Props>

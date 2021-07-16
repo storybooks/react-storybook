@@ -10,7 +10,8 @@ export function getEnvConfig(program: Record<string, any>, configEnv: Record<str
     const envVarName = configEnv[fieldName];
     const envVarValue = process.env[envVarName];
     if (envVarValue) {
-      program[fieldName] = envVarValue; // eslint-disable-line
+      // eslint-disable-next-line no-param-reassign
+      program[fieldName] = envVarValue;
     }
   });
 }

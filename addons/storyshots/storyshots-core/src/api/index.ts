@@ -13,6 +13,7 @@ type TestMethod = 'beforeAll' | 'beforeEach' | 'afterEach' | 'afterAll';
 const methods: TestMethod[] = ['beforeAll', 'beforeEach', 'afterEach', 'afterAll'];
 
 function callTestMethodGlobals(
+  // eslint-disable-next-line @typescript-eslint/ban-types
   testMethod: { [key in TestMethod]?: Function & { timeout?: number } } & { [key in string]: any }
 ) {
   methods.forEach((method) => {

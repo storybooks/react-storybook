@@ -2,7 +2,7 @@ import React, { FC, ChangeEvent, RefObject, useState, useRef, useEffect } from '
 import { styled } from '@storybook/theming';
 
 import { Form } from '../form';
-import { ControlProps, DateValue, DateConfig } from './types';
+import { ControlProps, DateValue, DateConfig } from '../types';
 import { getControlId } from './helpers';
 
 const parseDate = (value: string) => {
@@ -69,7 +69,7 @@ export const DateControl: FC<DateProps> = ({ name, value, onChange, onFocus, onB
         timeRef.current.value = formatTime(value);
       }
     }
-  }, [value]);
+  }, [valid, value]);
 
   const onDateChange = (e: ChangeEvent<HTMLInputElement>) => {
     const parsed = parseDate(e.target.value);

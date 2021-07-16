@@ -1,7 +1,7 @@
 import chalk from 'chalk';
 import { gt, satisfies } from '@storybook/semver';
 import { sync as spawnSync } from 'cross-spawn';
-import { commandLog } from '../helpers';
+import { commandLog } from '../helpers/commandLog';
 import { PackageJson, PackageJsonWithDepsAndDevDeps } from './PackageJson';
 import { readPackageJson, writePackageJson } from './PackageJsonHelper';
 import storybookPackagesVersions from '../versions.json';

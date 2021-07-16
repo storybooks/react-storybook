@@ -10,9 +10,7 @@ if (module && module.hot && module.hot.decline) {
 }
 
 export const withA11y: DecoratorFunction = deprecate(
-  (storyFn, storyContext) => {
-    return storyFn(storyContext);
-  },
+  (storyFn, storyContext) => storyFn(storyContext),
   dedent`
     withA11y(options) is deprecated, please configure addon-a11y using the addParameter api:
 
