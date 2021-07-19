@@ -48,7 +48,7 @@
   "dependencies": {
     "@babel/preset-flow": "^7.12.1",
     "@babel/preset-react": "^7.12.10",
-    "@pmmmwh/react-refresh-webpack-plugin": "^0.4.3",
+    "@pmmmwh/react-refresh-webpack-plugin": "^0.5.0-rc.2",
     "@storybook/addons": "6.4.0-alpha.18",
     "@storybook/core": "6.4.0-alpha.18",
     "@storybook/core-common": "6.4.0-alpha.18",
@@ -64,7 +64,7 @@
     "lodash": "^4.17.20",
     "prop-types": "^15.7.2",
     "react-dev-utils": "^11.0.3",
-    "react-refresh": "^0.8.3",
+    "react-refresh": "^0.10.0",
     "read-pkg-up": "^7.0.1",
     "regenerator-runtime": "^0.13.7",
     "ts-dedent": "^2.0.0",
