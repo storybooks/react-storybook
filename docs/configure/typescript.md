@@ -2,7 +2,7 @@
 title: 'TypeScript'
 ---
 
-Storybook has built-in Typescript support, so your Typescript project should work with zero configuration needed.
+Storybook has built-in Typescript support, so your Typescript project should work with zero configuration needed. The config files from `.storybook` can be in TypeScript as well.
 
 ### Default configuration
 
@@ -62,3 +62,16 @@ Next time you restart your Storybook the extra props will also be in the UI.
 <div class="aside">
 If you run into an issue where the extra props aren't included, check how your component is being exported. If it's using a default export, change it to a named export and the extra props will be included as well.
 </div>
+
+### Troubleshooting
+
+If storybook is not picking up TypeScript errors, ensure:
+* you have a `tsconfig.json` ([ref](https://github.com/storybookjs/storybook/issues/14118#issuecomment-794698889))
+* `tsconfig.json` is properly including your files, including `*.tsx`. Example: `"include": [ "stories/**/*" ]`
+* Eventually, run with additional traces: `DEBUG=docgen:include,docgen:exclude yarn storybook` to check if your files are properly processed
+
+If react docgen is not generating doc based on types, ensure:
+* TypeScript is properly configured (see above)
+* You don't have TypeScript errors
+
+If using React, if you need help to properly type your components, this site may help: https://react-typescript-cheatsheet.netlify.app/
