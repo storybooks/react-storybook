@@ -99,6 +99,7 @@ export default async ({
             PREVIEW_URL: previewUrl, // global preview URL
           },
           headHtmlSnippet,
+          lang: envs.STORYBOOK_PREVIEW_HTML_LANG || 'en',
         }),
         template,
       }) as any) as WebpackPluginInstance,

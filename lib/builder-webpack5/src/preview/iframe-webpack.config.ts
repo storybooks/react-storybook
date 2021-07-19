@@ -166,6 +166,7 @@ export default async ({
           },
           headHtmlSnippet,
           bodyHtmlSnippet,
+          lang: envs.STORYBOOK_PREVIEW_HTML_LANG || 'en',
         }),
         minify: {
           collapseWhitespace: true,
