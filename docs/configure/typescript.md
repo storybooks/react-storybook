@@ -18,6 +18,11 @@ Each framework uses the base configuration unless otherwise specified:
 
 To make it easier to configure Typescript handling, use the `typescript` field in your [`.storybook/main.js`](./overview.md#configure-story-rendering).
 
+<div class="aside">
+If you want the configration to be main.ts, you will need [ts-node](https://github.com/TypeStrong/ts-node) as a dependency.
+</div>
+
+
 The following code snippets shows the fields for you to use with TypeScript:
 
 <!-- prettier-ignore-start -->
