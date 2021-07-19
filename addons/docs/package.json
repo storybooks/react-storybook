@@ -112,7 +112,7 @@
     "@types/cross-spawn": "^6.0.2",
     "@types/doctrine": "^0.0.3",
     "@types/enzyme": "^3.10.8",
-    "@types/estree": "^0.0.44",
+    "@types/estree": "^0.0.48",
     "@types/jest": "^26.0.16",
     "@types/loader-utils": "^2.0.0",
     "@types/prop-types": "^15.7.3",
