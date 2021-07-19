@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react';
+import React, { FunctionComponent, KeyboardEventHandler } from 'react';
 import memoize from 'memoizerific';
 
 import { styled, Color, lighten, darken } from '@storybook/theming';
@@ -122,6 +122,7 @@ export interface TooltipProps {
   arrowProps?: any;
   placement?: string;
   color?: keyof Color;
+  onKeyDown?: KeyboardEventHandler<HTMLDivElement>;
 }
 
 export const Tooltip: FunctionComponent<TooltipProps> = ({

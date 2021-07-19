@@ -1,4 +1,4 @@
-import React, { FunctionComponent, ReactNode, ComponentProps } from 'react';
+import React, { FunctionComponent, ReactNode, ComponentProps, useEffect, useRef } from 'react';
 import { styled } from '@storybook/theming';
 import memoize from 'memoizerific';
 import { transparentize } from 'polished';
@@ -127,28 +127,12 @@ export interface ItemProps {
   disabled?: boolean;
 }
 
-const Item = styled.a<ItemProps>(
+const Item = styled.li<ItemProps>(
   ({ theme }) => ({
-    fontSize: theme.typography.size.s1,
-    transition: 'all 150ms ease-out',
-    color: transparentize(0.5, theme.color.defaultText),
-    textDecoration: 'none',
-    cursor: 'pointer',
-    justifyContent: 'space-between',
-
-    lineHeight: '18px',
-    padding: '7px 15px',
-    display: 'flex',
-    alignItems: 'center',
-
-    '& > * + *': {
-      paddingLeft: 10,
-    },
-
-    '&:hover': {
+    '&:hover, &:focus': {
       background: theme.background.hoverable,
     },
-    '&:hover svg': {
+    '&:hover svg, &:focus svg': {
       opacity: 1,
     },
   }),
@@ -159,6 +143,24 @@ const Item = styled.a<ItemProps>(
         }
       : {}
 );
+
+const A = styled.a(({ theme }) => ({
+  fontSize: theme.typography.size.s1,
+  transition: 'all 150ms ease-out',
+  color: transparentize(0.5, theme.color.defaultText),
+  textDecoration: 'none',
+  cursor: 'pointer',
+  justifyContent: 'space-between',
+
+  lineHeight: '18px',
+  padding: '7px 15px',
+  display: 'flex',
+  alignItems: 'center',
+
+  '& > * + *': {
+    paddingLeft: 10,
+  },
+}));
 
 const getItemProps = memoize(100)((onClick, href, LinkWrapper) => {
   const result = {};
@@ -184,7 +186,7 @@ const getItemProps = memoize(100)((onClick, href, LinkWrapper) => {
 
 export type LinkWrapperType = FunctionComponent;
 
-export interface ListItemProps extends Omit<ComponentProps<typeof Item>, 'href' | 'title'> {
+export interface ListItemProps extends Omit<ComponentProps<typeof A>, 'href' | 'title'> {
   loading?: boolean;
   left?: ReactNode;
   title?: ReactNode;
@@ -194,6 +196,7 @@ export interface ListItemProps extends Omit<ComponentProps<typeof Item>, 'href' 
   disabled?: boolean;
   href?: string;
   LinkWrapper?: LinkWrapperType;
+  autoFocus?: boolean;
 }
 
 const ListItem: FunctionComponent<ListItemProps> = ({
@@ -207,25 +210,36 @@ const ListItem: FunctionComponent<ListItemProps> = ({
   href,
   onClick,
   LinkWrapper,
+  autoFocus,
   ...rest
 }) => {
+  const listItemRef = useRef<HTMLLIElement>(null);
+
   const itemProps = getItemProps(onClick, href, LinkWrapper);
   const commonProps = { active, disabled };
 
+  useEffect(() => {
+    if (autoFocus && listItemRef.current) {
+      listItemRef.current.focus();
+    }
+  }, [autoFocus]);
+
   return (
-    <Item {...commonProps} {...rest} {...itemProps}>
-      {left && <Left {...commonProps}>{left}</Left>}
-      {title || center ? (
-        <Center>
-          {title && (
-            <Title {...commonProps} loading={loading}>
-              {title}
-            </Title>
-          )}
-          {center && <CenterText {...commonProps}>{center}</CenterText>}
-        </Center>
-      ) : null}
-      {right && <Right {...commonProps}>{right}</Right>}
+    <Item ref={listItemRef} {...commonProps} tabIndex={0}>
+      <A {...rest} {...itemProps} role="menuitem" tabIndex={-1}>
+        {left && <Left {...commonProps}>{left}</Left>}
+        {title || center ? (
+          <Center>
+            {title && (
+              <Title {...commonProps} loading={loading}>
+                {title}
+              </Title>
+            )}
+            {center && <CenterText {...commonProps}>{center}</CenterText>}
+          </Center>
+        ) : null}
+        {right && <Right {...commonProps}>{right}</Right>}
+      </A>
     </Item>
   );
 };

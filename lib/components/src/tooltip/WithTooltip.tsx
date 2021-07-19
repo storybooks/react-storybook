@@ -1,4 +1,11 @@
-import React, { FunctionComponent, ReactNode, useCallback, useState, useEffect } from 'react';
+import React, {
+  FunctionComponent,
+  ReactNode,
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+} from 'react';
 import { styled } from '@storybook/theming';
 import global from 'global';
 
@@ -50,6 +57,22 @@ const WithTooltipPure: FunctionComponent<WithTooltipPureProps> = ({
   onVisibilityChange,
   ...props
 }) => {
+  const internalTriggerRef = useRef(null);
+  const handleKeyDown: React.KeyboardEventHandler<HTMLDivElement> = (event) => {
+    if (event.key === 'Tab' || event.key === 'Escape') {
+      event.preventDefault();
+      onVisibilityChange(false);
+    }
+  };
+
+  const prevOpen = useRef(tooltipShown);
+  useEffect(() => {
+    if (prevOpen.current === true && tooltipShown === false) {
+      internalTriggerRef.current?.focus();
+    }
+    prevOpen.current = tooltipShown;
+  }, [tooltipShown]);
+
   const Container = svg ? TargetSvgContainer : TargetContainer;
 
   return (
@@ -72,6 +95,7 @@ const WithTooltipPure: FunctionComponent<WithTooltipPureProps> = ({
           tooltipRef={tooltipRef}
           arrowRef={arrowRef}
           arrowProps={getArrowProps()}
+          onKeyDown={handleKeyDown}
           {...getTooltipProps()}
         >
           {typeof tooltip === 'function'
@@ -79,11 +103,24 @@ const WithTooltipPure: FunctionComponent<WithTooltipPureProps> = ({
             : tooltip}
         </Tooltip>
       )}
+      getTriggerRef={(element) => {
+        internalTriggerRef.current = internalTriggerRef.current || element;
+      }}
     >
       {({ getTriggerProps, triggerRef }) => (
         // @ts-ignore
         <Container ref={triggerRef} {...getTriggerProps()} {...props}>
-          {children}
+          {React.Children.map(children, (child) => {
+            // there shoudn't be more than one child
+            if (React.isValidElement(child)) {
+              return React.cloneElement(child, {
+                tabIndex: 0,
+                'aria-expanded': tooltipShown ? 'true' : 'false',
+                'aria-haspopup': 'true',
+              });
+            }
+            return child;
+          })}
         </Container>
       )}
     </TooltipTrigger>
@@ -135,8 +172,6 @@ const WithToolTipState: FunctionComponent<
 
   useEffect(() => {
     const hide = () => onVisibilityChange(false);
-    document.addEventListener('keydown', hide, false);
-
     // Find all iframes on the screen and bind to clicks inside them (waiting until the iframe is ready)
     const iframes: HTMLIFrameElement[] = Array.from(document.getElementsByTagName('iframe'));
     const unbinders: (() => void)[] = [];
@@ -166,7 +201,6 @@ const WithToolTipState: FunctionComponent<
     });
 
     return () => {
-      document.removeEventListener('keydown', hide);
       unbinders.forEach((unbind) => {
         unbind();
       });
