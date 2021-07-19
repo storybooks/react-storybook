@@ -107,12 +107,19 @@ export const isComponent = (component: any): component is Type<unknown> => {
  */
 export const getComponentPropsDecoratorMetadata = (component: any) => {
   const decoratorKey = '__prop__metadata__';
-  const propsDecorators: Record<string, (Input | Output)[]> =
+  let propsDecorators: Record<string, (Input | Output)[]> =
     Reflect &&
     Reflect.getOwnPropertyDescriptor &&
     Reflect.getOwnPropertyDescriptor(component, decoratorKey)
       ? Reflect.getOwnPropertyDescriptor(component, decoratorKey).value
       : component[decoratorKey];
+
+  const parent = Reflect && Reflect.getPrototypeOf && Reflect.getPrototypeOf(component);
+
+  if (parent) {
+    const parentPropsDecorators = getComponentPropsDecoratorMetadata(parent);
+    propsDecorators = { ...parentPropsDecorators, ...propsDecorators };
+  }
 
   return propsDecorators;
 };
