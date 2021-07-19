@@ -338,7 +338,7 @@ export const Code = ({
   const language = (className || '').match(/lang-(\S+)/);
   const isInlineCode = !(children as string).match(/[\n\r]/g);
 
-  if (isInlineCode) {
+  if (isInlineCode && !language) {
     return (
       <DefaultCodeBlock {...props} className={className}>
         {children}
