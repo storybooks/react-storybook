@@ -43,9 +43,9 @@ export interface ArgType {
   [key: string]: any;
 }
 
-export interface ArgTypes {
-  [key: string]: ArgType;
-}
+export type ArgTypes<Args = Record<string, any>> = {
+  [key in keyof Partial<Args>]: ArgType;
+};
 
 export interface StoryIdentifier {
   id: StoryId;
@@ -182,7 +182,7 @@ export interface BaseAnnotations<Args, StoryFnReturnType> {
    * ArgTypes encode basic metadata for args, such as `name`, `description`, `defaultValue` for an arg. These get automatically filled in by Storybook Docs.
    * @see [Control annotations](https://github.com/storybookjs/storybook/blob/91e9dee33faa8eff0b342a366845de7100415367/addons/controls/README.md#control-annotations)
    */
-  argTypes?: ArgTypes;
+  argTypes?: ArgTypes<Args>;
 
   /**
    * Custom metadata for a story.
