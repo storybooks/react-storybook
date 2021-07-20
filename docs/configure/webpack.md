@@ -91,6 +91,8 @@ If you're using a non-standard Storybook config directory, you should put `main.
 
 If you have an existing webpack config for your project and want to reuse this app's configuration, you can import your main webpack config into Storybook's [`.storybook/main.js`](./overview.md#configure-story-rendering) and merge both:
 
+NB! If you are using Vue CLI you need to use the resolved webpack config file, which is found at `<projectRoot>/node_modules/@vue/cli-service/webpack.config.js`.
+
 The following code snippet shows how you can replace the loaders from Storybook with the ones from your app's `webpack.config.js`:
 
 <!-- prettier-ignore-start -->
