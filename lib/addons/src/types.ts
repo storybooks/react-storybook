@@ -176,7 +176,7 @@ export interface BaseAnnotations<Args, StoryFnReturnType> {
    * Dynamic data that are provided (and possibly updated by) Storybook and its addons.
    * @see [Arg story inputs](https://storybook.js.org/docs/react/api/csf#args-story-inputs)
    */
-  args?: Partial<Args>;
+  args?: Args;
 
   /**
    * ArgTypes encode basic metadata for args, such as `name`, `description`, `defaultValue` for an arg. These get automatically filled in by Storybook Docs.
