@@ -38,6 +38,12 @@ const context = storybookReactDirName.includes('node_modules')
 
 const hasJsxRuntime = () => {
   try {
+    try {
+      require.resolve('react', { paths: [context] })
+    } catch (e) {
+      require.resolve('react/jsx-runtime');
+      return true;
+    }
     require.resolve('react/jsx-runtime', { paths: [context] });
     return true;
   } catch (e) {
