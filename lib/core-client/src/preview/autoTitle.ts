@@ -1,5 +1,6 @@
 import global from 'global';
 import path from 'path';
+import startCase from 'lodash/startCase';
 import type { NormalizedStoriesEntry } from '@storybook/core-common';
 
 const { FEATURES = {}, STORIES = [] } = global;
@@ -25,11 +26,15 @@ const stripExtension = (titleWithExtension: string) => {
   return parts.join('/');
 };
 
+const startCaseTitle = (title: string) => {
+  return title.split('/').map(startCase).join('/');
+};
+
 export const autoTitleFromEntry = (fileName: string, entry: NormalizedStoriesEntry) => {
   const { directory, titlePrefix = '' } = entry.specifier || {};
   if (fileName.startsWith(directory)) {
     const suffix = fileName.replace(directory, '');
-    return stripExtension(path.join(titlePrefix, suffix));
+    return startCaseTitle(stripExtension(path.join(titlePrefix, suffix)));
   }
   return undefined;
 };

@@ -18,13 +18,13 @@ describe('autoTitle', () => {
     it('match with no titlePrefix', () => {
       expect(
         auto('/path/to/file', { glob: '', specifier: { directory: '/path' } })
-      ).toMatchInlineSnapshot(`to/file`);
+      ).toMatchInlineSnapshot(`To/File`);
     });
 
     it('match with titlePrefix', () => {
       expect(
         auto('/path/to/file', { glob: '', specifier: { directory: '/path', titlePrefix: 'atoms' } })
-      ).toMatchInlineSnapshot(`atoms/to/file`);
+      ).toMatchInlineSnapshot(`Atoms/To/File`);
     });
 
     it('match with extension', () => {
@@ -33,7 +33,19 @@ describe('autoTitle', () => {
           glob: '',
           specifier: { directory: '/path', titlePrefix: 'atoms' },
         })
-      ).toMatchInlineSnapshot(`atoms/to/file`);
+      ).toMatchInlineSnapshot(`Atoms/To/File`);
+    });
+
+    it('match with hyphen path', () => {
+      expect(
+        auto('/path/to-my/file', { glob: '', specifier: { directory: '/path' } })
+      ).toMatchInlineSnapshot(`To My/File`);
+    });
+
+    it('match with underscore path', () => {
+      expect(
+        auto('/path/to_my/file', { glob: '', specifier: { directory: '/path' } })
+      ).toMatchInlineSnapshot(`To My/File`);
     });
   });
 
@@ -41,7 +53,7 @@ describe('autoTitle', () => {
     it('match with no titlePrefix', () => {
       expect(
         auto('/path/to/file', { glob: '', specifier: { directory: '/path/' } })
-      ).toMatchInlineSnapshot(`to/file`);
+      ).toMatchInlineSnapshot(`To/File`);
     });
 
     it('match with titlePrefix', () => {
@@ -50,7 +62,7 @@ describe('autoTitle', () => {
           glob: '',
           specifier: { directory: '/path/', titlePrefix: 'atoms' },
         })
-      ).toMatchInlineSnapshot(`atoms/to/file`);
+      ).toMatchInlineSnapshot(`Atoms/To/File`);
     });
 
     it('match with extension', () => {
@@ -59,7 +71,19 @@ describe('autoTitle', () => {
           glob: '',
           specifier: { directory: '/path/', titlePrefix: 'atoms' },
         })
-      ).toMatchInlineSnapshot(`atoms/to/file`);
+      ).toMatchInlineSnapshot(`Atoms/To/File`);
+    });
+
+    it('match with hyphen path', () => {
+      expect(
+        auto('/path/to-my/file', { glob: '', specifier: { directory: '/path/' } })
+      ).toMatchInlineSnapshot(`To My/File`);
+    });
+
+    it('match with underscore path', () => {
+      expect(
+        auto('/path/to_my/file', { glob: '', specifier: { directory: '/path/' } })
+      ).toMatchInlineSnapshot(`To My/File`);
     });
   });
 });
