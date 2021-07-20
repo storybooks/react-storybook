@@ -434,3 +434,5 @@ export function useGlobals(): [Args, (newGlobals: Args) => void] {
 
   return [globals, updateGlobals];
 }
+
+export { useDOMRect } from './hooks/use-dom-rect/useDOMRect';

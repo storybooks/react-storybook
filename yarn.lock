@@ -6132,6 +6132,7 @@ __metadata:
     core-js: ^3.8.2
     global: ^4.4.0
     regenerator-runtime: ^0.13.7
+    resize-observer: ^1.0.2
   peerDependencies:
     react: ^16.8.0 || ^17.0.0
     react-dom: ^16.8.0 || ^17.0.0
@@ -37472,6 +37473,13 @@ fsevents@^1.2.7:
   version: 4.0.0
   resolution: "reselect@npm:4.0.0"
   checksum: b5957ad2a8fa1ad0c6510da6bd199511eee8bb0ea9278ca67a6f92d8b968ca632b46955a4332de19cc983325123c5cdc88e5887c8fc5b0d4b5938d1807cc3882
+  languageName: node
+  linkType: hard
+
+"resize-observer@npm:^1.0.2":
+  version: 1.0.2
+  resolution: "resize-observer@npm:1.0.2"
+  checksum: 95304f623d259100329fc0701930aa212bf6b02b73cb24187a38251102f2cf9b3585a12238b3cc61681122c1d4f32ba1e12f3e2d2493b5ed014680355b2e5555
   languageName: node
   linkType: hard
 

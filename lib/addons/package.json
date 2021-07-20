@@ -48,7 +48,8 @@
     "@storybook/theming": "6.4.0-alpha.18",
     "core-js": "^3.8.2",
     "global": "^4.4.0",
-    "regenerator-runtime": "^0.13.7"
+    "regenerator-runtime": "^0.13.7",
+    "resize-observer": "^1.0.2"
   },
   "peerDependencies": {
     "react": "^16.8.0 || ^17.0.0",
