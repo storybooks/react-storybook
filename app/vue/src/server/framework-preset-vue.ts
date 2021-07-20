@@ -1,5 +1,5 @@
 /* eslint-disable no-param-reassign */
-import VueLoaderPlugin from 'vue-loader/lib/plugin';
+import { VueLoaderPlugin } from 'vue-loader';
 import type { Configuration } from 'webpack';
 
 import type { Options, TypescriptConfig } from '@storybook/core-common';
