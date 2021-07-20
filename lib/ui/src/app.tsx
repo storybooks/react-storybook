@@ -47,15 +47,20 @@ const App = React.memo<AppProps>(
           {
             key: 'settings',
             render: () => <SettingsPages />,
-            route: (({ children }) => (
-              <Route path="/settings" startsWith>
-                {children}
-              </Route>
-            )) as FunctionComponent,
+            route: (({ children }) => {
+              if (viewMode === 'settings') {
+                return (
+                  <Route path="/settings" startsWith>
+                    {children}
+                  </Route>
+                );
+              }
+              return null;
+            }) as FunctionComponent,
           },
         ],
       }),
-      []
+      [viewMode]
     );
 
     if (!width || !height) {
