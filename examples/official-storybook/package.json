@@ -52,8 +52,6 @@
     "react": "16.14.0",
     "react-dom": "16.14.0",
     "terser-webpack-plugin": "^5.0.3",
-    "uuid": "^8.3.2",
-    "uuid-browser": "^3.1.0",
     "webpack": "4"
   },
   "peerDependencies": {

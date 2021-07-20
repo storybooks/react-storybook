@@ -1,5 +1,5 @@
-import uuidv4 from 'uuid-browser/v4';
 import { addons } from '@storybook/addons';
+import { nanoid } from 'nanoid';
 import { EVENT_ID } from '../constants';
 import { ActionDisplay, ActionOptions, HandlerFunction } from '../models';
 import { config } from './configureActions';
@@ -12,7 +12,7 @@ export function action(name: string, options: ActionOptions = {}): HandlerFuncti
 
   const handler = function actionHandler(...args: any[]) {
     const channel = addons.getChannel();
-    const id = uuidv4();
+    const id = nanoid();
     const minDepth = 5; // anything less is really just storybook internals
     const normalizedArgs = args.length > 1 ? args : args[0];
 

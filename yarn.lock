@@ -5575,13 +5575,13 @@ __metadata:
     fast-deep-equal: ^3.1.3
     global: ^4.4.0
     lodash: ^4.17.20
+    nanoid: ^3.1.23
     polished: ^4.0.5
     prop-types: ^15.7.2
     react-inspector: ^5.1.0
     regenerator-runtime: ^0.13.7
     ts-dedent: ^2.0.0
     util-deprecate: ^1.0.2
-    uuid-browser: ^3.1.0
   peerDependencies:
     react: ^16.8.0 || ^17.0.0
     react-dom: ^16.8.0 || ^17.0.0
@@ -31575,8 +31575,6 @@ fsevents@^1.2.7:
     react: 16.14.0
     react-dom: 16.14.0
     terser-webpack-plugin: ^5.0.3
-    uuid: ^8.3.2
-    uuid-browser: ^3.1.0
     webpack: 4
   peerDependencies:
     puppeteer: ^2.0.0 || ^3.0.0
@@ -42878,13 +42876,6 @@ typescript@2.9.1:
   version: 1.0.1
   resolution: "utils-merge@npm:1.0.1"
   checksum: 02ba649de1b7ca8854bfe20a82f1dfbdda3fb57a22ab4a8972a63a34553cf7aa51bc9081cf7e001b035b88186d23689d69e71b510e610a09a4c66f68aa95b672
-  languageName: node
-  linkType: hard
-
-"uuid-browser@npm:^3.1.0":
-  version: 3.1.0
-  resolution: "uuid-browser@npm:3.1.0"
-  checksum: bfb6bcc8cc75c1adf776370c4f86d00ee5682f7315c8bccb99938e53dafae189ef6a4dc125e67abd2a2cdfaad6020690fe4cb67dbd5b39f32d3ba75fb713d807
   languageName: node
   linkType: hard
 
