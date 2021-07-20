@@ -37,6 +37,8 @@ export interface TypesetProps {
   fontFamily?: string;
   fontSizes: string[];
   fontWeight?: number;
+  letterSpacing?: string;
+  lineHeight?: string | number;
   sampleText?: string;
 }
 
@@ -48,6 +50,8 @@ export const Typeset: FunctionComponent<TypesetProps> = ({
   fontFamily,
   fontSizes,
   fontWeight,
+  letterSpacing,
+  lineHeight = 1.2,
   sampleText,
   ...props
 }) => (
@@ -60,7 +64,8 @@ export const Typeset: FunctionComponent<TypesetProps> = ({
             fontFamily,
             fontSize: size,
             fontWeight,
-            lineHeight: 1.2,
+	    letterSpacing,
+            lineHeight,
           }}
         >
           {sampleText || 'Was he a beast if music could move him so?'}
