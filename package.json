@@ -230,7 +230,6 @@
     "jest": "^26.6.3",
     "jest-emotion": "^10.0.32",
     "jest-environment-jsdom": "^26.6.2",
-    "jest-environment-jsdom-thirteen": "^1.0.1",
     "jest-enzyme": "^7.1.2",
     "jest-image-snapshot": "^4.3.0",
     "jest-jasmine2": "^26.6.3",

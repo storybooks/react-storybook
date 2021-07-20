@@ -6577,6 +6577,7 @@ __metadata:
     lodash: ^4.17.20
     markdown-to-jsx: ^7.1.3
     memoizerific: ^1.11.3
+    nanoid: ^3.1.23
     overlayscrollbars: ^1.13.1
     polished: ^4.0.5
     prop-types: ^15.7.2
@@ -7376,7 +7377,6 @@ __metadata:
     jest: ^26.6.3
     jest-emotion: ^10.0.32
     jest-environment-jsdom: ^26.6.2
-    jest-environment-jsdom-thirteen: ^1.0.1
     jest-enzyme: ^7.1.2
     jest-image-snapshot: ^4.3.0
     jest-jasmine2: ^26.6.3
@@ -26116,17 +26116,6 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"jest-environment-jsdom-thirteen@npm:^1.0.1":
-  version: 1.0.1
-  resolution: "jest-environment-jsdom-thirteen@npm:1.0.1"
-  dependencies:
-    jest-mock: ^24.0.0
-    jest-util: ^24.0.0
-    jsdom: ^13.0.0
-  checksum: bd067dcdf9c8ac019911abaf7db8f98dd554a65b0c33317e8b8143bf9f413ce3fb3d4c1ac0e3c62fbe187c4b7e3e3bad6bee2103a22eb53b663451b4f92ebc64
-  languageName: node
-  linkType: hard
-
 "jest-environment-jsdom@npm:^24.0.0, jest-environment-jsdom@npm:^24.9.0":
   version: 24.9.0
   resolution: "jest-environment-jsdom@npm:24.9.0"
@@ -27223,40 +27212,6 @@ fsevents@^1.2.7:
     ws: ^5.2.0
     xml-name-validator: ^3.0.0
   checksum: a909aa35527a337a55ddd66f99a0993d24e5a42ce5ef1ae0724a5fef5c9b4799f763dfd65d33798ca1feb83c604716aa054241e2b4b2274de2caa9566156566a
-  languageName: node
-  linkType: hard
-
-"jsdom@npm:^13.0.0":
-  version: 13.2.0
-  resolution: "jsdom@npm:13.2.0"
-  dependencies:
-    abab: ^2.0.0
-    acorn: ^6.0.4
-    acorn-globals: ^4.3.0
-    array-equal: ^1.0.0
-    cssom: ^0.3.4
-    cssstyle: ^1.1.1
-    data-urls: ^1.1.0
-    domexception: ^1.0.1
-    escodegen: ^1.11.0
-    html-encoding-sniffer: ^1.0.2
-    nwsapi: ^2.0.9
-    parse5: 5.1.0
-    pn: ^1.1.0
-    request: ^2.88.0
-    request-promise-native: ^1.0.5
-    saxes: ^3.1.5
-    symbol-tree: ^3.2.2
-    tough-cookie: ^2.5.0
-    w3c-hr-time: ^1.0.1
-    w3c-xmlserializer: ^1.0.1
-    webidl-conversions: ^4.0.2
-    whatwg-encoding: ^1.0.5
-    whatwg-mimetype: ^2.3.0
-    whatwg-url: ^7.0.0
-    ws: ^6.1.2
-    xml-name-validator: ^3.0.0
-  checksum: e4bd3120f5c1077f6ace1ac2e069a104f48ff4df6507097b6740990c783ecec6017122dd9904f2500805d8003932020d32c9f922b21c3009864dfb70fbeac6bf
   languageName: node
   linkType: hard
 
@@ -31349,7 +31304,7 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"nwsapi@npm:^2.0.7, nwsapi@npm:^2.0.9, nwsapi@npm:^2.1.3, nwsapi@npm:^2.2.0":
+"nwsapi@npm:^2.0.7, nwsapi@npm:^2.1.3, nwsapi@npm:^2.2.0":
   version: 2.2.0
   resolution: "nwsapi@npm:2.2.0"
   checksum: 1fd5adff9c6ab56b2e668dfb35a3f7517a5bd7a8817cd2af01037797fd1cb2fc6b22c2af1b06c1a66dd0536e36df1202a9fc21d8c37a0f24189b19d00606a091
@@ -38203,7 +38158,7 @@ resolve@1.19.0:
   languageName: node
   linkType: hard
 
-"saxes@npm:^3.1.5, saxes@npm:^3.1.9":
+"saxes@npm:^3.1.9":
   version: 3.1.11
   resolution: "saxes@npm:3.1.11"
   dependencies:
@@ -43443,7 +43398,7 @@ typescript@2.9.1:
   languageName: node
   linkType: hard
 
-"w3c-xmlserializer@npm:^1.0.1, w3c-xmlserializer@npm:^1.1.2":
+"w3c-xmlserializer@npm:^1.1.2":
   version: 1.1.2
   resolution: "w3c-xmlserializer@npm:1.1.2"
   dependencies:
