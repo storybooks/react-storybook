@@ -27,6 +27,14 @@ Here are some featured storybooks that you can reference to see how Storybook wo
 - [Demo of React Dates](http://airbnb.io/react-dates/) - [source](https://github.com/airbnb/react-dates)
 - [Demo of React Native Web](https://necolas.github.io/react-native-web/docs/) - [source](https://github.com/necolas/react-native-web)
 
+## React Applications
+
+For React apps that are not built with Create React App, ReactDom is a required for Storybook to work with your project. Add it to your devDependencies if it is not a dependency in your project:
+
+```bash
+npm install react-dom --save-dev
+```
+
 ## Create React App
 
 Support for [Create React App](https://create-react-app.dev/) is handled by [`@storybook/preset-create-react-app`](https://github.com/storybookjs/presets/tree/master/packages/preset-create-react-app).
