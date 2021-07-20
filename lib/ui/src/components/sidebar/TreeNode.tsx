@@ -12,7 +12,7 @@ export const CollapseIcon = styled.span<{ isExpanded: boolean }>(({ theme, isExp
   height: 0,
   marginTop: 6,
   marginLeft: 8,
-  marginRight: 5,
+  marginRight: 6,
   color: transparentize(0.4, theme.color.mediumdark),
   borderTop: '3px solid transparent',
   borderBottom: '3px solid transparent',
@@ -38,11 +38,10 @@ const iconColors = {
 const isColor = (theme: Theme, color: string): color is keyof Color => color in theme.color;
 const TypeIcon = styled(Icons)(
   {
-    width: 12,
-    height: 12,
-    padding: 1,
+    width: 11,
+    height: 11,
     marginTop: 3,
-    marginRight: 5,
+    marginRight: 6,
     flex: '0 0 auto',
   },
   ({ theme, icon, symbol = icon }) => {
@@ -66,6 +65,7 @@ const BranchNode = styled.button<{
   textAlign: 'left',
   padding: 3,
   paddingLeft: `${(isExpandable ? 2 : 18) + depth * 16}px`,
+  minHeight: '23px',
   color: 'inherit',
   fontSize: `${theme.typography.size.s2 - 1}px`,
   background: 'transparent',
@@ -81,6 +81,7 @@ const LeafNode = styled.a<{ depth?: number }>(({ theme, depth = 0 }) => ({
   alignItems: 'start',
   padding: 3,
   paddingLeft: `${18 + depth * 16}px`,
+  minHeight: '23px',
   fontSize: `${theme.typography.size.s2 - 1}px`,
   textDecoration: 'none',
   color: theme.color.defaultText,
