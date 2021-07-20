@@ -6652,7 +6652,6 @@ __metadata:
     "@storybook/node-logger": 6.4.0-alpha.18
     "@storybook/react-docgen-typescript-plugin": 1.0.2-canary.253f8c1.0
     "@storybook/semver": ^7.3.2
-    "@types/glob-base": ^0.3.0
     "@types/interpret": ^1.1.1
     "@types/micromatch": ^4.0.1
     "@types/mock-fs": ^4.13.0
@@ -6668,7 +6667,6 @@ __metadata:
     find-up: ^5.0.0
     fork-ts-checker-webpack-plugin: ^6.0.4
     glob: ^7.1.6
-    glob-base: ^0.3.0
     interpret: ^2.2.0
     json5: ^2.1.3
     lazy-universal-dotenv: ^3.0.1
@@ -8477,13 +8475,6 @@ __metadata:
   dependencies:
     "@types/node": "*"
   checksum: ab69190bfbdd0f491071d3e20ee01cf91d99e813dc53613e4cac11c68723be594961f755258d6e45f77dfb66e9fc559eaf0ac131321a9148a75839fb71b51946
-  languageName: node
-  linkType: hard
-
-"@types/glob-base@npm:^0.3.0":
-  version: 0.3.0
-  resolution: "@types/glob-base@npm:0.3.0"
-  checksum: 2c0cb3b7bb7c8661b9421194c0fd90a36e1c786a4124375749df9dc1dd8ade536c8eb2ac93b217db24ed3a427755def9a54bc86c2b6bf64a81fb82e7e6f44cc7
   languageName: node
   linkType: hard
 
@@ -22554,25 +22545,6 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"glob-base@npm:^0.3.0":
-  version: 0.3.0
-  resolution: "glob-base@npm:0.3.0"
-  dependencies:
-    glob-parent: ^2.0.0
-    is-glob: ^2.0.0
-  checksum: 4ce785c1dac2ff1e4660c010fa43ed2f1b38993dfd004023a3e7080b20bc61f29fbfe5d265b7e64cc84096ecf44e8ca876c7c1aad8f1f995d4c0f33034f3ae8c
-  languageName: node
-  linkType: hard
-
-"glob-parent@npm:^2.0.0":
-  version: 2.0.0
-  resolution: "glob-parent@npm:2.0.0"
-  dependencies:
-    is-glob: ^2.0.0
-  checksum: b9d59dc532d47aaaa4841046ff631b325a707f738445300b83b7a1ee603dd060c041a378e8a195c887d479bb703685cee4725c8f54b8dacef65355375f57d32a
-  languageName: node
-  linkType: hard
-
 "glob-parent@npm:^3.1.0":
   version: 3.1.0
   resolution: "glob-parent@npm:3.1.0"
@@ -24975,13 +24947,6 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"is-extglob@npm:^1.0.0":
-  version: 1.0.0
-  resolution: "is-extglob@npm:1.0.0"
-  checksum: 1ce5366d19958f36069a45ca996c1e51ab607f42a01eb0505f0ccffe8f9c91f5bcba6e971605efd8b4d4dfd0111afa3c8df3e1746db5b85b9a8f933f5e7286b7
-  languageName: node
-  linkType: hard
-
 "is-extglob@npm:^2.1.0, is-extglob@npm:^2.1.1":
   version: 2.1.1
   resolution: "is-extglob@npm:2.1.1"
@@ -25037,15 +25002,6 @@ fsevents@^1.2.7:
   version: 1.0.0
   resolution: "is-git-url@npm:1.0.0"
   checksum: d4139c4896fe8fe2d5b6d09d622e5ce42e3b0e84e425d9f0bfdaa1a92a3b218cb1c5398686ac2858b44f0a3c454869a89ec30745f1ce64ae418719af66629078
-  languageName: node
-  linkType: hard
-
-"is-glob@npm:^2.0.0":
-  version: 2.0.1
-  resolution: "is-glob@npm:2.0.1"
-  dependencies:
-    is-extglob: ^1.0.0
-  checksum: ef156806af0924983325c9218a8b8a838fa50e1a104ed2a11fe94829a5b27c1b05a4c8cf98d96cb3a7fea539c21f14ae2081e1a248f3d5a9eea62f2d4e9f8b0c
   languageName: node
   linkType: hard
 
