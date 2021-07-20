@@ -53,7 +53,7 @@
     "global": "^4.4.0",
     "js-string-escape": "^1.0.1",
     "lodash": "^4.17.20",
-    "prettier": "~2.2.1",
+    "prettier": "^2.2.1",
     "regenerator-runtime": "^0.13.7"
   },
   "devDependencies": {

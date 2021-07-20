@@ -248,7 +248,7 @@
     "npmlog": "^4.1.2",
     "p-limit": "^3.1.0",
     "postcss-loader": "^4.2.0",
-    "prettier": "~2.2.1",
+    "prettier": "^2.2.1",
     "prompts": "^2.4.0",
     "raf": "^3.4.1",
     "regenerator-runtime": "^0.13.7",

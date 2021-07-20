@@ -91,7 +91,7 @@
     "lodash": "^4.17.20",
     "nanoid": "^3.1.23",
     "p-limit": "^3.1.0",
-    "prettier": "~2.2.1",
+    "prettier": "^2.2.1",
     "prop-types": "^15.7.2",
     "react-element-to-jsx-string": "^14.3.2",
     "regenerator-runtime": "^0.13.7",

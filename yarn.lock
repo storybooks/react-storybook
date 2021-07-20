@@ -5709,7 +5709,7 @@ __metadata:
     lodash: ^4.17.20
     nanoid: ^3.1.23
     p-limit: ^3.1.0
-    prettier: ~2.2.1
+    prettier: ^2.2.1
     prop-types: ^15.7.2
     react-element-to-jsx-string: ^14.3.2
     regenerator-runtime: ^0.13.7
@@ -6056,7 +6056,7 @@ __metadata:
     core-js: ^3.8.2
     estraverse: ^5.2.0
     loader-utils: ^2.0.0
-    prettier: ~2.2.1
+    prettier: ^2.2.1
     prop-types: ^15.7.2
     react-syntax-highlighter: ^13.5.3
     regenerator-runtime: ^0.13.7
@@ -6551,7 +6551,7 @@ __metadata:
     jest-specific-snapshot: ^4.0.0
     jscodeshift: ^0.7.0
     lodash: ^4.17.20
-    prettier: ~2.2.1
+    prettier: ^2.2.1
     recast: ^0.19.0
     regenerator-runtime: ^0.13.7
   languageName: unknown
@@ -6791,7 +6791,7 @@ __metadata:
     js-string-escape: ^1.0.1
     js-yaml: ^3.14.1
     lodash: ^4.17.20
-    prettier: ~2.2.1
+    prettier: ^2.2.1
     regenerator-runtime: ^0.13.7
     ts-dedent: ^2.0.0
   languageName: unknown
@@ -7394,7 +7394,7 @@ __metadata:
     npmlog: ^4.1.2
     p-limit: ^3.1.0
     postcss-loader: ^4.2.0
-    prettier: ~2.2.1
+    prettier: ^2.2.1
     prompts: ^2.4.0
     puppeteer: ^2.1.1
     raf: ^3.4.1
@@ -7533,7 +7533,7 @@ __metadata:
     global: ^4.4.0
     loader-utils: ^2.0.0
     lodash: ^4.17.20
-    prettier: ~2.2.1
+    prettier: ^2.2.1
     regenerator-runtime: ^0.13.7
   peerDependencies:
     react: ^16.8.0 || ^17.0.0
@@ -34581,7 +34581,7 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"prettier@npm:~2.2.1":
+"prettier@npm:^2.2.1":
   version: 2.2.1
   resolution: "prettier@npm:2.2.1"
   bin:

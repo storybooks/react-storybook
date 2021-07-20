@@ -51,7 +51,7 @@
     "globby": "^11.0.2",
     "jscodeshift": "^0.7.0",
     "lodash": "^4.17.20",
-    "prettier": "~2.2.1",
+    "prettier": "^2.2.1",
     "recast": "^0.19.0",
     "regenerator-runtime": "^0.13.7"
   },
