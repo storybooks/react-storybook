@@ -4,7 +4,7 @@ import {
   getManagerMainTemplate,
   getPreviewMainTemplate,
   loadCustomBabelConfig,
-  babelConfig,
+  babelConfig as getDefaultBabelConfig,
   loadEnvs,
   Options,
 } from '@storybook/core-common';
@@ -12,10 +12,10 @@ import {
 export const babel = async (_: unknown, options: Options) => {
   const { configDir, presets } = options;
 
-  return loadCustomBabelConfig(
-    configDir,
-    () => presets.apply('babelDefault', babelConfig(), options) as any
-  );
+  const babelConfigFromFile = await loadCustomBabelConfig(configDir);
+  const defaultBabelConfig = await getDefaultBabelConfig();
+
+  return presets.apply('babelDefault', babelConfigFromFile || defaultBabelConfig, options);
 };
 
 export const logLevel = (previous: any, options: Options) => previous || options.loglevel || 'info';

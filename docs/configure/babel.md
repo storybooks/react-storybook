@@ -18,9 +18,7 @@ Check out our [source](https://github.com/storybookjs/storybook/blob/next/lib/co
 
 ### Custom config file
 
-If your project has a `.babelrc` file, we'll use that instead of the default config file.
-
-You can also place a `.storybook/.babelrc` file to use a special configuration for Storybook only.
+If your project has a `.storybook/.babelrc` file, we'll use that instead of the default config file.
 
 ### Custom configuration
 

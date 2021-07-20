@@ -48,10 +48,16 @@ function loadFromPath(babelConfigPath: string): TransformOptions {
       throw error.js;
     }
 
+    if (config instanceof Function) {
+      config = config();
+    }
+
     config = { ...config, babelrc: false };
   }
 
-  if (!config) return null;
+  if (!config) {
+    return null;
+  }
 
   // Remove react-hmre preset.
   // It causes issues with react-storybook.
@@ -69,10 +75,7 @@ function loadFromPath(babelConfigPath: string): TransformOptions {
   return config;
 }
 
-export const loadCustomBabelConfig = async function (
-  configDir: string,
-  getDefaultConfig: () => TransformOptions
-) {
+export const loadCustomBabelConfig = async (configDir: string) => {
   // Between versions 5.1.0 - 5.1.9 this loaded babel.config.js from the project
   // root, which was an unintentional breaking change. We can add back project support
   // in 6.0.
@@ -81,6 +84,7 @@ export const loadCustomBabelConfig = async function (
     loadFromPath(path.resolve(configDir, '.babelrc.json')) ||
     loadFromPath(path.resolve(configDir, '.babelrc.js')) ||
     loadFromPath(path.resolve(configDir, 'babel.config.json')) ||
+    loadFromPath(path.resolve(configDir, 'babel.config.ts')) ||
     loadFromPath(path.resolve(configDir, 'babel.config.js'));
 
   if (babelConfig) {
@@ -92,5 +96,5 @@ export const loadCustomBabelConfig = async function (
     return babelConfig;
   }
 
-  return getDefaultConfig();
+  return null;
 };
