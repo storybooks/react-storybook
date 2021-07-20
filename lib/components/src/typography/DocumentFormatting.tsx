@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react';
+import React, { FunctionComponent, ReactNode } from 'react';
 import { styled, CSSObject } from '@storybook/theming';
 import { withReset, withMargin, headerCommon, codeCommon } from './shared';
 import { StyledSyntaxHighlighter } from '../blocks/Source';
@@ -330,18 +330,25 @@ const DefaultCodeBlock = styled.code<{}>(
   codeCommon
 );
 
+const isInlineCodeRegex = /[\n\r]/g;
+
+const isReactChildString = (child: ReactNode): child is string => typeof child === 'string';
+
 export const Code = ({
   className,
   children,
   ...props
 }: React.ComponentProps<typeof DefaultCodeBlock>) => {
   const language = (className || '').match(/lang-(\S+)/);
-  const isInlineCode = !(children as string).match(/[\n\r]/g);
+  const childrenArray = React.Children.toArray(children);
+  const isInlineCode = !childrenArray
+    .filter(isReactChildString)
+    .some((child) => child.match(isInlineCodeRegex));
 
   if (isInlineCode) {
     return (
       <DefaultCodeBlock {...props} className={className}>
-        {children}
+        {childrenArray}
       </DefaultCodeBlock>
     );
   }
