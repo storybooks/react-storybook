@@ -1,7 +1,3 @@
-/** @jsx h */
-
-import { h } from 'preact';
-
 import Button from '../Button';
 
 export default {

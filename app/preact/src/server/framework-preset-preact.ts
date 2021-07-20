@@ -6,8 +6,11 @@ export function babelDefault(config: TransformOptions) {
   return {
     ...config,
     plugins: [
+      [
+        require.resolve('@babel/plugin-transform-react-jsx'),
+        { importSource: 'preact', runtime: 'automatic' },
+      ],
       ...config.plugins,
-      [require.resolve('@babel/plugin-transform-react-jsx'), { pragma: 'h' }, 'preset'],
     ],
   };
 }
