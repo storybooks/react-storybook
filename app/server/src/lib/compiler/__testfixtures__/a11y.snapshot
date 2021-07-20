@@ -11,11 +11,12 @@ export default {
   }
 };
 
-export const Label = (args) => {};
-Label.storyName = 'Label';
-Label.parameters = {
-  server: {
-    id: \\"addons/a11y/label\\"
+export const Label = {
+  name: \\"Label\\",
+  parameters: {
+    server: {
+      id: \\"addons/a11y/label\\"
+    }
   }
 };
 "

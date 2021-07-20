@@ -4,6 +4,9 @@ import type { StoriesEntry, NormalizedStoriesEntry } from '../types';
 
 const DEFAULT_FILES = '*.stories.@(mdx|tsx|ts|jsx|js)';
 const DEFAULT_TITLE_PREFIX = '';
+// Excaping regexes for glob regexes is fun
+// Mathing things like '../**/*.stories.mdx'
+const GLOB_REGEX = /^(?<directory>[^*]*)\/\*\*\/(?<files>\*\..*)/;
 
 const isDirectory = (configDir: string, entry: string) => {
   try {
@@ -24,10 +27,17 @@ export const normalizeStoriesEntry = (
   if (typeof entry === 'string') {
     if (!entry.includes('**') && isDirectory(configDir, entry)) {
       directory = entry;
-      titlePrefix = DEFAULT_TITLE_PREFIX;
       files = DEFAULT_FILES;
+      titlePrefix = DEFAULT_TITLE_PREFIX;
     } else {
-      glob = entry;
+      const match = entry.match(GLOB_REGEX);
+      if (match) {
+        directory = match.groups.directory;
+        files = match.groups.files;
+        titlePrefix = DEFAULT_TITLE_PREFIX;
+      } else {
+        glob = entry;
+      }
     }
   } else {
     directory = entry.directory;

@@ -13,13 +13,14 @@ export default {
   }
 };
 
-export const Story = (args) => {};
-Story.storyName = 'Story';
-Story.parameters = {
-  server: {
-    id: \\"params/story\\",
-    params: {
-      message: \\"Hello World\\"
+export const Story = {
+  name: \\"Story\\",
+  parameters: {
+    server: {
+      id: \\"params/story\\",
+      params: {
+        message: \\"Hello World\\"
+      }
     }
   }
 };

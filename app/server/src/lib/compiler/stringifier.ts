@@ -60,18 +60,12 @@ export function stringifyDefault(section: StorybookSection): string {
 }
 
 export function stringifyStory(story: StorybookStory): string {
-  const { name, storyFn, ...options } = story;
+  const { name, ...options } = story;
   const storyId = identifier(name);
 
-  const storyStrings = [
-    `export const ${storyId} = ${storyFn};`,
-    `${storyId}.storyName = '${name}';`,
-  ];
+  const exportedStory = { name, ...options };
 
-  Object.keys(options).forEach((key) => {
-    storyStrings.push(`${storyId}.${key} = ${stringifyObject(options[key])};`);
-  });
-  storyStrings.push('');
+  const storyStrings = [`export const ${storyId} = ${stringifyObject(exportedStory)};`, ''];
 
   return storyStrings.join('\n');
 }

@@ -19,11 +19,12 @@ export default {
   }
 };
 
-export const Story_1 = (args) => {};
-Story_1.storyName = 'Story 1';
-Story_1.parameters = {
-  server: {
-    id: \\"addons/backgrounds/story1\\"
+export const Story_1 = {
+  name: \\"Story 1\\",
+  parameters: {
+    server: {
+      id: \\"addons/backgrounds/story1\\"
+    }
   }
 };
 "

@@ -1,5 +1,5 @@
 import { start } from '@storybook/core/client';
-import { ClientStoryApi, Loadable } from '@storybook/addons';
+import { ClientStoryApi, Loadable, StoryFn, Args } from '@storybook/addons';
 
 import './globals';
 import { renderMain as render } from './render';
@@ -16,7 +16,10 @@ interface ClientApi extends ClientStoryApi<StoryFnServerReturnType> {
   raw: () => any; // todo add type
 }
 
+const globalRender: StoryFn = (args: Args) => {};
+
 const api = start(render);
+api.clientApi.globalRender = globalRender;
 
 export const storiesOf: ClientApi['storiesOf'] = (kind, m) => {
   return (api.clientApi.storiesOf(kind, m) as ReturnType<ClientApi['storiesOf']>).addParameters({

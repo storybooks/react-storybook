@@ -6,27 +6,30 @@ export default {
   title: \\"Demo\\",
 };
 
-export const Heading = (args) => {};
-Heading.storyName = 'Heading';
-Heading.parameters = {
-  server: {
-    id: \\"demo/heading\\"
+export const Heading = {
+  name: \\"Heading\\",
+  parameters: {
+    server: {
+      id: \\"demo/heading\\"
+    }
   }
 };
 
-export const Headings = (args) => {};
-Headings.storyName = 'Headings';
-Headings.parameters = {
-  server: {
-    id: \\"demo/headings\\"
+export const Headings = {
+  name: \\"Headings\\",
+  parameters: {
+    server: {
+      id: \\"demo/headings\\"
+    }
   }
 };
 
-export const Button = (args) => {};
-Button.storyName = 'Button';
-Button.parameters = {
-  server: {
-    id: \\"demo/button\\"
+export const Button = {
+  name: \\"Button\\",
+  parameters: {
+    server: {
+      id: \\"demo/button\\"
+    }
   }
 };
 "

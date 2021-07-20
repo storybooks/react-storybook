@@ -11,48 +11,49 @@ export default {
   }
 };
 
-export const Simple = (args) => {};
-Simple.storyName = 'Simple';
-Simple.parameters = {
-  server: {
-    id: \\"addons/controls/simple\\"
-  }
-};
-Simple.args = {
-  name: \\"John Doe\\",
-  birthday: \\"1960-12-25T00:42:03.600Z\\",
-  favorite_color: \\"red\\",
-  active: true,
-  pets: 2,
-  sports: [
-    \\"football\\",
-    \\"baseball\\"
-  ],
-  favorite_food: \\"Ice Cream\\",
-  other_things: {
-    hair: \\"Brown\\",
-    eyes: \\"Blue\\"
-  }
-};
-Simple.argTypes = {
-  birthday: {
-    control: {
-      type: \\"date\\"
+export const Simple = {
+  name: \\"Simple\\",
+  parameters: {
+    server: {
+      id: \\"addons/controls/simple\\"
     }
   },
-  favorite_color: {
-    control: {
-      type: \\"color\\"
+  args: {
+    name: \\"John Doe\\",
+    birthday: \\"1960-12-25T00:42:03.600Z\\",
+    favorite_color: \\"red\\",
+    active: true,
+    pets: 2,
+    sports: [
+      \\"football\\",
+      \\"baseball\\"
+    ],
+    favorite_food: \\"Ice Cream\\",
+    other_things: {
+      hair: \\"Brown\\",
+      eyes: \\"Blue\\"
     }
   },
-  favorite_food: {
-    control: {
-      type: \\"select\\",
-      options: {
-        hot_dog: \\"Hot Dog\\",
-        pizza: \\"Pizza\\",
-        burgers: \\"Burgers\\",
-        ice_cream: \\"Ice Cream\\"
+  argTypes: {
+    birthday: {
+      control: {
+        type: \\"date\\"
+      }
+    },
+    favorite_color: {
+      control: {
+        type: \\"color\\"
+      }
+    },
+    favorite_food: {
+      control: {
+        type: \\"select\\",
+        options: {
+          hot_dog: \\"Hot Dog\\",
+          pizza: \\"Pizza\\",
+          burgers: \\"Burgers\\",
+          ice_cream: \\"Ice Cream\\"
+        }
       }
     }
   }

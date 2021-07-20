@@ -1,5 +1,4 @@
 {
-  "title": "Params",
   "parameters": {
     "server": {
       "params": { "color": "red" }

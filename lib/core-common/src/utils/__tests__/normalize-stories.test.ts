@@ -12,10 +12,31 @@ jest.mock('fs', () => ({
 }));
 
 describe('normalizeStoriesEntry', () => {
-  it('glob', () => {
+  it('direcotry/files glob', () => {
     expect(normalizeStoriesEntry('../**/*.stories.mdx', '')).toMatchInlineSnapshot(`
       {
-        "glob": "../**/*.stories.mdx"
+        "glob": "../**/*.stories.mdx",
+        "specifier": {
+          "directory": "..",
+          "titlePrefix": "",
+          "files": "*.stories.mdx"
+        }
+      }
+    `);
+  });
+
+  it('too many stars glob', () => {
+    expect(normalizeStoriesEntry('../**/foo/**/*.stories.mdx', '')).toMatchInlineSnapshot(`
+      {
+        "glob": "../**/foo/**/*.stories.mdx"
+      }
+    `);
+  });
+
+  it('intermediate directory glob', () => {
+    expect(normalizeStoriesEntry('../**/foo/*.stories.mdx', '')).toMatchInlineSnapshot(`
+      {
+        "glob": "../**/foo/*.stories.mdx"
       }
     `);
   });

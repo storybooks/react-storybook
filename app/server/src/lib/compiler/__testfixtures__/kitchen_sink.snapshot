@@ -27,33 +27,35 @@ export default {
   }
 };
 
-export const Heading = (args) => {};
-Heading.storyName = 'Heading';
-Heading.parameters = {
-  actions: [
-    \\"click\\",
-    \\"contextmenu\\",
-    {
-      clearOnStoryChange: false
+export const Heading = {
+  name: \\"Heading\\",
+  parameters: {
+    actions: [
+      \\"click\\",
+      \\"contextmenu\\",
+      {
+        clearOnStoryChange: false
+      }
+    ],
+    server: {
+      id: \\"demo/heading\\",
+      params: {
+        color: \\"orange\\"
+      }
     }
-  ],
-  server: {
-    id: \\"demo/heading\\",
-    params: {
-      color: \\"orange\\"
-    }
+  },
+  args: {
+    name: \\"John Doe\\",
+    age: 44
   }
 };
-Heading.args = {
-  name: \\"John Doe\\",
-  age: 44
-};
 
-export const Button = (args) => {};
-Button.storyName = 'Button';
-Button.parameters = {
-  server: {
-    id: \\"demo/button\\"
+export const Button = {
+  name: \\"Button\\",
+  parameters: {
+    server: {
+      id: \\"demo/button\\"
+    }
   }
 };
 "

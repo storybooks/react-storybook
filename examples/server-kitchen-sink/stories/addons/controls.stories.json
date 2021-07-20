@@ -1,5 +1,4 @@
 {
-  "title": "Addons/Controls",
   "parameters": {
     "options": { "selectedPanel": "storybook/controls/panel" }
   },

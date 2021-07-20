@@ -62,7 +62,7 @@ module.exports = {
 
 Notice that the JSON does not specify a rendering function -- `@storybook/server` will instead call your `parameters.server.url` with the story's server id appended.
 
-For example the JSON story above is requivalent to the CSF definition:
+For example the JSON story above is requivalent to the CSF3 definition:
 
 ```javascript
 export default {
@@ -74,11 +74,12 @@ export default {
   },
 };
 
-export const Default = (args) => {};
-Default.storyName = 'Default';
-Default.parameters = {
-  server: {
-    id: 'path/of/your/story"',
+export const Default = {
+  name: 'Default',
+  parameters: {
+    server: {
+      id: 'path/of/your/story"',
+    },
   },
 };
 ```
