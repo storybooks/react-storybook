@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import BaseButton from './BaseButton';
 
+/** Uses [BaseButton](/docs/addons-a11y-basebutton--default) internally. */
 const NamedExportButton = (props) => <BaseButton {...props} />;
 
 NamedExportButton.defaultProps = {

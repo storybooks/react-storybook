@@ -1,5 +1,6 @@
 import React, { FunctionComponent } from 'react';
 import { styled, CSSObject } from '@storybook/theming';
+import { window } from 'global';
 import { withReset, withMargin, headerCommon, codeCommon } from './shared';
 import { StyledSyntaxHighlighter } from '../blocks/Source';
 
@@ -71,9 +72,15 @@ export const Pre = styled.pre<{}>(withReset, withMargin, ({ theme }) => ({
 }));
 
 const Link: FunctionComponent<any> = ({ href: input, children, ...props }) => {
+  // If storybook is hosted at a non-root path (e.g. `/storybook/`),
+  // the base url needs to be prefixed to storybook paths.
+  let storybookBaseUrl =
+    typeof window !== 'undefined' ? window.parent.document.location.pathname : '/';
+  if (!storybookBaseUrl.endsWith('/')) storybookBaseUrl += '/';
+
   const isStorybookPath = /^\//.test(input);
   const isAnchorUrl = /^#.*/.test(input);
-  const href = isStorybookPath ? `?path=${input}` : input;
+  const href = isStorybookPath ? `${storybookBaseUrl}?path=${input}` : input;
   const target = isAnchorUrl ? '_self' : '_top';
 
   return (
