@@ -2,7 +2,7 @@ import { ArgTypes } from '@storybook/api';
 import { ArgTypesExtractor, hasDocgen, extractComponentProps } from '../../lib/docgen';
 import { convert } from '../../lib/convert';
 
-const SECTIONS = ['props', 'events', 'slots'];
+const SECTIONS = ['props', 'events', 'slots', 'methods'];
 
 export const extractArgTypes: ArgTypesExtractor = (component) => {
   if (!hasDocgen(component)) {
