@@ -11,7 +11,7 @@ const storybookUrl = getStorybookUrl();
 if (storybookUrl != null) {
   initStoryshots({
     suite: 'Puppeteer tests',
-    storyKindRegex: /^Basics|UI/,
+    storyFilterFunction: (story) => story.kind.startsWith('Basics') || story.kind.startsWith('UI'),
     framework: 'react',
     configPath: path.join(__dirname, '..'),
     test: axeTest({ storybookUrl }),

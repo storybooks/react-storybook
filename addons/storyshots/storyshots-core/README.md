@@ -581,6 +581,31 @@ initStoryshots({
 });
 ```
 
+### `storyFilterFunction`
+
+If you'd like to only run a subset of the stories for your snapshot tests based on the story:
+
+```js
+import initStoryshots from '@storybook/addon-storyshots';
+
+initStoryshots({
+  storyFilterFunction: (story, index) => story.kind.includes('Component') && index < 100,
+});
+```
+
+This way you are able to partition your tests, which might be useful for parallelized CI testing
+
+```js
+import initStoryshots from '@storybook/addon-storyshots';
+
+const ciNodeIndex = Number(process.env.CI_NODE_INDEX || '1');
+const ciNodeTotal = Number(process.env.CI_NODE_TOTAL || '1');
+
+initStoryshots({
+  storyFilterFunction: (story, index) => index % ciNodeTotal === ciNodeIndex - 1
+});
+```
+
 ### `framework`
 
 If you are running tests from outside of your app's directory, storyshots' detection of which framework you are using may fail. Pass `"react"` or `"react-native"` to short-circuit this.

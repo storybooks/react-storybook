@@ -30,6 +30,7 @@ export interface StoryshotsOptions {
   suite?: string;
   storyKindRegex?: RegExp | string;
   storyNameRegex?: RegExp | string;
+  storyFilterFunction?: (item: any, index: number) => boolean;
   framework?: SupportedFramework;
   test?: StoryshotsTestMethod;
   renderer?: Function;
