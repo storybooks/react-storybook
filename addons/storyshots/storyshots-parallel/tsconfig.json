@@ -1,0 +1,10 @@
+{
+  "extends": "../../../tsconfig.json",
+  "compilerOptions": {
+    "target": "es2019",
+    "rootDir": "./src",
+    "types": ["node"],
+    "declaration": true
+  },
+  "include": ["src/**/*"]
+}

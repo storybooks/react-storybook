@@ -1,0 +1,14 @@
+{
+  "name": "@storybook/addon-storyshots-parallel",
+  "version": "6.1.0-alpha.9",
+  "private": true,
+  "scripts": {
+    "example": "STORYBOOK_URL=http://localhost:8001/html-kitchen-sink CONCURRENCY=5 jest --forceExit --env '<rootDir>/dist/jest-env.js' example.test",
+    "prepare": "node ../../../scripts/prepare.js"
+  },
+  "dependencies": {
+    "playwright": "^1.3.0",
+    "jest-image-snapshot": "^4.0.2",
+    "p-all": "^3.0.0"
+  }
+}
