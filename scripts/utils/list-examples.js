@@ -3,8 +3,8 @@ import { join } from 'path';
 
 const p = (l) => join(__dirname, '..', '..', ...l);
 
-export const getDeployables = (files, extraFilter) => {
-  return files.filter((f) => {
+export const getDeployables = (files, extraFilter) =>
+  files.filter((f) => {
     const packageJsonLocation = p(['examples', f, 'package.json']);
     let stats = null;
     try {
@@ -15,4 +15,3 @@ export const getDeployables = (files, extraFilter) => {
 
     return stats && stats.isFile() && extraFilter(packageJsonLocation);
   });
-};
