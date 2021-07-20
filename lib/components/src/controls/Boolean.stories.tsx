@@ -21,3 +21,8 @@ export const True = () => Template(true);
 export const False = () => Template(false);
 
 export const Undefined = () => Template(undefined);
+
+export const Null = () => Template(null);
+
+// @ts-ignore
+export const Mistyped = () => Template('foo');

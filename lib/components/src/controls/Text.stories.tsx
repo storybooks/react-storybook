@@ -21,3 +21,8 @@ export const Basic = () => Template('Hello text');
 export const Empty = () => Template('');
 
 export const Undefined = () => Template(undefined);
+
+export const Null = () => Template(null);
+
+// @ts-ignore
+export const Mistyped = () => Template(1);

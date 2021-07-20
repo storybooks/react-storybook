@@ -21,3 +21,7 @@ export const Basic = () => Template(10);
 export const Zero = () => Template(0);
 
 export const Undefined = () => Template(undefined);
+
+export const Null = () => Template(null);
+
+export const Mistyped = () => Template('foo');

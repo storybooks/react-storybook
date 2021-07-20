@@ -29,6 +29,11 @@ export const Basic = () => Template('#ff0');
 
 export const Undefined = () => Template(undefined);
 
+export const Null = () => Template(null);
+
+// @ts-ignore
+export const Mistyped = () => Template(1);
+
 export const WithPresetColors = () =>
   Template('tan', [
     { color: '#ff4785', title: 'Coral' },

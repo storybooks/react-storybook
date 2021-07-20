@@ -20,9 +20,11 @@ export const Basic = () => Template({ name: 'Michael', nested: { something: true
 
 export const Empty = () => Template({});
 
+export const Undefined = () => Template(undefined);
+
 export const Null = () => Template(null);
 
-export const Undefined = () => Template(undefined);
+export const NonObject = () => Template(1);
 
 export const ValidatedAsArray = () => {
   const [value, setValue] = useState([]);
