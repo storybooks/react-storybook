@@ -27,7 +27,9 @@ title: 'Install Storybook'
 
 <summary><code>sb init</code> is not made for empty projects</summary>
 
-Storybook needs to be installed into a project that is already setup with a framework. It will not work on an empty project. There are many ways to bootstrap an app in a given framework including:
+Storybook needs to be installed into a project that is already setup with a framework. It will not work on an empty project. Make sure you are in the root directory of your project as well. For example: if you are using angular, run this command in the the directory that your angular.json is. 
+
+There are many ways to bootstrap an app in a given framework including:
 
 - 📦 [Create an Angular Workspace](https://angular.io/cli/new)
 - 📦 [Create React App](https://reactjs.org/docs/create-a-new-react-app.html)
