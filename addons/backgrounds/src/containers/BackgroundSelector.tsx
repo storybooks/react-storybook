@@ -8,7 +8,7 @@ import { Icons, IconButton, WithTooltip, TooltipLinkList } from '@storybook/comp
 import { PARAM_KEY as BACKGROUNDS_PARAM_KEY } from '../constants';
 import { ColorIcon } from '../components/ColorIcon';
 import { BackgroundSelectorItem, Background, BackgroundsParameter, GlobalState } from '../types';
-import { getBackgroundColorByName } from '../helpers';
+import { clearBackground, getBackgroundColorByName } from '../helpers';
 
 const createBackgroundSelectorItem = memoize(1000)(
   (
@@ -51,8 +51,8 @@ const getDisplayedItems = memoize(10)(
       return [
         createBackgroundSelectorItem(
           'reset',
-          'Clear background',
-          'transparent',
+          clearBackground.name,
+          clearBackground.value,
           null,
           change,
           false
@@ -81,7 +81,7 @@ export const BackgroundSelector: FunctionComponent = memo(() => {
 
   const globalsBackgroundColor = globals[BACKGROUNDS_PARAM_KEY]?.value;
 
-  const selectedBackgroundColor = useMemo(() => {
+  const selectedBackground = useMemo(() => {
     return getBackgroundColorByName(
       globalsBackgroundColor,
       backgroundsConfig.values,
@@ -117,9 +117,9 @@ export const BackgroundSelector: FunctionComponent = memo(() => {
             <TooltipLinkList
               links={getDisplayedItems(
                 backgroundsConfig.values,
-                selectedBackgroundColor,
+                selectedBackground.value,
                 ({ selected }: GlobalState) => {
-                  if (selectedBackgroundColor !== selected) {
+                  if (selectedBackground.value !== selected) {
                     onBackgroundChange(selected);
                   }
                   onHide();
@@ -131,8 +131,8 @@ export const BackgroundSelector: FunctionComponent = memo(() => {
       >
         <IconButton
           key="background"
-          title="Change the background of the preview"
-          active={selectedBackgroundColor !== 'transparent'}
+          title="Change the background or CSS of the preview"
+          active={selectedBackground.value !== 'transparent'}
         >
           <Icons icon="photo" />
         </IconButton>

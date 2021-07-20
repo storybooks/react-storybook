@@ -5,6 +5,12 @@ import { logger } from '@storybook/client-logger';
 
 import { Background } from '../types';
 
+export const clearBackground: Background = {
+  name: 'Clear the background or CSS of the preview',
+  value: 'transparent',
+};
+const variablesStyleIdentifier = 'addon-backgrounds-variables';
+const variablesStyleLinkIdentifier = 'addon-backgrounds-variables-link';
 const { document, window } = global;
 
 export const isReduceMotionEnabled = () => {
@@ -16,18 +22,19 @@ export const getBackgroundColorByName = (
   currentSelectedValue: string,
   backgrounds: Background[] = [],
   defaultName: string
-): string => {
+): Background => {
   if (currentSelectedValue === 'transparent') {
-    return 'transparent';
+    return clearBackground;
   }
 
-  if (backgrounds.find((background) => background.value === currentSelectedValue)) {
-    return currentSelectedValue;
+  const result = backgrounds.find((background) => background.value === currentSelectedValue);
+  if (result) {
+    return result;
   }
 
   const defaultBackground = backgrounds.find((background) => background.name === defaultName);
   if (defaultBackground) {
-    return defaultBackground.value;
+    return defaultBackground;
   }
 
   if (defaultName) {
@@ -41,7 +48,7 @@ export const getBackgroundColorByName = (
     );
   }
 
-  return 'transparent';
+  return clearBackground;
 };
 
 export const clearStyles = (selector: string | string[]) => {
@@ -89,5 +96,56 @@ export const addBackgroundStyle = (selector: string, css: string, storyId: strin
     } else {
       document.head.appendChild(style);
     }
+  }
+};
+
+export const applyOrRemoveCssVariablesFromConfiguration = (variables: {
+  [name: string]: string;
+}) => {
+  let style = document.getElementById(variablesStyleIdentifier) as HTMLStyleElement;
+  if (variables) {
+    if (!style) {
+      style = document.createElement('style');
+      style.id = variablesStyleIdentifier;
+      document.head.appendChild(style);
+    }
+    const cssVariables = Object.keys(variables)
+      .map((name) => `${name}:${variables[name]};`)
+      .join('');
+    style.textContent = `:root{${cssVariables}}`;
+  } else if (!variables && style) {
+    document.head.removeChild(style);
+  }
+};
+
+export const applyOrRemoveCssVariablesFromAssetFile = (variablesAsset: string) => {
+  let link = document.getElementById(variablesStyleLinkIdentifier) as HTMLLinkElement;
+  if (variablesAsset) {
+    if (!link) {
+      link = document.createElement('link');
+      link.id = variablesStyleLinkIdentifier;
+      link.rel = 'stylesheet';
+      link.type = 'text/css';
+      document.head.appendChild(link);
+    }
+    link.href = variablesAsset;
+  } else if (!variablesAsset && link) {
+    document.head.removeChild(link);
+  }
+};
+
+export const applyOrRemoveCssVariables = ({ cssVariables, cssVariablesAsset }: Background) => {
+  applyOrRemoveCssVariablesFromAssetFile(cssVariablesAsset);
+  applyOrRemoveCssVariablesFromConfiguration(cssVariables);
+};
+
+export const removeCssVariables = () => {
+  const style = document.getElementById(variablesStyleIdentifier);
+  const styleLink = document.getElementById(variablesStyleLinkIdentifier);
+  if (style) {
+    document.head.removeChild(style);
+  }
+  if (styleLink) {
+    document.head.removeChild(styleLink);
   }
 };

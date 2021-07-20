@@ -1,0 +1,23 @@
+```js
+// .storybook/preview.js
+
+export const parameters = {
+  backgrounds: {
+    default: 'twitter',
+    values: [
+      {
+        name: 'twitter',
+        value: '#00aced',
+        cssVariables: {
+            '--background' :'#00aced',
+            '--other-variable': 'white',
+        },
+      },
+      {
+        name: 'facebook',
+        value: '#3b5998',
+      },
+    ],
+  },
+};
+```

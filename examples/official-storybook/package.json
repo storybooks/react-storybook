@@ -8,7 +8,7 @@
     "do-storyshots-puppeteer": "../../node_modules/.bin/jest --projects=./storyshots-puppeteer",
     "generate-addon-jest-testresults": "jest --config=tests/addon-jest.config.json --json --outputFile=stories/addon-jest.testresults.json",
     "packtracker": "yarn storybook --smoke-test --webpack-stats-json /tmp --quiet && cross-env PT_PROJECT_TOKEN=1af1d41b-d737-41d4-ac00-53c8f3913b53 packtracker-upload --stats=/tmp/manager-stats.json",
-    "storybook": "cross-env STORYBOOK_DISPLAY_WARNING=true DISPLAY_WARNING=true start-storybook -p 9011 -c ./ --no-manager-cache",
+    "storybook": "cross-env STORYBOOK_DISPLAY_WARNING=true DISPLAY_WARNING=true start-storybook -p 9011 -c ./ -s ./public --no-manager-cache",
     "storyshots-puppeteer": "yarn run build-storybook && yarn run do-storyshots-puppeteer"
   },
   "devDependencies": {

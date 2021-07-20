@@ -17,6 +17,10 @@ export interface BackgroundSelectorItem {
 export interface Background {
   name: string;
   value: string;
+  cssVariables?: {
+    [cssVariableName: string]: string;
+  };
+  cssVariablesAsset?: string;
 }
 
 export interface BackgroundsParameter {

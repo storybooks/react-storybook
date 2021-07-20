@@ -5,6 +5,9 @@ import {
   clearStyles,
   addBackgroundStyle,
   getBackgroundColorByName,
+  clearBackground,
+  applyOrRemoveCssVariables,
+  removeCssVariables,
   isReduceMotionEnabled,
 } from '../helpers';
 
@@ -13,9 +16,9 @@ export const withBackground = (StoryFn: StoryFunction, context: StoryContext) =>
   const globalsBackgroundColor = globals[BACKGROUNDS_PARAM_KEY]?.value;
   const backgroundsConfig = parameters[BACKGROUNDS_PARAM_KEY];
 
-  const selectedBackgroundColor = useMemo(() => {
+  const selectedBackground = useMemo(() => {
     if (backgroundsConfig.disable) {
-      return 'transparent';
+      return clearBackground;
     }
 
     return getBackgroundColorByName(
@@ -25,10 +28,9 @@ export const withBackground = (StoryFn: StoryFunction, context: StoryContext) =>
     );
   }, [backgroundsConfig, globalsBackgroundColor]);
 
-  const isActive = useMemo(
-    () => selectedBackgroundColor && selectedBackgroundColor !== 'transparent',
-    [selectedBackgroundColor]
-  );
+  const isActive = useMemo(() => selectedBackground && selectedBackground.value !== 'transparent', [
+    selectedBackground,
+  ]);
 
   const selector =
     context.viewMode === 'docs' ? `#anchor--${context.id} .docs-story` : '.sb-show-main';
@@ -37,11 +39,11 @@ export const withBackground = (StoryFn: StoryFunction, context: StoryContext) =>
     const transitionStyle = 'transition: background-color 0.3s;';
     return `
       ${selector} {
-        background: ${selectedBackgroundColor} !important;
+        background: ${selectedBackground.value} !important;
         ${isReduceMotionEnabled() ? '' : transitionStyle}
       }
     `;
-  }, [selectedBackgroundColor, selector]);
+  }, [selectedBackground, selector]);
 
   useEffect(() => {
     const selectorId =
@@ -51,6 +53,7 @@ export const withBackground = (StoryFn: StoryFunction, context: StoryContext) =>
 
     if (!isActive) {
       clearStyles(selectorId);
+      removeCssVariables();
       return;
     }
 
@@ -59,6 +62,8 @@ export const withBackground = (StoryFn: StoryFunction, context: StoryContext) =>
       backgroundStyles,
       context.viewMode === 'docs' ? context.id : null
     );
+
+    applyOrRemoveCssVariables(selectedBackground);
   }, [isActive, backgroundStyles, context]);
 
   return StoryFn();

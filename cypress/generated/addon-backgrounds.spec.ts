@@ -8,7 +8,7 @@ describe('addon-backgrounds', () => {
     cy.navigateToStory('example-button', 'primary');
 
     // Click on the addon and select dark background
-    cy.get('[title="Change the background of the preview"]').click();
+    cy.get('[title="Change the background or CSS of the preview]').click();
     cy.get('#dark').click();
 
     cy.getCanvasBodyElement().should('have.css', 'background-color', 'rgb(51, 51, 51)');
